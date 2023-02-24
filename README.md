@@ -2,7 +2,7 @@
 
 SimpleBox4nano is a regulatory-relevant multimedia fate model that is specifically fit for use with nanomaterials. The tool predicts background concentrations of nanomaterials in air, water, sediment and soil. For details: https://www.rivm.nl/en/soil-and-water/simplebox4nano.
 
-#Using with eclipse IDE
+# Using with eclipse IDE
 You can direcly import this git repository into the IDE eclipse. 
 
 In eclipse: 
