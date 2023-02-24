@@ -1,0 +1,17 @@
+<?page title="Adjust ..." contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="User defined parameters ..."
+		apply="eu.nanosolveit.simplebox4nano.AdvancedTabModelController"
+		border="normal" width="700px">
+
+		<vbox align="center">
+			<image
+				src="../resources/SimpleBox.png" width="550px"/>
+			<hbox align="center">
+				<button id="regional" label="Regional parameters" />
+				<separator width="20px" />
+				<button id="continental" label="Continental parameters" />
+			</hbox>
+		</vbox>
+	</window>
+</zk>

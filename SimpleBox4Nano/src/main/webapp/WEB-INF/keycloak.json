@@ -1,0 +1,8 @@
+{
+  "realm": "nanosolveit",
+  "auth-server-url": "https://login.cloud.nanosolveit.eu/auth/",
+  "ssl-required": "external",
+  "resource": "cytotoxicity_cellviability",
+  "public-client": true,
+  "confidential-port": 0
+}

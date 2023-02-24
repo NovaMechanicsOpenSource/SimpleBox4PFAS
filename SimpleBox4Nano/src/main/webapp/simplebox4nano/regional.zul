@@ -1,0 +1,166 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="landscape parameters ..." border="normal"
+		width="900px" apply="eu.nanosolveit.simplebox4nano.regional">
+		<grid align="left">
+			<columns>
+				<column label="" width="420px" />
+				<column label="" />
+				<column label="" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Land area [km2]" />
+					<doublebox id="landArea" width="145px" />
+				</row>
+				<row>
+					<label value="Sea area [km2]" />
+					<doublebox id="seaArea"
+						constraint="no negative,no empty" />
+				</row>
+				<row>
+					<label value="Lake water fraction [-]" />
+					<doublebox id="lakeWaterFrac"
+						constraint="no negative,no empty" />
+				</row>
+				<row>
+					<label value="Fresh water fraction [-]" />
+					<doublebox id="freshWaterFrac"
+						constraint="no negative,no empty" />
+				</row>
+				<row>
+					<label value="Natural soil fraction [-]" />
+					<doublebox id="naturalSoilFrac"
+						constraint="no negative,no empty" />
+				</row>
+				<row>
+					<label value="Agricultural soil fraction [-]" />
+					<doublebox id="AgriSoilFrac"
+						constraint="no negative,no empty" />
+				</row>
+				<row>
+					<label value="Urban/industrial fraction [-]" />
+					<doublebox id="urbanIndiSoilFrac"
+						constraint="no negative,no empty" />
+				</row>
+				<row>
+					<label value="Average precipitation [-]" />
+					<doublebox id="avePrecipitation"
+						constraint="no negative,no empty" />
+				</row>
+			</rows>
+		</grid>
+
+		<separator height="20px" />
+
+		<checkbox id="advanced" label="Advanced parameters" />
+		<grid id="advancedParams">
+			<columns>
+				<column label="" width="420" />
+				<column label="" />
+				<column label="" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Temperature [K]" />
+					<doublebox id="temp"
+						constraint="no negative,no empty" />
+				</row>
+				<row>
+					<label value="Wind speed [m/s]" />
+					<doublebox id="windSpeed"
+						constraint="no negative,no empty" />
+				</row>
+				<row>
+					<label value="Lake water depth [m]" />
+					<doublebox id="lakeWatDepth"
+						constraint="no negative,no empty" />
+				</row>
+				<row>
+					<label value="Fresh water depth [m]" />
+					<doublebox id="freshWatDepth"
+						constraint="no negative,no empty" />
+				</row>
+				<row>
+					<label value="Run off fraction [-]" />
+					<doublebox id="runOffFrac"
+						constraint="no negative,no empty" />
+				</row>
+				<row>
+					<label value="Infiltration fraction [-]" />
+					<doublebox id="infiltFrac"
+						constraint="no negative,no empty" />
+				</row>
+				<row>
+					<label value="Soil erosion [-]" />
+					<doublebox id="soilEros"
+						constraint="no negative,no empty" />
+				</row>
+			</rows>
+		</grid>
+
+		<listbox id="listConcSuspMatWat">
+			<listhead sizable="false">
+				<listheader label="" width="150px" />
+				<listheader label="" />
+			</listhead>
+			<listitem id="itemConcSuspMatWat">
+				<listcell>
+					<radiogroup id="radioConcSuspMatWat">
+						<vlayout>
+							<radio label="coarse" selected="true" />
+							<radio label="detailed" />
+						</vlayout>
+					</radiogroup>
+				</listcell>
+				<listcell>
+					<hbox id="concSuspMatWatCoarse" visible="true"
+						align="center">
+						<label
+							value="Concentration of suspended matter in waters [mg/L]" />
+						<separator width="160px" />
+						<doublebox id="dboxConcSuspMatWat"
+							constraint="no negative,no empty" />
+					</hbox>
+					<hbox id="concSuspMatWatDetailed" visible="false">
+						<grid>
+							<columns>
+								<column label="" width="400px" />
+								<column label="" />
+							</columns>
+							<rows>
+								<row>
+									<label
+										value="Concentration of suspended matter in lake water [mg/L]"
+										width="200px" />
+									<doublebox id="concSuspLakeWat"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="Concentration of suspended matter in fresh water [mg/L]" />
+									<doublebox id="concSuspFreshWat"
+										constraint="no negative,no empty" />
+								</row>
+
+								<row>
+									<label
+										value="Concentration of suspended matter in sea water [mg/L]" />
+									<doublebox id="concSuspSeaWat"
+										constraint="no negative,no empty" />
+								</row>
+
+							</rows>
+						</grid>
+					</hbox>
+					<hbox id="concSuspMatWatReporting"
+						visible="false">
+						<label id="concSuspMatWatCompact"
+							value="In fresh water" />
+					</hbox>
+				</listcell>
+			</listitem>
+		</listbox>
+
+	</window>
+</zk>

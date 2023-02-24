@@ -1,0 +1,1795 @@
+<?page id="thePage" title="SimpleBox4Nano" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:native="native" xmlns:client="client">
+
+	<style dynamic="true">
+		.z-row-content, .z-row-inner, .z-rows, tr.z-row, .z-grid-odd,
+		.z-grid-body, .z-grid-header, .z-grid-header-border, .z-cell,
+		.z-grid, .z-listbox, .z-listbox-body,
+		.z-listbox-odd,.z-listbox-header, .z-listbox-header-border {
+		background: transparent !important; border: none !important;
+		padding:5px !important; grid-row-gap: 5px !important;
+
+		tr.z-loading { top: 50% !important; left: 45% !important; align:
+		center; vertical-align: middle; }
+
+		a:link{ color:blue; }
+
+		a:visited { color:green; }
+
+		a:hover { color: green; }
+
+		a:active { color:red; }
+
+		a:selected{ color:red; }
+	</style>
+
+	<window id="mainWin"
+		apply="eu.nanosolveit.simplebox4nano.SimpleBox4NanoModelController"
+		border="normal" hflex="1">
+
+		<hbox id="titleSimple" align="center">
+			<html>
+				<div align="center" width="100%" visible="true">
+					<table>
+						<tr>
+							<td>
+								<img border="0"
+									src="../resources/SmallLogo.jpg" width="140" height="80" />
+							</td>
+							<td>
+								<h1 style="font-size:30px;">
+									SimpleBox4Nano
+								</h1>
+							</td>
+						</tr>
+					</table>
+					<br />
+				</div>
+			</html>
+		</hbox>
+
+		<a label="User Guide" href="instructions.zul" />
+		<separator height="20px" />
+
+		<vlayout>
+			<label value="Landscape scenarios" style="font-size:1.5em;" />
+			<separator />
+			<hlayout style="border: 1px groove black" />
+		</vlayout>
+
+		<grid align="left">
+			<columns>
+				<column label="" width="420px" />
+				<column label="" width="140px" />
+				<column label="" width="140px" />
+				<column label="" width="140px" />
+			</columns>
+			<rows>
+				<row>
+					<combobox id="scenarios" readonly="true"
+						width="300px" />
+
+					<button id="adjust" label="Adjust ..." />
+					<button id="save" label="Save ..." />
+					<button id="load" label="Load ..." upload="true" />
+				</row>
+
+			</rows>
+		</grid>
+
+		<separator height="20px" />
+
+		<vlayout>
+			<label value="Nanomaterials properties"
+				style="font-size:1.5em;" />
+			<separator />
+			<hlayout style="border: 1px groove black;" />
+		</vlayout>
+
+		<grid align="left">
+			<columns>
+				<column label="" width="420px" />
+				<column label="" />
+				<column label="" />
+			</columns>
+			<rows>
+				<row tooltip="msg">
+					Nanomaterial
+					<combobox id="nanomaterials" readonly="true"
+						width="145px" />
+
+					<popup id="msg" width="300px">
+						Choose a nanomaterial in this list to prefill
+						properties with properties for this
+						nanomaterial.
+					</popup>
+				</row>
+				<row tooltip="msg1">
+					<label value="Molecular weight [gr/mol]"
+						tooltip="sgfdgfdgdfgfd" />
+					<doublebox id="molweight"
+						constraint="no negative,no empty" />
+
+					<popup id="msg1" width="300px">
+						The molecular weight of the nanomaterial.
+					</popup>
+				</row>
+				<row tooltip="msg2">
+					<label value="Primary radius [nm]" />
+					<doublebox id="radius"
+						constraint="no negative,no empty" />
+
+					<popup id="msg2" width="300px">
+						Primary radius of the nanomaterial.
+					</popup>
+				</row>
+				<row tooltip="msg3">
+					<label value="Primary density [kg/m3]" />
+					<doublebox id="density"
+						constraint="no negative,no empty" />
+
+					<popup id="msg3" width="300px">
+						Density of the nanomaterial.
+					</popup>
+				</row>
+				<row tooltip="msg4">
+					<label
+						value="Hamaker constant heteroagglomerate (ENP, water, SiO2)" />
+					<doublebox id="hamaker"
+						constraint="no negative,no empty" />
+
+					<popup id="msg4" width="300px">
+						Hamaker constant between the engineered
+						nanoparticle (ENP) and soil grains.
+					</popup>
+				</row>
+			</rows>
+		</grid>
+
+		<separator height="20px" />
+
+		<vlayout>
+			<label
+				value="Nanomaterial-Environment interaction parameters "
+				style="font-size:1.5em;" />
+			<separator />
+			<hlayout style="border: 1px groove black;" />
+			<separator />
+		</vlayout>
+
+
+		<!-- START Attachment efficiency -->
+		<label value="Attachement efficiency" style="font-size:1.3em;" />
+
+		<separator bar="true" height="20px" />
+
+		<listbox id="attachmentEfficiency">
+
+			<listhead sizable="false">
+				<listheader label="" width="150px" />
+				<listheader label="" />
+			</listhead>
+
+			<listitem id="freshWaterItem">
+				<listcell>
+					<radiogroup id="freshWaterRadio">
+						<vlayout>
+							<radio label="coarse" selected="true" />
+							<radio label="detailed" />
+						</vlayout>
+					</radiogroup>
+				</listcell>
+				<listcell tooltip="msg5">
+					<hbox id="freshWaterCoarse" visible="true"
+						align="center">
+						<label value="In fresh water [-]" />
+						<separator width="160px" />
+						<doublebox id="freshWater"
+							constraint="no negative,no empty" />
+					</hbox>
+					<hbox id="freshWaterDetailed" visible="false">
+						<grid>
+							<columns>
+								<column label="" width="400px" />
+								<column label="" />
+							</columns>
+							<rows>
+								<row tooltip="msg5a">
+									<label
+										value="Lake water NCs (less than 450 nm) [-]" width="200px" />
+									<doublebox id="lakeWaterNC"
+										constraint="no negative,no empty" />
+
+									<popup id="msg5a" width="300px">
+										Attachment efficiency between
+										nanoparticles and natural
+										colloids (environmental
+										particles smaller than 450 nm in
+										diameter) in lake water.
+									</popup>
+								</row>
+								<row tooltip="msg5b">
+									<label
+										value="Lake water SPM (greater than 450 nm) [-]" />
+									<doublebox id="lakeWaterSPM"
+										constraint="no negative,no empty" />
+
+									<popup id="msg5b" width="300px">
+										Attachment efficiency between
+										nanoparticles and suspended
+										particulate matter
+										(environmental particles greater
+										than 450 nm in diameter) in lake
+										water.
+									</popup>
+								</row>
+
+								<row tooltip="msg5c">
+									<label
+										value="Fresh water NCs (less than 450 nm) [-]" />
+									<doublebox id="freshWaterNC"
+										constraint="no negative,no empty" />
+
+									<popup id="msg5c" width="300px">
+										Attachment efficiency between
+										nanoparticles and natural
+										colloids (environmental
+										particles smaller than 450 nm in
+										diameter) in fresh water, e.g.
+										rivers.
+									</popup>
+
+								</row>
+
+								<row tooltip="msg5d">
+									<label
+										value="Fresh water SPM (greater than 450 nm) [-]" />
+									<doublebox id="freshWaterSPM"
+										constraint="no negative,no empty" />
+
+									<popup id="msg5d" width="300px">
+										Attachment efficiency between
+										nanoparticles and suspended
+										particulate matter
+										(environmental particles greater
+										than 450 nm in diameter) in
+										fresh water, e.g. rivers.
+									</popup>
+
+								</row>
+							</rows>
+						</grid>
+					</hbox>
+					<hbox id="freshWaterDetailedReporting"
+						visible="false">
+						<label id="freshWaterCompact"
+							value="In fresh water" />
+					</hbox>
+
+					<popup id="msg5" width="300px">
+						Attachment efficiency between a nanoparticle and
+						environmental particle in fresh water.
+						Attachment efficiency is the probability of a
+						collision between a nanoparticle and an
+						environmental particle resulting in sticking
+						(aggregation).
+					</popup>
+
+				</listcell>
+			</listitem>
+
+			<listitem id="attachmentSoilDbItem">
+				<listcell>
+					<radiogroup id="attachmentSoilDbRadio">
+						<vlayout>
+							<radio label="coarse" selected="true" />
+							<radio label="detailed" />
+						</vlayout>
+					</radiogroup>
+				</listcell>
+				<listcell tooltip="msg6">
+					<hbox id="attachmentSoilDbCoarse" visible="true"
+						align="center">
+						<label value="In soil [-]" width="600px" />
+						<separator width="215px" />
+						<doublebox id="attachmentSoilDb"
+							constraint="no negative,no empty" />
+					</hbox>
+					<hbox id="attachmentSoilDbDetailed"
+						visible="false">
+						<grid>
+							<columns>
+								<column label="" width="400px" />
+								<column label="" />
+							</columns>
+							<rows>
+								<row tooltip="msg6a">
+									<label
+										value="Νatural soil NCs (less than 450 nm) [-]" width="200px" />
+									<doublebox id="naturalSoilNCs"
+										constraint="no negative,no empty" />
+
+									<popup id="msg6a" width="300px">
+										Attachment efficiency between
+										nanoparticles and natural
+										colloids (environmental
+										particles smaller than 450 nm in
+										diameter) in natural soil.
+									</popup>
+								</row>
+
+								<row tooltip="msg6b">
+									<label
+										value="Natural soil grains [-]" />
+									<doublebox id="naturalSoilGrains"
+										constraint="no negative,no empty" />
+
+									<popup id="msg6b" width="300px">
+										Attachment efficiency between
+										nanoparticles and soil grains in
+										natural soil.
+									</popup>
+								</row>
+
+								<row tooltip="msg6c">
+									<label
+										value="Agricultural soil NCs (less than 450 nm) [-]" />
+									<doublebox id="agriSoilNCs"
+										constraint="no negative,no empty" />
+
+									<popup id="msg6c" width="300px">
+										Attachment efficiency between
+										nanoparticles and natural
+										colloids (environmental
+										particles smaller than 450 nm in
+										diameter) in agricultural soil.
+									</popup>
+								</row>
+
+								<row tooltip="msg6d">
+									<label
+										value="Agricultural soil grains [-]" />
+									<doublebox id="agriSoilGrains"
+										constraint="no negative,no empty" />
+
+									<popup id="msg6d" width="300px">
+										Attachment efficiency between
+										nanoparticles and soil grains in
+										agricultural soil.
+									</popup>
+
+								</row>
+
+								<row tooltip="msg6e">
+									<label
+										value="Other soil NCs (less than 450 nm) [-]" />
+									<doublebox id="otherSoilNCs"
+										constraint="no negative,no empty" />
+
+									<popup id="msg6e" width="300px">
+										Attachment efficiency between
+										nanoparticles and natural
+										colloids (environmental
+										particles smaller than 450 nm in
+										diameter) in other soils (not
+										natural or agricultural).
+									</popup>
+								</row>
+
+								<row tooltip="msg6f">
+									<label
+										value="Other soil grains [-]" />
+									<doublebox id="otherSoilGrains"
+										constraint="no negative,no empty" />
+
+									<popup id="msg6f" width="300px">
+										Attachment efficiency between
+										nanoparticles and natural
+										colloids (environmental
+										particles smaller than 450 nm in
+										diameter) in other soils (not
+										natural or agricultural).
+									</popup>
+								</row>
+							</rows>
+						</grid>
+					</hbox>
+					<hbox id="attachmentSoilDbDetailedReporting"
+						visible="false">
+						<label id="attachmentSoilDbCompact"
+							value="In soil" />
+					</hbox>
+
+					<popup id="msg6" width="300px">
+						Attachment efficiency between a nanoparticle and
+						environmental particle in soil. Attachment
+						efficiency is the probability of a collision
+						between a nanoparticle and an environmental
+						particle resulting in sticking (aggregation)
+					</popup>
+				</listcell>
+			</listitem>
+
+			<!-- START Fresh sediments -->
+			<listitem id="attachmentFreshSediDbItem">
+				<listcell>
+					<radiogroup id="attachmentFreshSediDbRadio">
+						<vlayout>
+							<radio label="coarse" selected="true" />
+							<radio label="detailed" />
+						</vlayout>
+					</radiogroup>
+				</listcell>
+				<listcell tooltip="msg7">
+					<hbox id="attachmentFreshSediDbCoarse"
+						visible="true" align="center">
+						<label value="Ιn freshwater sediments [-]" />
+						<separator width="90px" />
+						<doublebox id="attachmentFreshSediDb"
+							constraint="no negative,no empty" />
+					</hbox>
+					<hbox id="attachmentFreshSediDbDetailed"
+						visible="false">
+						<grid>
+							<columns>
+								<column label="" width="400px" />
+								<column label="" />
+							</columns>
+							<rows>
+								<row tooltip="msg7a">
+									<label
+										value="Lake sediment NCs (less than 450 nm) [-]" />
+									<doublebox id="lakeSedimentNCs"
+										constraint="no negative,no empty" />
+
+									<popup id="msg7a" width="300px">
+										Attachment efficiency between
+										nanoparticles and natural
+										colloids (environmental
+										particles smaller than 450 nm in
+										diameter) in lake sediments.
+									</popup>
+								</row>
+
+								<row tooltip="msg7b">
+									<label value="Lake sediment grains" />
+									<doublebox id="lakeSedimentGrains"
+										constraint="no negative,no empty" />
+									<popup id="msg7b" width="300px">
+										Attachment efficiency between
+										nanoparticles and sediment
+										grains in lake sediments.
+									</popup>
+
+								</row>
+
+								<row tooltip="msg7c">
+									<label
+										value="Fresh sediment NCs (less than 450 nm)" />
+									<doublebox id="freshSedimentNCs"
+										constraint="no negative,no empty" />
+									<popup id="msg7c" width="300px">
+										Attachment efficiency between
+										nanoparticles and natural
+										colloids (environmental
+										particles smaller than 450 nm in
+										diameter) in freshwater
+										sediments (e.g. rivers).
+									</popup>
+								</row>
+
+								<row tooltip="msg7d">
+									<label
+										value="Fresh sediment grains" />
+									<doublebox id="frashSedimentGrains"
+										constraint="no negative,no empty" />
+
+									<popup id="msg7d" width="300px">
+										Attachment efficiency between
+										nanoparticles and sediment
+										grains in freshwater sediments
+										(e.g. rivers).
+									</popup>
+								</row>
+							</rows>
+						</grid>
+					</hbox>
+					<hbox id="attachmentFreshSediDbDetailedReporting"
+						visible="false">
+						<label id="attachmentFreshSediDbCompact"
+							value="In fresh water sediments" />
+					</hbox>
+
+					<popup id="msg7" width="300px">
+						Attachment efficiency between a nanoparticle and
+						environmental particle in freshwater sediments.
+						Attachment efficiency is the probability of a
+						collision between a nanoparticle and an
+						environmental particle resulting in sticking
+						(aggregation).
+					</popup>
+
+				</listcell>
+			</listitem>
+			<!-- END Fresh sediments -->
+
+			<!-- START Marine sediments -->
+			<listitem id="attachmentMarineSediDbItem">
+				<listcell>
+					<radiogroup id="attachmentMarineSediDbRadio">
+						<vlayout>
+							<radio label="coarse" selected="true" />
+							<radio label="detailed" />
+						</vlayout>
+					</radiogroup>
+				</listcell>
+				<listcell tooltip="msg8">
+					<hbox id="attachmentMarineSediDbCoarse"
+						visible="true" align="center">
+						<label value="Ιn marine sediments [-]" />
+						<separator width="115px" />
+						<doublebox id="attachmentMarineSediDb"
+							constraint="no negative,no empty" />
+					</hbox>
+					<hbox id="attachmentMarineSediDbDetailed"
+						visible="false">
+						<grid>
+							<columns>
+								<column label="" width="400px" />
+								<column label="" />
+							</columns>
+							<rows>
+								<row tooltip="msg8a">
+									<label
+										value="Marine sediment NCs (less than 450 nm)" />
+									<doublebox id="marineSedimentNCs"
+										constraint="no negative,no empty" />
+
+									<popup id="msg8a" width="300px">
+										Attachment efficiency between
+										nanoparticles and natural
+										colloids (environmental
+										particles smaller than 450 nm in
+										diameter) in marine sediments.
+									</popup>
+								</row>
+								<row tooltip="msg8b">
+									<label
+										value="Marine sediment grains" />
+									<doublebox id="marineSedimentGrains"
+										constraint="no negative,no empty" />
+
+									<popup id="msg8b" width="300px">
+										Attachment efficiency between
+										nanoparticles and sediment
+										grains in marine sediments.
+									</popup>
+
+								</row>
+							</rows>
+						</grid>
+					</hbox>
+					<hbox id="attachmentMarineSediDbDetailedReporting"
+						visible="false">
+						<label id="attachmentMarineSediDbCompact"
+							value="Ιn marine sediments" />
+					</hbox>
+
+					<popup id="msg8" width="300px">
+						Attachment efficiency between a nanoparticle and
+						environmental particle in marine sediments.
+						Attachment efficiency is the probability of a
+						collision between a nanoparticle and an
+						environmental particle resulting in sticking
+						(aggregation).
+					</popup>
+
+				</listcell>
+			</listitem>
+			<!-- END Marine sediments -->
+		</listbox>
+		<!-- END Attachment efficiency -->
+
+		<separator bar="false" height="20px" />
+
+		<!-- START Dissolution rates -->
+		<label value="Dissolution rates" style="font-size:1.3em;"
+			tooltip="msg9" />
+
+		<popup id="msg9" width="300px">
+			The rate constant at which nanomaterials dissolve. If you
+			have a half-life (t_half), you can convert it to a rate
+			constant (k) by the following formula: k = 0.693/t_half.
+			Note that the unit of time is seconds.
+		</popup>
+
+		<separator bar="true" height="10px" />
+
+		<listbox id="dissolutionRates">
+			<listhead sizable="false">
+				<listheader label="" width="150px" />
+				<listheader label="" />
+			</listhead>
+
+			<!-- START Dissolution fresh water -->
+			<listitem id="dissolutionFreshDbItem">
+				<listcell>
+					<radiogroup id="dissolutionFreshDbRadio">
+						<vlayout>
+							<radio label="coarse" selected="true" />
+							<radio label="detailed" />
+						</vlayout>
+					</radiogroup>
+				</listcell>
+				<listcell tooltip="msg10">
+					<hbox id="dissolutionFreshDbCoarse" visible="true"
+						align="center">
+						<label value="Ιn fresh water [1/s]" />
+						<separator width="160px" />
+						<doublebox id="dissolutionFreshDb"
+							constraint="no negative,no empty" />
+					</hbox>
+					<hbox id="dissolutionFreshDbDetailed"
+						visible="false">
+						<grid>
+							<columns>
+								<column label="" width="400px" />
+								<column label="" />
+							</columns>
+							<rows>
+								<row tooltip="msg10a">
+									<label
+										value="ENPs (S) in lake water [1/s]" width="200px" />
+									<doublebox
+										id="dissolutionlakeWaterENPs"
+										constraint="no negative,no empty" />
+
+									<popup id="msg10a" width="300px">
+										Dissolution rate constant of
+										free nanoparticles in lake
+										water.
+									</popup>
+								</row>
+
+								<row tooltip="msg10b">
+									<label
+										value="ENPs (S) in fresh water [1/s]" />
+									<doublebox
+										id="dissolutionfreshWaterSPM"
+										constraint="no negative,no empty" />
+
+									<popup id="msg10b" width="300px">
+										Dissolution rate constant of
+										free nanoparticles in fresh
+										water.
+									</popup>
+								</row>
+
+								<row tooltip="msg10c">
+									<label
+										value="ENPs and NCs (A) in lake water [1/s]" />
+									<doublebox
+										id="dissolutionlakeWaterENPsNCsA"
+										constraint="no negative,no empty" />
+
+									<popup id="msg10c" width="300px">
+										Dissolution rate constant of
+										nanoparticles aggregated to
+										natural colloids in lake water.
+									</popup>
+								</row>
+
+								<row tooltip="msg10d">
+									<label
+										value="ENPs and NCs (P) in lake water [1/s]" />
+									<doublebox
+										id="dissolutionlakeWaterENPsNCsP"
+										constraint="no negative,no empty" />
+
+									<popup id="msg10d" width="300px">
+										Dissolution rate constant of
+										nanoparticles aggregated to
+										suspended particulate matter in
+										lake water.
+									</popup>
+
+								</row>
+
+								<row tooltip="msg10e">
+									<label
+										value="ENPs and NCs (A) in fresh water [1/s]" />
+									<doublebox
+										id="dissolutionfreshWaterENPsNCsA"
+										constraint="no negative,no empty" />
+
+									<popup id="msg10e" width="300px">
+										Dissolution rate constant of
+										nanoparticles aggregated to
+										natural colloids in lake water.
+									</popup>
+								</row>
+
+								<row tooltip="msg10h">
+									<label
+										value="ENPs and NCs (P) in fresh water [1/s]" />
+									<doublebox
+										id="dissolutionfreshWaterENPsNCsP"
+										constraint="no negative,no empty" />
+
+									<popup id="msg10h" width="300px">
+										Dissolution rate constant of
+										nanoparticles aggregated to
+										suspended particulate matter in
+										fresh water
+									</popup>
+								</row>
+							</rows>
+						</grid>
+					</hbox>
+					<hbox id="dissolutionFreshDbDetailedReporting"
+						visible="false">
+						<label id="dissolutionFreshDbCompact"
+							value="Ιn fresh water" />
+					</hbox>
+
+					<popup id="msg10" width="300px">
+						Dissolution rate constant in freshwater.
+					</popup>
+				</listcell>
+			</listitem>
+			<!-- END Dissolution fresh water -->
+
+			<!-- START Dissolution sea water -->
+			<listitem id="dissolutionSeaWaterDbItem">
+				<listcell>
+					<radiogroup id="dissolutionSeaWaterDbRadio">
+						<vlayout>
+							<radio label="coarse" selected="true" />
+							<radio label="detailed" />
+						</vlayout>
+					</radiogroup>
+				</listcell>
+				<listcell tooltip="msg11">
+					<hbox id="dissolutionSeaWaterDbCoarse"
+						visible="true" align="center">
+						<label value="Ιn sea water [1/s]" />
+						<separator width="170px" />
+						<doublebox id="dissolutionSeaWaterDb"
+							constraint="no negative,no empty" />
+					</hbox>
+					<hbox id="dissolutionSeaWaterDbDetailed"
+						visible="false">
+						<grid>
+							<columns>
+								<column label="" width="400px" />
+								<column label="" />
+							</columns>
+							<rows>
+								<row tooltip="msg11a">
+									<label
+										value="ENPs (S) in sea water [1/s]" width="200px" />
+									<doublebox
+										id="dissolutionSeaWaterENPs"
+										constraint="no negative,no empty" />
+
+									<popup id="msg11a" width="300px">
+										Dissolution rate constant of
+										free nanoparticles in sea water.
+									</popup>
+								</row>
+								<row tooltip="msg11b">
+									<label
+										value="Heteroagglomerates of ENPs and NCs (A) in sea water [1/s]"
+										width="200px" />
+									<doublebox
+										id="dissolutionHeteroENPsNCsSeaWater"
+										constraint="no negative,no empty" />
+
+									<popup id="msg11b" width="300px">
+										Dissolution rate constant of
+										nanoparticles aggregated to
+										natural colloids in sea water.
+									</popup>
+
+								</row>
+								<row tooltip="msg11c">
+									<label
+										value="Heteroagglomerates of ENPs and SPM (P) in sea water [1/s]"
+										width="200px" />
+									<doublebox
+										id="dissolutionHeteroENPsSPMsSeaWater"
+										constraint="no negative,no empty" />
+
+
+									<popup id="msg11c" width="300px">
+										Dissolution rate constant of
+										nanoparticles aggregated to
+										suspended particulate matter in
+										sea water.
+									</popup>
+
+								</row>
+							</rows>
+						</grid>
+					</hbox>
+					<hbox id="dissolutionSeaWaterDbDetailedReporting"
+						visible="false">
+						<label id="dissolutionSeaWaterDbCompact"
+							value="Ιn sea water" />
+					</hbox>
+
+					<popup id="msg11" width="300px">
+						Dissolution rate constant in sea water.
+					</popup>
+				</listcell>
+			</listitem>
+			<!-- END Dissolution sea water -->
+
+			<!-- START Dissolution soil -->
+			<listitem id="dissolutionSoilDbItem">
+				<listcell>
+					<radiogroup id="dissolutionSoilDbRadio">
+						<vlayout>
+							<radio label="coarse" selected="true" />
+							<radio label="detailed" />
+						</vlayout>
+					</radiogroup>
+				</listcell>
+				<listcell tooltip="msg12">
+					<hbox id="dissolutionSoilDbCoarse" visible="true"
+						align="center">
+						<label value="Ιn soil [1/s]" />
+						<separator width="215px" />
+
+						<doublebox id="dissolutionSoilDb"
+							constraint="no negative,no empty" />
+					</hbox>
+					<hbox id="dissolutionSoilDbDetailed"
+						visible="false">
+						<grid>
+							<columns>
+								<column label="" width="400px" />
+								<column label="" />
+							</columns>
+							<rows>
+								<row>
+									<label
+										value="ENPs (S) in natural soil pore water [1/s]"
+										width="200px" />
+									<doublebox
+										id="dissolutionNatSoilPoreWaterENPs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="ENPs (S) in agricultural soil pore water [1/s]"
+										width="200px" />
+									<doublebox
+										id="dissolutionAgriSoilPoreWaterENPs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="ENPs (S) in other soil pore water [1/s]" width="200px" />
+									<doublebox
+										id="dissolutionOtherSoilPoreWaterENPs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="ENPs and NCs (A) in natural soil pore water [1/s]"
+										width="200px" />
+									<doublebox
+										id="dissolutionNatSoilENPsNCs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="ENPs and FP (P) in natural soil [1/s]" width="200px" />
+									<doublebox
+										id="dissolutionNatSoilENPsFP"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="ENPs and NCs (A) in agricultural soil pore water [1/s]"
+										width="200px" />
+									<doublebox
+										id="dissolutionAgriSoilPoreENPsNCs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="ENPs and FP (P) in agricultural soil [1/s]"
+										width="200px" />
+									<doublebox
+										id="dissolutionAgriSoilENPsFP"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="ENPs and NCs (A) in other soil pore water [1/s]"
+										width="200px" />
+									<doublebox
+										id="dissolutionOtherSoilPoreENPsNCs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="ENPs and FP (P) in other soil [1/s]" width="200px" />
+									<doublebox
+										id="dissolutionOtherSoileENPsFP"
+										constraint="no negative,no empty" />
+								</row>
+							</rows>
+						</grid>
+					</hbox>
+					<hbox id="dissolutionSoilDbDetailedReporting"
+						visible="false">
+						<label id="dissolutionSoilDbCompact"
+							value="Ιn soil" />
+					</hbox>
+
+					<popup id="msg12" width="300px">
+						Dissolution rate constant in soil.
+					</popup>
+
+				</listcell>
+			</listitem>
+			<!-- END Dissolution soil -->
+
+			<!-- START Dissolution freshwater sediments -->
+			<listitem id="dissolutionFreshSediDbItem">
+				<listcell>
+					<radiogroup id="dissolutionFreshSediDbRadio">
+						<vlayout>
+							<radio label="coarse" selected="true" />
+							<radio label="detailed" />
+						</vlayout>
+					</radiogroup>
+				</listcell>
+				<listcell tooltip="msg13">
+					<hbox id="dissolutionFreshSediDbCoarse"
+						visible="true" align="center">
+						<label value="Ιn freshwater sediments [1/s]" />
+						<separator width="90px" />
+						<doublebox id="dissolutionFreshSediDb"
+							constraint="no negative,no empty" />
+					</hbox>
+					<hbox id="dissolutionFreshSediDbDetailed"
+						visible="false">
+						<grid>
+							<columns>
+								<column label="" width="400px" />
+								<column label="" />
+							</columns>
+							<rows>
+								<row>
+									<label
+										value="ENPs (S) in lake sediment [1/s]" width="200px" />
+									<doublebox id="disSedilakeSediENPs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="ENPs (S) in fresh sediment [1/s]" width="200px" />
+									<doublebox id="disFreshSediENPs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="ENPs and NCs (A) in lake sediment [1/s]" width="200px" />
+									<doublebox id="disLakeSediENPsNCs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="ENPs and FP (P) in lake sediment [1/s]" width="200px" />
+									<doublebox id="disLakeSediENPsFP"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="ENPs and NCs (A) in fresh sediment [1/s]"
+										width="200px" />
+									<doublebox id="disFreshSediENPsNCs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="ENPs and FP (P) in fresh sediment [1/s]" width="200px" />
+									<doublebox id="disFreshSediENPsFP"
+										constraint="no negative,no empty" />
+								</row>
+							</rows>
+						</grid>
+					</hbox>
+					<hbox id="dissolutionFreshSediDbDetailedReporting"
+						visible="false">
+						<label id="dissolutionFreshSediDbCompact"
+							value="Ιn freshwater sediments" />
+					</hbox>
+
+					<popup id="msg13" width="300px">
+						Dissolution rate constant in soil.
+					</popup>
+
+				</listcell>
+			</listitem>
+			<!-- END Dissolution freshwater sediments -->
+
+			<!-- START Dissolution marine sediments -->
+			<listitem id="dissolutionMarineSediDbItem">
+				<listcell>
+					<radiogroup id="dissolutionMarineSediDbRadio">
+						<vlayout>
+							<radio label="coarse" selected="true" />
+							<radio label="detailed" />
+						</vlayout>
+					</radiogroup>
+				</listcell>
+				<listcell tooltip="msg14">
+					<hbox id="dissolutionMarineSediDbCoarse"
+						visible="true" align="center">
+						<label value="Ιn marine sediments [1/s]" />
+						<separator width="115px" />
+
+						<doublebox id="dissolutionMarineSediDb"
+							constraint="no negative,no empty" />
+					</hbox>
+					<hbox id="dissolutionMarineSediDbDetailed"
+						visible="false">
+						<grid>
+							<columns>
+								<column label="" width="400px" />
+								<column label="" />
+							</columns>
+							<rows>
+								<row>
+									<label
+										value="ENPs (S) in marine sediment [1/s]" width="200px" />
+									<doublebox
+										id="disMarineSedimentENPs" constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="ENPs (S) in deep sea water [1/s]" width="200px" />
+									<doublebox id="disDeepSeaENPs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="ENPs and NCs (A) in marine sediment [1/s]"
+										width="200px" />
+									<doublebox
+										id="disMarineSedimentENPsNCs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="ENPs and FP (P) in marine sediment [1/s]"
+										width="200px" />
+									<doublebox
+										id="disMarineSedimentENPsFP"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="ENPs and NCs (A) in deep sea water [1/s]"
+										width="200px" />
+									<doublebox
+										id="disDeepSeaWaterENPsNCs" constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="ENPs and SPM (P) in deep sea water [1/s]"
+										width="200px" />
+									<doublebox
+										id="disDeepSeaWaterENPsSPM" constraint="no negative,no empty" />
+								</row>
+							</rows>
+						</grid>
+					</hbox>
+					<hbox id="dissolutionMarineSediDbDetailedReporting"
+						visible="false">
+						<label id="dissolutionMarineSediDbCompact"
+							value="Ιn marine sediments" />
+					</hbox>
+
+					<popup id="msg14" width="300px">
+						Dissolution rate constant in marine sediments.
+					</popup>
+				</listcell>
+				<!-- END Dissolution marine sediments -->
+			</listitem>
+		</listbox>
+		<!-- END Dissolution rates -->
+
+		<separator bar="false" height="20px" />
+
+		<!-- START Degradation rates -->
+		<label value="Degradation rates" style="font-size:1.3em;"
+			tooltip="msg15" />
+
+		<popup id="msg15" width="300px">
+			The rate constant at which nanomaterials degrade. If you
+			have a half-life (t_half), you can convert it to a rate
+			constant (k) by the following formula: k = 0.693/t_half.
+			Note that the unit of time is seconds.
+		</popup>
+
+		<separator bar="true" height="10px" />
+
+		<listbox id="degradationRates">
+			<listhead sizable="false">
+				<listheader label="" width="150px" />
+				<listheader label="" />
+			</listhead>
+
+			<!-- START Degradation air -->
+			<listitem id="degradationAirDbItem">
+				<listcell>
+					<radiogroup id="degradationAirDbRadio">
+						<vlayout>
+							<radio label="coarse" selected="true" />
+							<radio label="detailed" />
+						</vlayout>
+					</radiogroup>
+				</listcell>
+				<listcell tooltip="msg16">
+					<hbox id="degradationAirDbCoarse" visible="true"
+						align="center">
+						<label value="Ιn air [1/s]" />
+						<separator width="220px" />
+						<doublebox id="degradationAirDb"
+							constraint="no negative,no empty" />
+					</hbox>
+					<hbox id="degradationAirDbDetailed"
+						visible="false">
+						<grid>
+							<columns>
+								<column label="" width="400px" />
+								<column label="" />
+							</columns>
+							<rows>
+								<row>
+									<label value="ENPs (S) in air [1/s]"
+										width="200px" />
+									<doublebox id="degAirENPs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="Heteroagglomerates of ENPs and NCs (A) in lake water [1/s]"
+										width="200px" />
+									<doublebox
+										id="degHeteroLakeWaterENPsNCs"
+										constraint="no negative,no empty" />
+								</row>
+
+								<row>
+									<label
+										value="Heteroagglomerates of ENPs and SPM (P) in lake water [1/s]"
+										width="200px" />
+									<doublebox
+										id="degHeteroLakeWaterENPsSPM"
+										constraint="no negative,no empty" />
+								</row>
+							</rows>
+						</grid>
+					</hbox>
+					<hbox id="degradationAirDbDetailedReporting"
+						visible="false">
+						<label id="degradationAirDbCompact"
+							value="Ιn air" />
+					</hbox>
+
+					<popup id="msg16" width="300px">
+						Degradation rate constant in air.
+					</popup>
+				</listcell>
+			</listitem>
+			<!-- END Degradation air -->
+
+			<!-- START fresh water -->
+			<listitem id="degradationFreshWaterDbItem">
+				<listcell>
+					<radiogroup id="degradationFreshWaterDbRadio">
+						<vlayout>
+							<radio label="coarse" selected="true" />
+							<radio label="detailed" />
+						</vlayout>
+					</radiogroup>
+				</listcell>
+				<listcell tooltip="msg17">
+					<hbox id="degradationFreshWaterDbCoarse"
+						visible="true" align="center">
+						<label value="Ιn fresh water [1/s]" />
+						<separator width="160px" />
+						<doublebox id="degradationFreshWaterDb"
+							constraint="no negative,no empty" />
+					</hbox>
+					<hbox id="degradationFreshWaterDbDetailed"
+						visible="false">
+						<grid>
+							<columns>
+								<column label="" width="400px" />
+								<column label="" />
+							</columns>
+							<rows>
+								<row>
+									<label
+										value="ENPs (S) in lake water [1/s]" width="200px" />
+									<doublebox id="degLakeWaterENPs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="ENPs (S) in fresh water [1/s]" width="200px" />
+									<doublebox id="degFreshWaterENPs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="Heteroagglomerates of ENPs and NCs (A) in lake water [1/s]"
+										width="200px" />
+									<doublebox
+										id="degHetLakeWaterENPsNCs" constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="Heteroagglomerates of ENPs and SPM (P) in lake water [1/s]"
+										width="200px" />
+									<doublebox
+										id="degHetLakeWaterENPsSPM" constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="Heteroagglomerates of ENPs and NCs (A) in fresh water [1/s]"
+										width="200px" />
+									<doublebox
+										id="degHetFreshWaterENPsNCs"
+										constraint="no negative,no empty" />
+								</row>
+
+								<row>
+									<label
+										value="Heteroagglomerates of ENPs and SPM (P) in fresh water [1/s]"
+										width="200px" />
+									<doublebox
+										id="degHetFreshWaterENPsSPM"
+										constraint="no negative,no empty" />
+								</row>
+							</rows>
+						</grid>
+					</hbox>
+					<hbox id="degradationFreshWaterDbDetailedReporting"
+						visible="false">
+						<label id="degradationFreshWaterDbCompact"
+							value="Ιn fresh water" />
+					</hbox>
+					<popup id="msg17" width="300px">
+						Degradation rate constant in fresh water.
+					</popup>
+				</listcell>
+			</listitem>
+			<!-- END fresh air -->
+
+			<!-- START sea water -->
+			<listitem id="degradationSeaWaterDbItem">
+				<listcell>
+					<radiogroup id="degradationSeaWaterDbRadio">
+						<vlayout>
+							<radio label="coarse" selected="true" />
+							<radio label="detailed" />
+						</vlayout>
+					</radiogroup>
+				</listcell>
+				<listcell tooltip="msg18">
+					<hbox id="degradationSeaWaterDbCoarse"
+						visible="true" align="center">
+						<label value="Ιn sea water [1/s]" />
+						<separator width="170px" />
+						<doublebox id="degradationSeaWaterDb"
+							constraint="no negative,no empty" />
+					</hbox>
+					<hbox id="degradationSeaWaterDbDetailed"
+						visible="false">
+						<grid>
+							<columns>
+								<column label="" width="400px" />
+								<column label="" />
+							</columns>
+							<rows>
+								<row>
+									<label
+										value="ENPs (S) in sea water [1/s]" width="200px" />
+									<doublebox id="degSeaWaterENPs"
+										constraint="no negative,no empty" />
+								</row>
+
+								<row>
+									<label
+										value="ENPs and NCs (A) in sea water [1/s]" width="200px" />
+									<doublebox id="degSeaWaterENPsNCs"
+										constraint="no negative,no empty" />
+								</row>
+
+								<row>
+									<label
+										value="ENPs and SPM (P) in sea water [1/s]" width="200px" />
+									<doublebox id="degSeaWaterENPsSPM"
+										constraint="no negative,no empty" />
+								</row>
+							</rows>
+						</grid>
+					</hbox>
+					<hbox id="degradationSeaWaterDbDetailedReporting"
+						visible="false">
+						<label id="degradationSeaWaterDbCompact"
+							value="Ιn sea water" />
+					</hbox>
+
+					<popup id="msg19" width="300px">
+						Degradation rate constant in sea water.
+					</popup>
+				</listcell>
+			</listitem>
+			<!-- END sea water -->
+
+			<!-- START soil -->
+			<listitem id="degradationSoilDbItem">
+				<listcell>
+					<radiogroup id="degradationSoilDbRadio">
+						<vlayout>
+							<radio label="coarse" selected="true" />
+							<radio label="detailed" />
+						</vlayout>
+					</radiogroup>
+				</listcell>
+				<listcell tooltip="msg20">
+					<hbox id="degradationSoilDbCoarse" visible="true"
+						align="center">
+						<label value="Ιn soil [1/s]" />
+						<separator width="215px" />
+						<doublebox id="degradationSoilDb"
+							constraint="no negative,no empty" />
+					</hbox>
+					<hbox id="degradationSoilDbDetailed"
+						visible="false">
+						<grid>
+							<columns>
+								<column label="" width="400px" />
+								<column label="" />
+							</columns>
+							<rows>
+								<row>
+									<label
+										value="ENPs (S) in natural soil pore water [1/s]"
+										width="200px" />
+									<doublebox
+										id="degNatSoilPoreWaterENPs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="ENPs (S) in agricultural soil pore water [1/s]"
+										width="200px" />
+									<doublebox
+										id="degAgriSoilPoreWaterENPs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="ENPs (S) in other soil pore water [1/s]" width="200px" />
+									<doublebox
+										id="degOtherSoilPoreWaterENPs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="Heteroagglomerates of ENPs and NCs (A) in natural soil pore water [1/s]"
+										width="200px" />
+									<doublebox
+										id="degHeteroNatSoilPoreWaterENPsNCs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="Heteroagglomerates of ENPs and FP (P) in natural soil [1/s]"
+										width="200px" />
+									<doublebox
+										id="degHeteroNatSoilENPsFP" constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="Heteroagglomerates of ENPs and NCs (A) in agricultural soil pore water [1/s]"
+										width="200px" />
+									<doublebox
+										id="degHeteroAgriSoilENPsNC"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="Heteroagglomerates of ENPs and FP (P) in agricultural soil [1/s]"
+										width="200px" />
+									<doublebox
+										id="degHeteroAgriSoilENPsFP"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="Heteroagglomerates of ENPs and NCs (A) in other soil pore water [1/s]"
+										width="200px" />
+									<doublebox
+										id="degHeteroOtherSoilENPsNCs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="Heteroagglomerates of ENPs and FP (P) in other soil [1/s]"
+										width="200px" />
+									<doublebox
+										id="degHeteroOtherSoilENPsFP"
+										constraint="no negative,no empty" />
+								</row>
+							</rows>
+						</grid>
+					</hbox>
+					<hbox id="degradationSoilDbDetailedReporting"
+						visible="false">
+						<label id="degradationSoilDbCompact"
+							value="Ιn soil" />
+					</hbox>
+
+					<popup id="msg20" width="300px">
+						Degradation rate constant in soil.
+					</popup>
+				</listcell>
+			</listitem>
+			<!-- END soil -->
+
+			<!-- START freshwater sediment -->
+			<listitem id="degradationFreshSediDbItem">
+				<listcell>
+					<radiogroup id="degradationFreshSediDbRadio">
+						<vlayout>
+							<radio label="coarse" selected="true" />
+							<radio label="detailed" />
+						</vlayout>
+					</radiogroup>
+				</listcell>
+				<listcell tooltip="msg21">
+					<hbox id="degradationFreshSediDbCoarse"
+						visible="true" align="center">
+						<label value="Ιn freshwater sediments [1/s]" />
+						<separator width="90px" />
+						<doublebox id="degradationFreshSedilDb"
+							constraint="no negative,no empty" />
+					</hbox>
+					<hbox id="degradationFreshSediDbDetailed"
+						visible="false">
+						<grid>
+							<columns>
+								<column label="" width="400px" />
+								<column label="" />
+							</columns>
+							<rows>
+								<row>
+									<label
+										value="ENPs (S) in lake sediment [1/s]" width="200px" />
+									<doublebox id="lakeSedimentENPs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="ENPs (S) in fresh sediment [1/s]" width="200px" />
+									<doublebox id="freshSedimentENPs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="Heteroagglomerates of ENPs and NCs (A) in lake sediment [1/s]"
+										width="200px" />
+									<doublebox id="heteroLakeENPsNCs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="Heteroagglomerates of ENPs and FP (P) in lake sediment [1/s]"
+										width="200px" />
+									<doublebox id="heteroLakeENPsFP"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="Heteroagglomerates of ENPs and NCs (A) in fresh sediment [1/s]"
+										width="200px" />
+									<doublebox id="heteroFreshENPsNCs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="Heteroagglomerates of ENPs and FP (P) in fresh sediment [1/s]"
+										width="200px" />
+									<doublebox id="heteroFreshENPsFP"
+										constraint="no negative,no empty" />
+								</row>
+							</rows>
+						</grid>
+					</hbox>
+					<hbox id="degradationFreshSediDbDetailedReporting"
+						visible="false">
+						<label id="degradationFreshSediDbCompact"
+							value="Ιn freshwater sediments" />
+					</hbox>
+
+					<popup id="msg21" width="300px">
+						Degradation rate constant in freshwater
+						sediments.
+					</popup>
+
+				</listcell>
+			</listitem>
+			<!-- END freshwater sediment -->
+
+			<!-- START  marine sediment -->
+			<listitem id="degradationMarineSediDbItem">
+				<listcell>
+					<radiogroup id="degradationMarineSediDbRadio">
+						<vlayout>
+							<radio label="coarse" selected="true" />
+							<radio label="detailed" />
+						</vlayout>
+					</radiogroup>
+				</listcell>
+				<listcell tooltip="msg22">
+					<hbox id="degradationMarineSediDbCoarse"
+						visible="true" align="center">
+						<label value="In marine sediments [1/s]" />
+						<separator width="115px" />
+						<doublebox id="degradationMarineSediDb"
+							constraint="no negative,no empty" />
+					</hbox>
+					<hbox id="degradationMarineSediDbDetailed"
+						visible="false">
+						<grid>
+							<columns>
+								<column label="" width="400px" />
+								<column label="" />
+							</columns>
+							<rows>
+								<row>
+									<label
+										value="ENPs (S) in marine  sediment [1/s]" width="200px" />
+									<doublebox id="marineSedimentENPs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="ENPs (S) in deep sea water [1/s]" width="200px" />
+									<doublebox id="deepSeaWaterENPs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="Heteroagglomerates of ENPs and NCs (A) in marine sediment [1/s]"
+										width="200px" />
+									<doublebox id="heteroMarineENPsNCs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="Heteroagglomerates of ENPs and FP (P) in marine sediment [1/s]"
+										width="200px" />
+									<doublebox id="heteroMarineENPsFP"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="Heteroagglomerates of ENPs and NCs (A) in deep sea water [1/s]"
+										width="200px" />
+									<doublebox id="heteroDeepSeaENPsNCs"
+										constraint="no negative,no empty" />
+								</row>
+								<row>
+									<label
+										value="Heteroagglomerates of ENPs and SPM (P) in deep sea water [1/s]"
+										width="200px" />
+									<doublebox id="heteroDeepSeaENPsSPM"
+										constraint="no negative,no empty" />
+								</row>
+							</rows>
+						</grid>
+					</hbox>
+					<hbox id="degradationMarineSediDbDetailedReporting"
+						visible="false">
+						<label id="degradationMarineSediDbCompact"
+							value="Ιn marine sediments" />
+					</hbox>
+
+					<popup id="msg22" width="300px">
+						Degradation rate constant in freshwater
+						sediments.
+					</popup>
+				</listcell>
+			</listitem>
+			<!-- END marine sediment -->
+
+		</listbox>
+		<!-- END Degradation rates -->
+
+		<separator height="20px" />
+
+		<vlayout>
+			<label value="Emission rates" style="font-size:1.5em;" />
+			<separator />
+			<hlayout style="border: 1px groove black;" />
+			<separator />
+		</vlayout>
+
+		<grid align="left">
+			<columns>
+				<column label="" width="420px" />
+				<column label="Regional scale" />
+				<column label="Continental scale" />
+			</columns>
+			<rows>
+				<row>
+					<label value="to air [t/yr]" />
+					
+					<doublebox id="toAir"
+						constraint="no negative,no empty" />
+
+					<doublebox id="toAirCont"
+						constraint="no negative,no empty" />
+
+				</row>
+				<row>
+					<label value="to lake water [t/yr]" />
+					
+					<doublebox id="toLakeWater"
+						constraint="no negative,no empty" />
+
+					<doublebox id="toLakeWaterCont"
+						constraint="no negative,no empty" />
+
+				</row>
+				<row>
+					<label value="to fresh water [t/yr]" />
+					
+					<doublebox id="toFreshWater"
+						constraint="no negative,no empty" />
+
+					<doublebox id="toFreshWaterCont"
+						constraint="no negative,no empty" />
+				</row>
+				<row>
+					<label value="to sea water [t/yr]" />
+					
+					<doublebox id="toSea"
+						constraint="no negative,no empty" />
+
+					<doublebox id="toSeaCont"
+						constraint="no negative,no empty" />
+				</row>
+				<row>
+					<label value="to natural soil [t/yr]" />
+
+					<doublebox id="toNatSoil"
+						constraint="no negative,no empty" />
+
+					<doublebox id="toNatSoilCont"
+						constraint="no negative,no empty" />
+				</row>
+				<row>
+					<label value="to agricultural soil [t/yr]" />
+				
+					<doublebox id="toAgriSoil"
+						constraint="no negative,no empty" />
+						
+					<doublebox id="toAgriSoilCont"
+						constraint="no negative,no empty" />
+				</row>
+				<row>
+					<label value="to other soil [t/yr]" />
+				
+					<doublebox id="toOtherSoil"
+						constraint="no negative,no empty" />
+
+					<doublebox id="toOtherSoilCont"
+						constraint="no negative,no empty" />
+				</row>
+			</rows>
+		</grid>
+
+		<separator height="30px" />
+
+		<checkbox id="globalParams" label="Show global scale emission rates."/>
+
+		<separator height="20px" />
+
+		<label id="globalScaleLabel" value="Global scale" style="font-size:1.3em;" />
+
+		<grid id="globalGridEm" align="left">
+			<columns>
+				<column label="" width="420px" />
+				<column label="Moderate" />
+				<column label="Arctic" />
+				<column label="Tropical" />
+			</columns>
+			<rows>
+				<row>
+					<label value="to air [t/yr]" />
+
+					<doublebox id="toAirMod"
+						constraint="no negative,no empty" />
+
+					<doublebox id="toAirArc"
+						constraint="no negative,no empty" />
+
+					<doublebox id="toAirTrop"
+						constraint="no negative,no empty" />
+				</row>
+				<row>
+					<label value="to water [t/yr]" />
+					<doublebox id="toWaterMod"
+						constraint="no negative,no empty" />
+					<doublebox id="toWaterArc"
+						constraint="no negative,no empty" />
+					<doublebox id="toWaterTrop"
+						constraint="no negative,no empty" />
+				</row>
+				<row>
+					<label value="to soil [t/yr]" />
+					<doublebox id="toSoilMod"
+						constraint="no negative,no empty" />
+					<doublebox id="toSoilArc"
+						constraint="no negative,no empty" />
+					<doublebox id="toSoilTrop"
+						constraint="no negative,no empty" />
+				</row>
+			</rows>
+		</grid>
+
+		<div align="center">
+			<button id="calculate" label="Calculate" width="200px" />
+		</div>
+
+		<html>
+			<br />
+			<br />
+			<p style="font-size:2">
+				*This work received funding from the European Union's
+				Horizon 2020 research and innovation program via
+				<a href="http://www.nanosolveit.eu">
+					NanoSolveIT project
+				</a>
+				under grant agreement number 814572
+			</p>
+		</html>
+
+		<!-- Start of StatCounter Code for Default Guide -->
+		<html>
+			<script type="text/javascript">
+				var sc_project=8055442; var sc_invisible=1; var
+				sc_security="ad0eeaa6";
+			</script>
+			<script type="text/javascript"
+				src="http://www.statcounter.com/counter/counter.js">
+			</script>
+			<noscript>
+				<div class="statcounter">
+					<a title="free hit counters"
+						href="http://statcounter.com/" target="_blank">
+						<img class="statcounter"
+							src="http://c.statcounter.com/8055442/0/ad0eeaa6/1/"
+							alt="free hit counters" />
+					</a>
+				</div>
+			</noscript>
+		</html>
+		<!-- End of StatCounter Code for Default Guide -->
+
+	</window>
+</zk>

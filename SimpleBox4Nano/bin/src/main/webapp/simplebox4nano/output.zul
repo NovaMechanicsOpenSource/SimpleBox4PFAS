@@ -1,0 +1,827 @@
+<?page title="Output" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Output" border="normal"
+		apply="eu.nanosolveit.simplebox4nano.output">
+
+
+		<grid align="left">
+			<columns>
+				<column label="" width="60px" />
+				<column label="" width="400px" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Scale" />
+					<combobox id="resultsCombo" readonly="true" />
+				</row>
+			</rows>
+		</grid>
+
+		<separator height="20px" />
+
+ 		<image id="imgResA" width="1800px" />  
+		<image id="imgResB" width="2000px" />
+
+		<separator height="20px" />
+
+		<grid id="concGrid" align="left">
+			<columns>
+				<column label="" width="200px" />
+				<column label="" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Air (g/m3)" />
+					<textbox id="airRes" value="0.0" readonly="true" />
+				</row>
+
+				<row>
+					<cell colspan="2" />
+				</row>
+
+				<row>
+					<label value="Fresh water lake (g/L)" />
+					<textbox id="freshWaterlakeRes" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Fresh water (g/L)" />
+					<textbox id="freshWaterRes" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Sea water (g/L)" />
+					<textbox id="seaWaterRes" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<cell colspan="2" />
+				</row>
+
+				<row>
+					<label value="Fresh water sediment (g Kg/w)" />
+					<textbox id="freshWaterSedRes" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Sea water sediment (g Kg/w)" />
+					<textbox id="seaWaterSedRes" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<cell colspan="2" />
+				</row>
+
+				<row>
+					<label value="Natural soil (g Kg/w)" />
+					<textbox id="naturalSoilRes" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Agricultural soil (g Kg/w)" />
+					<textbox id="agriSoilRes" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Other soil (g Kg/w)" />
+					<textbox id="otherSoilRes" value="0.0"
+						readonly="true" />
+				</row>
+			</rows>
+		</grid>
+
+		<separator height="20px" />
+
+		<grid id="zonesGrid">
+			<columns>
+				<column label="" />
+				<column label="" />
+				<column label="" />
+				<column label="" />
+			</columns>
+			<rows>
+				<row>
+					<label value="" />
+					<label value="Moderate zone" />
+					<label value="Arctic zone" />
+					<label value="Tropic zone" />
+				</row>
+				<row>
+					<label value="Air (g/m3)" />
+					<textbox id = "modAirRes" value="0.0" />
+					<textbox id = "arctAirRes" value="0.0" />
+					<textbox id = "tropAirRes" value="0.0" />
+				</row>
+				<row>
+					<label value="Surface sea water (g/L)" />
+					<textbox id = "modSurfSeaWRes" value="0.0" />
+					<textbox id = "arctSurfSeaWRes" value="0.0" />
+					<textbox id = "tropSurfSeaWRes" value="0.0" />
+				</row>
+
+				<row>
+					<label value="Deep sea water (g/L)" />
+					<textbox id = "modDeepSeaWRes" value="0.0" />
+					<textbox id = "arctDeepSeaWRes" value="0.0" />
+					<textbox id = "tropDeepSeaWRes" value="0.0" />
+				</row>
+
+				<row>
+					<label value="Sea water sediment (g/L)" />
+					<textbox id = "modSeaWSedRes" value="0.0" />
+					<textbox id = "arctSeaWSedRes" value="0.0" />
+					<textbox id = "tropSeaWSedRes" value="0.0" />
+				</row>
+
+				<row>
+					<label value="Soil (g kg/w)" />
+					<textbox id = "modSoilRes" value="0.0" />
+					<textbox id = "arctSoilRes" value="0.0" />
+					<textbox id = "tropSoilRes" value="0.0" />
+				</row>
+			</rows>
+		</grid>
+
+		<separator height="20px" />
+
+		<label id="concLabT" value="Total concentration ENPs"
+			style="font-size:1.5em;" />
+		<grid id="concGridT" align="left">
+			<columns>
+				<column label="" width="200px" />
+				<column label="Regional" />
+				<column label="Continental" />
+				<column label="Moderate" />
+				<column label="Arctic" />
+				<column label="Tropical" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Air (g/mT)" />
+					<textbox id="airRegT" value="0.0" readonly="true" />
+					<textbox id="airConT" value="0.0" readonly="true" />
+					<textbox id="airModT" value="0.0" readonly="true" />
+					<textbox id="airArcT" value="0.0" readonly="true" />
+					<textbox id="airTroT" value="0.0" readonly="true" />
+				</row>
+
+				<row>
+					<label value="Fresh water lake (g/L)" />
+					<textbox id="freshWatLRegT" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLConT" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLModT" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLArcT" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLTroT" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Fresh water lake sediment (g Kg/w)" />
+					<textbox id="freshWatLSRegT" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLSConT" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLSModT" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLSArcT" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLSTroT" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Fresh water (g/L)" />
+					<textbox id="freshWatRegT" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatConT" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatModT" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatArcT" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatTroT" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Fresh water sediment (g Kg/w)" />
+					<textbox id="freshWatSedRegT" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatSedConT" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatSedModT" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatSedArcT" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatSedTroT" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Surface sea/ocean water (g/L)" />
+					<textbox id="surfSeaOcRegT" value="0.0"
+						readonly="true" />
+					<textbox id="surfSeaOcConT" value="0.0"
+						readonly="true" />
+					<textbox id="surfSeaOcModT" value="0.0"
+						readonly="true" />
+					<textbox id="surfSeaOcArcT" value="0.0"
+						readonly="true" />
+					<textbox id="surfSeaOcTroT" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Deep sea/ocean water (g/L)" />
+					<textbox id="deepSeaOcRegT" value="0.0"
+						readonly="true" />
+					<textbox id="deepSeaOcConT" value="0.0"
+						readonly="true" />
+					<textbox id="deepSeaOcModT" value="0.0"
+						readonly="true" />
+					<textbox id="deepSeaOcArcT" value="0.0"
+						readonly="true" />
+					<textbox id="deepSeaOcTroT" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Marine sediment (g Kg/w)" />
+					<textbox id="marSedRegT" value="0.0"
+						readonly="true" />
+					<textbox id="marSedConT" value="0.0"
+						readonly="true" />
+					<textbox id="marSedModT" value="0.0"
+						readonly="true" />
+					<textbox id="marSedArcT" value="0.0"
+						readonly="true" />
+					<textbox id="marSedTroT" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Natural soil (g Kg/w)" />
+					<textbox id="natSoilRegT" value="0.0"
+						readonly="true" />
+					<textbox id="natSoilConT" value="0.0"
+						readonly="true" />
+					<textbox id="natSoilModT" value="0.0"
+						readonly="true" />
+					<textbox id="natSoilArcT" value="0.0"
+						readonly="true" />
+					<textbox id="natSoilTroT" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Agricultural soil (g Kg/w)" />
+					<textbox id="agriSoilRegT" value="0.0"
+						readonly="true" />
+					<textbox id="agriSoilConT" value="0.0"
+						readonly="true" />
+					<textbox id="agriSoilModT" value="0.0"
+						readonly="true" />
+					<textbox id="agriSoilArcT" value="0.0"
+						readonly="true" />
+					<textbox id="agriSoilTroT" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Other soil (g Kg/w)" />
+					<textbox id="otherSoilRegT" value="0.0"
+						readonly="true" />
+					<textbox id="otherSoilComT" value="0.0"
+						readonly="true" />
+					<textbox id="otherSoilModT" value="0.0"
+						readonly="true" />
+					<textbox id="otherSoilArcT" value="0.0"
+						readonly="true" />
+					<textbox id="otherSoilTroT" value="0.0"
+						readonly="true" />
+				</row>
+			</rows>
+		</grid>
+
+		<separator height="20px" />
+
+		<label value="Cut-off diameter:" style="font-size:1.0em;" visible="false"/>
+		<doublebox id="cutOffDiam" value="450.0" visible="false"/>
+
+		<separator height="20px" />
+
+		<label id="concLab1" value="Species concentration free ENPs (S)"
+			style="font-size:1.5em;" visible="true" />
+		<grid id="concGrid1" align="left" visible="false">
+			<columns>
+				<column label="" width="200px" />
+				<column label="Regional" />
+				<column label="Continental" />
+				<column label="Moderate" />
+				<column label="Arctic" />
+				<column label="Tropical" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Air (g/m3)" />
+					<textbox id="airReg1" value="0.0" readonly="true" />
+					<textbox id="airCon1" value="0.0" readonly="true" />
+					<textbox id="airMod1" value="0.0" readonly="true" />
+					<textbox id="airArc1" value="0.0" readonly="true" />
+					<textbox id="airTro1" value="0.0" readonly="true" />
+				</row>
+
+				<row>
+					<label value="Fresh water lake (g/L)" />
+					<textbox id="freshWatLReg1" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLCon1" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLMod1" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLArc1" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLTro1" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Fresh water lake sediment (g Kg/w)" />
+					<textbox id="freshWatLSReg1" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLSCon1" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLSMod1" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLSArc1" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLSTro1" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Fresh water (g/L)" />
+					<textbox id="freshWatReg1" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatCon1" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatMod1" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatArc1" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatTro1" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Fresh water sediment (g Kg/w)" />
+					<textbox id="freshWatSedReg1" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatSedCon1" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatSedMod1" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatSedArc1" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatSedTro1" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Surface sea/ocean water (g/L)" />
+					<textbox id="surfSeaOcReg1" value="0.0"
+						readonly="true" />
+					<textbox id="surfSeaOcCon1" value="0.0"
+						readonly="true" />
+					<textbox id="surfSeaOcMod1" value="0.0"
+						readonly="true" />
+					<textbox id="surfSeaOcArc1" value="0.0"
+						readonly="true" />
+					<textbox id="surfSeaOcTro1" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Deep sea/ocean water (g/L)" />
+					<textbox id="deepSeaOcReg1" value="0.0"
+						readonly="true" />
+					<textbox id="deepSeaOcCon1" value="0.0"
+						readonly="true" />
+					<textbox id="deepSeaOcMod1" value="0.0"
+						readonly="true" />
+					<textbox id="deepSeaOcArc1" value="0.0"
+						readonly="true" />
+					<textbox id="deepSeaOcTro1" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Marine sediment (g Kg/w)" />
+					<textbox id="marSedReg1" value="0.0"
+						readonly="true" />
+					<textbox id="marSedCon1" value="0.0"
+						readonly="true" />
+					<textbox id="marSedMod1" value="0.0"
+						readonly="true" />
+					<textbox id="marSedArc1" value="0.0"
+						readonly="true" />
+					<textbox id="marSedTro1" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Natural soil (g Kg/w)" />
+					<textbox id="natSoilReg1" value="0.0"
+						readonly="true" />
+					<textbox id="natSoilCon1" value="0.0"
+						readonly="true" />
+					<textbox id="natSoilMod1" value="0.0"
+						readonly="true" />
+					<textbox id="natSoilArc1" value="0.0"
+						readonly="true" />
+					<textbox id="natSoilTro1" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Agricultural soil (g Kg/w)" />
+					<textbox id="agriSoilReg1" value="0.0"
+						readonly="true" />
+					<textbox id="agriSoilCon1" value="0.0"
+						readonly="true" />
+					<textbox id="agriSoilMod1" value="0.0"
+						readonly="true" />
+					<textbox id="agriSoilArc1" value="0.0"
+						readonly="true" />
+					<textbox id="agriSoilTro1" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Other soil (g Kg/w)" />
+					<textbox id="otherSoilReg1" value="0.0"
+						readonly="true" />
+					<textbox id="otherSoilCom1" value="0.0"
+						readonly="true" />
+					<textbox id="otherSoilMod1" value="0.0"
+						readonly="true" />
+					<textbox id="otherSoilArc1" value="0.0"
+						readonly="true" />
+					<textbox id="otherSoilTro1" value="0.0"
+						readonly="true" />
+				</row>
+			</rows>
+		</grid>
+
+		<separator height="40px" />
+
+		<label id="concLab2"
+			value="Species concentration colloidal heteroagglomerates ENP less than 450nm (A)"
+			style="font-size:1.5em;" visible="true" />
+		<grid id="concGrid2" align="left" visible="true">
+			<columns>
+				<column label="" width="200px" />
+				<column label="Regional" />
+				<column label="Continental" />
+				<column label="Moderate" />
+				<column label="Arctic" />
+				<column label="Tropical" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Air (g/m3)" />
+					<textbox id="airReg2" value="0.0" readonly="true" />
+					<textbox id="airCon2" value="0.0" readonly="true" />
+					<textbox id="airMod2" value="0.0" readonly="true" />
+					<textbox id="airArc2" value="0.0" readonly="true" />
+					<textbox id="airTro2" value="0.0" readonly="true" />
+				</row>
+
+				<row>
+					<label value="Fresh water lake (g/L)" />
+					<textbox id="freshWatLReg2" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLCon2" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLMod2" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLArc2" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLTro2" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Fresh water lake sediment (g Kg/w)" />
+					<textbox id="freshWatLSReg2" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLSCon2" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLSMod2" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLSArc2" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLSTro2" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Fresh water (g/L)" />
+					<textbox id="freshWatReg2" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatCon2" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatMod2" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatArc2" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatTro2" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Fresh water sediment (g Kg/w)" />
+					<textbox id="freshWatSedReg2" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatSedCon2" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatSedMod2" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatSedArc2" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatSedTro2" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Surface sea/ocean water (g/L)" />
+					<textbox id="surfSeaOcReg2" value="0.0"
+						readonly="true" />
+					<textbox id="surfSeaOcCon2" value="0.0"
+						readonly="true" />
+					<textbox id="surfSeaOcMod2" value="0.0"
+						readonly="true" />
+					<textbox id="surfSeaOcArc2" value="0.0"
+						readonly="true" />
+					<textbox id="surfSeaOcTro2" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Deep sea/ocean water (g/L)" />
+					<textbox id="deepSeaOcReg2" value="0.0"
+						readonly="true" />
+					<textbox id="deepSeaOcCon2" value="0.0"
+						readonly="true" />
+					<textbox id="deepSeaOcMod2" value="0.0"
+						readonly="true" />
+					<textbox id="deepSeaOcArc2" value="0.0"
+						readonly="true" />
+					<textbox id="deepSeaOcTro2" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Marine sediment (g Kg/w)" />
+					<textbox id="marSedReg2" value="0.0"
+						readonly="true" />
+					<textbox id="marSedCon2" value="0.0"
+						readonly="true" />
+					<textbox id="marSedMod2" value="0.0"
+						readonly="true" />
+					<textbox id="marSedArc2" value="0.0"
+						readonly="true" />
+					<textbox id="marSedTro2" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Natural soil (g Kg/w)" />
+					<textbox id="natSoilReg2" value="0.0"
+						readonly="true" />
+					<textbox id="natSoilCon2" value="0.0"
+						readonly="true" />
+					<textbox id="natSoilMod2" value="0.0"
+						readonly="true" />
+					<textbox id="natSoilArc2" value="0.0"
+						readonly="true" />
+					<textbox id="natSoilTro2" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Agricultural soil (g Kg/w)" />
+					<textbox id="agriSoilReg2" value="0.0"
+						readonly="true" />
+					<textbox id="agriSoilCon2" value="0.0"
+						readonly="true" />
+					<textbox id="agriSoilMod2" value="0.0"
+						readonly="true" />
+					<textbox id="agriSoilArc2" value="0.0"
+						readonly="true" />
+					<textbox id="agriSoilTro2" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Other soil (g Kg/w)" />
+					<textbox id="otherSoilReg2" value="0.0"
+						readonly="true" />
+					<textbox id="otherSoilCom2" value="0.0"
+						readonly="true" />
+					<textbox id="otherSoilMod2" value="0.0"
+						readonly="true" />
+					<textbox id="otherSoilArc2" value="0.0"
+						readonly="true" />
+					<textbox id="otherSoilTro2" value="0.0"
+						readonly="true" />
+				</row>
+			</rows>
+		</grid>
+
+		<separator height="20px" />
+
+		<label id="concLab3"
+			value="Species concentration coarse heteroagglomerates ENP more than 450nm (P)"
+			style="font-size:1.5em;" visible="true" />
+		<grid id="concGrid3" align="left" visible="true">
+			<columns>
+				<column label="" width="200px" />
+				<column label="Regional" />
+				<column label="Continental" />
+				<column label="Moderate" />
+				<column label="Arctic" />
+				<column label="Tropical" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Air (g/m3)" />
+					<textbox id="airReg3" value="0.0" readonly="true" />
+					<textbox id="airCon3" value="0.0" readonly="true" />
+					<textbox id="airMod3" value="0.0" readonly="true" />
+					<textbox id="airArc3" value="0.0" readonly="true" />
+					<textbox id="airTro3" value="0.0" readonly="true" />
+				</row>
+
+				<row>
+					<label value="Fresh water lake (g/L)" />
+					<textbox id="freshWatLReg3" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLCon3" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLMod3" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLArc3" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLTro3" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Fresh water lake sediment (g Kg/w)" />
+					<textbox id="freshWatLSReg3" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLSCon3" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLSMod3" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLSArc3" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatLSTro3" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Fresh water (g/L)" />
+					<textbox id="freshWatReg3" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatCon3" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatMod3" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatArc3" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatTro3" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Fresh water sediment (g Kg/w)" />
+					<textbox id="freshWatSedReg3" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatSedCon3" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatSedMod3" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatSedArc3" value="0.0"
+						readonly="true" />
+					<textbox id="freshWatSedTro3" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Surface sea/ocean water (g/L)" />
+					<textbox id="surfSeaOcReg3" value="0.0"
+						readonly="true" />
+					<textbox id="surfSeaOcCon3" value="0.0"
+						readonly="true" />
+					<textbox id="surfSeaOcMod3" value="0.0"
+						readonly="true" />
+					<textbox id="surfSeaOcArc3" value="0.0"
+						readonly="true" />
+					<textbox id="surfSeaOcTro3" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Deep sea/ocean water (g/L)" />
+					<textbox id="deepSeaOcReg3" value="0.0"
+						readonly="true" />
+					<textbox id="deepSeaOcCon3" value="0.0"
+						readonly="true" />
+					<textbox id="deepSeaOcMod3" value="0.0"
+						readonly="true" />
+					<textbox id="deepSeaOcArc3" value="0.0"
+						readonly="true" />
+					<textbox id="deepSeaOcTro3" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Marine sediment (g Kg/w)" />
+					<textbox id="marSedReg3" value="0.0"
+						readonly="true" />
+					<textbox id="marSedCon3" value="0.0"
+						readonly="true" />
+					<textbox id="marSedMod3" value="0.0"
+						readonly="true" />
+					<textbox id="marSedArc3" value="0.0"
+						readonly="true" />
+					<textbox id="marSedTro3" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Natural soil (g Kg/w)" />
+					<textbox id="natSoilReg3" value="0.0"
+						readonly="true" />
+					<textbox id="natSoilCon3" value="0.0"
+						readonly="true" />
+					<textbox id="natSoilMod3" value="0.0"
+						readonly="true" />
+					<textbox id="natSoilArc3" value="0.0"
+						readonly="true" />
+					<textbox id="natSoilTro3" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Agricultural soil (g Kg/w)" />
+					<textbox id="agriSoilReg3" value="0.0"
+						readonly="true" />
+					<textbox id="agriSoilCon3" value="0.0"
+						readonly="true" />
+					<textbox id="agriSoilMod3" value="0.0"
+						readonly="true" />
+					<textbox id="agriSoilArc3" value="0.0"
+						readonly="true" />
+					<textbox id="agriSoilTro3" value="0.0"
+						readonly="true" />
+				</row>
+
+				<row>
+					<label value="Other soil (g Kg/w)" />
+					<textbox id="otherSoilReg3" value="0.0"
+						readonly="true" />
+					<textbox id="otherSoilCom3" value="0.0"
+						readonly="true" />
+					<textbox id="otherSoilMod3" value="0.0"
+						readonly="true" />
+					<textbox id="otherSoilArc3" value="0.0"
+						readonly="true" />
+					<textbox id="otherSoilTro3" value="0.0"
+						readonly="true" />
+				</row>
+			</rows>
+		</grid>
+
+		<separator height="20px" />
+
+		<div align="center">
+			<button id="download" label="Download results ..."
+				width="200px" />
+		</div>
+
+	</window>
+</zk>
