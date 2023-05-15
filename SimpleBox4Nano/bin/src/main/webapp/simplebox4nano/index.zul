@@ -80,7 +80,7 @@
 		<separator height="20px" />
 
 		<vlayout>
-			<label value="Nanomaterials properties"
+			<label value="Nanomaterial properties"
 				style="font-size:1.5em;" />
 			<separator />
 			<hlayout style="border: 1px groove black;" />
@@ -105,7 +105,7 @@
 					</popup>
 				</row>
 				<row tooltip="msg1">
-					<label value="Molecular weight [gr/mol]"
+					<label value="Molecular weight [g/mol]"
 						tooltip="sgfdgfdgdfgfd" />
 					<doublebox id="molweight"
 						constraint="no negative,no empty" />
@@ -134,7 +134,7 @@
 				</row>
 				<row tooltip="msg4">
 					<label
-						value="Hamaker constant heteroagglomerate (ENP, water, SiO2)" />
+						value="Hamaker constant heteroagglomerate (ENP, water, SiO2)[J]" />
 					<doublebox id="hamaker"
 						constraint="no negative,no empty" />
 
@@ -667,7 +667,7 @@
 
 								<row tooltip="msg10c">
 									<label
-										value="ENPs and NCs (A) in lake water [1/s]" />
+										value="Heteroagglomerates of ENPs and SPM (P) in lake water [1/s]" />
 									<doublebox
 										id="dissolutionlakeWaterENPsNCsA"
 										constraint="no negative,no empty" />
