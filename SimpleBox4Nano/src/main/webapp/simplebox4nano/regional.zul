@@ -44,7 +44,7 @@
 						constraint="no negative,no empty" />
 				</row>
 				<row>
-					<label value="Average precipitation [-]" />
+					<label value="Average precipitation [mm/yr]" />
 					<doublebox id="avePrecipitation"
 						constraint="no negative,no empty" />
 				</row>
@@ -62,7 +62,7 @@
 			</columns>
 			<rows>
 				<row>
-					<label value="Temperature [K]" />
+					<label value="Temperature [oC]" />
 					<doublebox id="temp"
 						constraint="no negative,no empty" />
 				</row>
@@ -92,7 +92,7 @@
 						constraint="no negative,no empty" />
 				</row>
 				<row>
-					<label value="Soil erosion [-]" />
+					<label value="Soil erosion [mm/yr]" />
 					<doublebox id="soilEros"
 						constraint="no negative,no empty" />
 				</row>

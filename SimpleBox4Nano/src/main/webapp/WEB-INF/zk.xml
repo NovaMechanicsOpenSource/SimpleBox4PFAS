@@ -19,7 +19,7 @@
 	<system-config>
 		<disable-event-thread>false</disable-event-thread>
 	</system-config>
-	
+		
 	<library-property>
     	<name>org.zkoss.web.preferred.locale</name>
     	<value>en</value>
