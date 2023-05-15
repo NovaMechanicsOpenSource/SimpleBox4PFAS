@@ -62,13 +62,13 @@
 				</row>
 
 				<row>
-					<label value="Fresh water sediment (g Kg/w)" />
+					<label value="Fresh water sediment (g kg/w)" />
 					<textbox id="freshWaterSedRes" value="0.0"
 						readonly="true" />
 				</row>
 
 				<row>
-					<label value="Sea water sediment (g Kg/w)" />
+					<label value="Sea water sediment (g kg/w)" />
 					<textbox id="seaWaterSedRes" value="0.0"
 						readonly="true" />
 				</row>
@@ -78,19 +78,19 @@
 				</row>
 
 				<row>
-					<label value="Natural soil (g Kg/w)" />
+					<label value="Natural soil (g kg/w)" />
 					<textbox id="naturalSoilRes" value="0.0"
 						readonly="true" />
 				</row>
 
 				<row>
-					<label value="Agricultural soil (g Kg/w)" />
+					<label value="Agricultural soil (g kg/w)" />
 					<textbox id="agriSoilRes" value="0.0"
 						readonly="true" />
 				</row>
 
 				<row>
-					<label value="Other soil (g Kg/w)" />
+					<label value="Other soil (g kg/w)" />
 					<textbox id="otherSoilRes" value="0.0"
 						readonly="true" />
 				</row>
@@ -187,7 +187,7 @@
 				</row>
 
 				<row>
-					<label value="Fresh water lake sediment (g Kg/w)" />
+					<label value="Fresh water lake sediment (g kg/w)" />
 					<textbox id="freshWatLSRegT" value="0.0"
 						readonly="true" />
 					<textbox id="freshWatLSConT" value="0.0"
@@ -215,7 +215,7 @@
 				</row>
 
 				<row>
-					<label value="Fresh water sediment (g Kg/w)" />
+					<label value="Fresh water sediment (g kg/w)" />
 					<textbox id="freshWatSedRegT" value="0.0"
 						readonly="true" />
 					<textbox id="freshWatSedConT" value="0.0"
@@ -257,7 +257,7 @@
 				</row>
 
 				<row>
-					<label value="Marine sediment (g Kg/w)" />
+					<label value="Marine sediment (g kg/w)" />
 					<textbox id="marSedRegT" value="0.0"
 						readonly="true" />
 					<textbox id="marSedConT" value="0.0"
@@ -271,7 +271,7 @@
 				</row>
 
 				<row>
-					<label value="Natural soil (g Kg/w)" />
+					<label value="Natural soil (g kg/w)" />
 					<textbox id="natSoilRegT" value="0.0"
 						readonly="true" />
 					<textbox id="natSoilConT" value="0.0"
@@ -285,7 +285,7 @@
 				</row>
 
 				<row>
-					<label value="Agricultural soil (g Kg/w)" />
+					<label value="Agricultural soil (g kg/w)" />
 					<textbox id="agriSoilRegT" value="0.0"
 						readonly="true" />
 					<textbox id="agriSoilConT" value="0.0"
@@ -299,7 +299,7 @@
 				</row>
 
 				<row>
-					<label value="Other soil (g Kg/w)" />
+					<label value="Other soil (g kg/w)" />
 					<textbox id="otherSoilRegT" value="0.0"
 						readonly="true" />
 					<textbox id="otherSoilComT" value="0.0"
@@ -357,7 +357,7 @@
 				</row>
 
 				<row>
-					<label value="Fresh water lake sediment (g Kg/w)" />
+					<label value="Fresh water lake sediment (g kg/w)" />
 					<textbox id="freshWatLSReg1" value="0.0"
 						readonly="true" />
 					<textbox id="freshWatLSCon1" value="0.0"
@@ -385,7 +385,7 @@
 				</row>
 
 				<row>
-					<label value="Fresh water sediment (g Kg/w)" />
+					<label value="Fresh water sediment (g kg/w)" />
 					<textbox id="freshWatSedReg1" value="0.0"
 						readonly="true" />
 					<textbox id="freshWatSedCon1" value="0.0"
@@ -427,7 +427,7 @@
 				</row>
 
 				<row>
-					<label value="Marine sediment (g Kg/w)" />
+					<label value="Marine sediment (g kg/w)" />
 					<textbox id="marSedReg1" value="0.0"
 						readonly="true" />
 					<textbox id="marSedCon1" value="0.0"
@@ -441,7 +441,7 @@
 				</row>
 
 				<row>
-					<label value="Natural soil (g Kg/w)" />
+					<label value="Natural soil (g kg/w)" />
 					<textbox id="natSoilReg1" value="0.0"
 						readonly="true" />
 					<textbox id="natSoilCon1" value="0.0"
@@ -455,7 +455,7 @@
 				</row>
 
 				<row>
-					<label value="Agricultural soil (g Kg/w)" />
+					<label value="Agricultural soil (g kg/w)" />
 					<textbox id="agriSoilReg1" value="0.0"
 						readonly="true" />
 					<textbox id="agriSoilCon1" value="0.0"
@@ -469,7 +469,7 @@
 				</row>
 
 				<row>
-					<label value="Other soil (g Kg/w)" />
+					<label value="Other soil (g kg/w)" />
 					<textbox id="otherSoilReg1" value="0.0"
 						readonly="true" />
 					<textbox id="otherSoilCom1" value="0.0"
@@ -523,7 +523,7 @@
 				</row>
 
 				<row>
-					<label value="Fresh water lake sediment (g Kg/w)" />
+					<label value="Fresh water lake sediment (g kg/w)" />
 					<textbox id="freshWatLSReg2" value="0.0"
 						readonly="true" />
 					<textbox id="freshWatLSCon2" value="0.0"
@@ -551,7 +551,7 @@
 				</row>
 
 				<row>
-					<label value="Fresh water sediment (g Kg/w)" />
+					<label value="Fresh water sediment (g kg/w)" />
 					<textbox id="freshWatSedReg2" value="0.0"
 						readonly="true" />
 					<textbox id="freshWatSedCon2" value="0.0"
@@ -593,7 +593,7 @@
 				</row>
 
 				<row>
-					<label value="Marine sediment (g Kg/w)" />
+					<label value="Marine sediment (g kg/w)" />
 					<textbox id="marSedReg2" value="0.0"
 						readonly="true" />
 					<textbox id="marSedCon2" value="0.0"
@@ -607,7 +607,7 @@
 				</row>
 
 				<row>
-					<label value="Natural soil (g Kg/w)" />
+					<label value="Natural soil (g kg/w)" />
 					<textbox id="natSoilReg2" value="0.0"
 						readonly="true" />
 					<textbox id="natSoilCon2" value="0.0"
@@ -621,7 +621,7 @@
 				</row>
 
 				<row>
-					<label value="Agricultural soil (g Kg/w)" />
+					<label value="Agricultural soil (g kg/w)" />
 					<textbox id="agriSoilReg2" value="0.0"
 						readonly="true" />
 					<textbox id="agriSoilCon2" value="0.0"
@@ -635,7 +635,7 @@
 				</row>
 
 				<row>
-					<label value="Other soil (g Kg/w)" />
+					<label value="Other soil (g kg/w)" />
 					<textbox id="otherSoilReg2" value="0.0"
 						readonly="true" />
 					<textbox id="otherSoilCom2" value="0.0"
@@ -689,7 +689,7 @@
 				</row>
 
 				<row>
-					<label value="Fresh water lake sediment (g Kg/w)" />
+					<label value="Fresh water lake sediment (g kg/w)" />
 					<textbox id="freshWatLSReg3" value="0.0"
 						readonly="true" />
 					<textbox id="freshWatLSCon3" value="0.0"
@@ -717,7 +717,7 @@
 				</row>
 
 				<row>
-					<label value="Fresh water sediment (g Kg/w)" />
+					<label value="Fresh water sediment (g kg/w)" />
 					<textbox id="freshWatSedReg3" value="0.0"
 						readonly="true" />
 					<textbox id="freshWatSedCon3" value="0.0"
@@ -759,7 +759,7 @@
 				</row>
 
 				<row>
-					<label value="Marine sediment (g Kg/w)" />
+					<label value="Marine sediment (g kg/w)" />
 					<textbox id="marSedReg3" value="0.0"
 						readonly="true" />
 					<textbox id="marSedCon3" value="0.0"
@@ -773,7 +773,7 @@
 				</row>
 
 				<row>
-					<label value="Natural soil (g Kg/w)" />
+					<label value="Natural soil (g kg/w)" />
 					<textbox id="natSoilReg3" value="0.0"
 						readonly="true" />
 					<textbox id="natSoilCon3" value="0.0"
@@ -787,7 +787,7 @@
 				</row>
 
 				<row>
-					<label value="Agricultural soil (g Kg/w)" />
+					<label value="Agricultural soil (g kg/w)" />
 					<textbox id="agriSoilReg3" value="0.0"
 						readonly="true" />
 					<textbox id="agriSoilCon3" value="0.0"
@@ -801,7 +801,7 @@
 				</row>
 
 				<row>
-					<label value="Other soil (g Kg/w)" />
+					<label value="Other soil (g kg/w)" />
 					<textbox id="otherSoilReg3" value="0.0"
 						readonly="true" />
 					<textbox id="otherSoilCom3" value="0.0"
