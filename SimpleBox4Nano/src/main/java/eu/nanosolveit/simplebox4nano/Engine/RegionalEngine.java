@@ -4235,7 +4235,7 @@ public class RegionalEngine {
 				environment.get("CONTINENTAL").get("FRgas.aC") * environment.get("CONTINENTAL").get("MTCas.air.aC")
 				* environment.get("CONTINENTAL").get("MTCas.soil.sC")
 				/ (environment.get("CONTINENTAL").get("MTCas.air.aC")
-						* (environment.get("CONTINENTAL").get("Kaw.C") * inputEng.getSubstancesData("FRorig.w1") )
+						* (environment.get("CONTINENTAL").get("Kaw.C") * inputEng.getSubstancesData("FRorig.w1")/ environment.get("CONTINENTAL").get("Ks1w.C") )
 						+ environment.get("CONTINENTAL").get("MTCas.soil.sC")));
 
 		environment.get("CONTINENTAL").put("GasWashout.CG",
@@ -4267,7 +4267,8 @@ public class RegionalEngine {
 												+ environment.get("CONTINENTAL").get("AREAFRAC.s3C")))
 								/ environment.get("CONTINENTAL").get("HEIGHT.aC")
 						+ environment.get("CONTINENTAL").get("KDEG.aC")
-						+ environment.get("CONTINENTAL").get("k.aC.aR"));
+						+ environment.get("CONTINENTAL").get("k.aC.aR")
+						+ environment.get("CONTINENTAL").get("k.aC.aM"));
 
 		environment.get("CONTINENTAL").put("kdry.C",
 				environment.get("CONTINENTAL").get("DRYDEPaerosol.C") / environment.get("CONTINENTAL").get("HEIGHT.aC")
