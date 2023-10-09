@@ -506,10 +506,10 @@ public class InputEngine {
 		}
 			
 		if ( Double.valueOf( nanomaterial.get("kdegD.water") ) > 0.0 )
-			substancesData.put("kdegG.air", Double.valueOf( nanomaterial.get("kdegD.water") ));
+			substancesData.put("kdegD.water", Double.valueOf( nanomaterial.get("kdegD.water") ));
 		else {
 			double v0 = Math.exp( -substancesData.get("Ea.OHrad")/(8.314*298.) );	
-			substancesData.put("kdegG.air", substancesData.get("C.OHrad")*substancesData.get("k0.OHrad")*v0 );
+			substancesData.put("kdegD.water", substancesData.get("C.OHrad")*substancesData.get("k0.OHrad")*v0 );
 		}
 		
 		if ( Double.valueOf( nanomaterial.get("AHamakerSP.w") ) > 0.0  )
@@ -921,7 +921,7 @@ public class InputEngine {
 		double val = 0.0;
 		if ( substancesData.get("Pvap25") > 100000 )
 			val = (100000./substancesData.get("Sol25")/(8.314*298.) );			
-		else
+		else 
 			val = ( substancesData.get("Pvap25")/substancesData.get("Sol25"))/(8.314*298.);
 		
 		QSARTable.put("Neutral", new ArrayList<Double>() );

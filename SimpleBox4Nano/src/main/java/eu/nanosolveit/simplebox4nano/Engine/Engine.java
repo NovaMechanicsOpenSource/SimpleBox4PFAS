@@ -94,7 +94,7 @@ public class Engine {
 		scene = scenario;
 
 		int N = 33;
-	
+
 		this.coeffs = new double[N][N];
 		this.volumes = new double[N];
 		this.emissions = new double[N];
@@ -621,15 +621,15 @@ public class Engine {
 		this.coeffs[0][7] = environment.getEnvProps("REGIONAL", "k.s2RD.aRG"); // this.regional.getK_s2RD_aRG();
 		this.coeffs[0][8] = environment.getEnvProps("REGIONAL", "k.s3RD.aRG"); // this.regional.getK_s3RD_aRG();
 		this.coeffs[0][9] = environment.getEnvProps("CONTINENTAL", "k.aC.aR"); // this.continental.getK_aC_aR();
-	
+
 		this.coeffs[1][0] = environment.getEnvProps("REGIONAL", "k.aRG.w0RD"); // this.regional.getK_aRG_w0RD();
-		
+
 		this.coeffs[2][0] = environment.getEnvProps("REGIONAL", "k.aRG.w1RD"); // this.regional.getK_aRG_w1RD();
 		this.coeffs[2][1] = environment.getEnvProps("REGIONAL", "k.w0R.w1R"); // this.regional.getK_w0R_w1R();
-		this.coeffs[2][3] = environment.getEnvProps("REGIONAL", "k.sd1RD.w1RD"); // this.regional.getK_sd1RD_w1RD();
-		this.coeffs[2][5] = environment.getEnvProps("REGIONAL", "k.s1RD.w1RD"); // this.regional.getK_s1RD_w1RD();
-		this.coeffs[2][6] = environment.getEnvProps("REGIONAL", "k.s2RD.w1RD"); // this.regional.getK_s2RD_w1RD();
-		this.coeffs[2][7] = environment.getEnvProps("REGIONAL", "k.s3RD.w1RD"); // this.regional.getK_s3RD_w1RD();
+		this.coeffs[2][4] = environment.getEnvProps("REGIONAL", "k.sd1RD.w1RD"); // this.regional.getK_sd1RD_w1RD();
+		this.coeffs[2][6] = environment.getEnvProps("REGIONAL", "k.s1RD.w1RD"); // this.regional.getK_s1RD_w1RD();
+		this.coeffs[2][7] = environment.getEnvProps("REGIONAL", "k.s2RD.w1RD"); // this.regional.getK_s2RD_w1RD();
+		this.coeffs[2][8] = environment.getEnvProps("REGIONAL", "k.s3RD.w1RD"); // this.regional.getK_s3RD_w1RD();
 		this.coeffs[2][11] = environment.getEnvProps("CONTINENTAL", "k.w1C.w1R"); // this.continental.getK_w1C_w1R();
 
 		this.coeffs[3][0] = environment.getEnvProps("REGIONAL", "k.aRG.w2RD"); // this.regional.getK_aRG_w2RD();
@@ -685,7 +685,7 @@ public class Engine {
 		this.coeffs[18][19] = environment.getEnvProps("MODERATE", "k.w2MD.aMG"); // this.formulas.getK_w2M_aM();
 		this.coeffs[18][22] = environment.getEnvProps("MODERATE", "k.sMD.aMG"); // this.formulas.getK_sM_aM();
 		this.coeffs[18][23] = environment.getEnvProps("ARCTIC", "k.aA.aM"); // this.global.getK_aA_aM();
-		this.coeffs[86][28] = environment.getEnvProps("TROPICAL", "k.aT.aM"); // this.global.getK_aT_aM();
+		this.coeffs[18][28] = environment.getEnvProps("TROPICAL", "k.aT.aM"); // this.global.getK_aT_aM();
 
 		this.coeffs[19][12] = environment.getEnvProps("CONTINENTAL", "k.w2C.w2M"); // this.continental.getK_w2C_w2M();
 		this.coeffs[19][18] = environment.getEnvProps("MODERATE", "k.aMG.w2MD"); // this.global.getK_aM_w2M();
@@ -723,16 +723,16 @@ public class Engine {
 		this.coeffs[28][18] = environment.getEnvProps("MODERATE", "k.aM.aT"); // this.global.getK_aM_aT();
 		this.coeffs[28][29] = environment.getEnvProps("TROPICAL", "k.w2TD.aTG"); // this.global.getK_w2T_aT();
 		this.coeffs[28][32] = environment.getEnvProps("TROPICAL", "k.sTD.aTG"); // this.global.getK_sT_aT();
-		
-		this.coeffs[29][19] = environment.getEnvProps("MODERATE", "k.w2M.w2T"); // this.global.getK_aT_w2T(); 											
-		this.coeffs[29][28] = environment.getEnvProps("TROPICAL", "k.aTG.w2TD"); // this.global.getK_aT_w2T(); 											
+
+		this.coeffs[29][19] = environment.getEnvProps("MODERATE", "k.w2M.w2T"); // this.global.getK_aT_w2T();
+		this.coeffs[29][28] = environment.getEnvProps("TROPICAL", "k.aTG.w2TD"); // this.global.getK_aT_w2T();
 		this.coeffs[29][30] = environment.getEnvProps("TROPICAL", "k.w3T.w2T"); // this.global.getK_w3T_w2T();
 		this.coeffs[29][32] = environment.getEnvProps("TROPICAL", "k.sTD.w2TD"); // this.global.getK_sT_w2T();
 
 		this.coeffs[30][20] = environment.getEnvProps("MODERATE", "k.w3M.w3T"); // this.global.getK_w3M_w3T();
 		this.coeffs[30][29] = environment.getEnvProps("TROPICAL", "k.w2T.w3T"); // this.global.getK_w2T_w3T();
 		this.coeffs[30][31] = environment.getEnvProps("TROPICAL", "k.sdTD.w3TD"); // this.global.getK_sdT_w3T();
-		
+
 		this.coeffs[31][30] = environment.getEnvProps("TROPICAL", "k.w3TD.sdTD"); // this.global.getK_w3T_sdT();
 
 		this.coeffs[32][28] = environment.getEnvProps("TROPICAL", "k.aTG.sTD"); // this.global.getK_aT_sT();
@@ -866,128 +866,39 @@ public class Engine {
 
 	void createVolumes() {
 		// Create the volumes
-		for (int i = 0; i <= 3; i++)
-			volumes[i] = environment.getEnvProps("REGIONAL", "VOLUME.aR"); // this.regional.getVOLUME_aR();
-
-		for (int i = 4; i <= 6; i++)
-			volumes[i] = environment.getEnvProps("REGIONAL", "VOLUME.cwR"); // this.regional.getVOLUME_cwR();
-
-		for (int i = 7; i <= 10; i++)
-			volumes[i] = environment.getEnvProps("REGIONAL", "VOLUME.w0R"); // this.regional.getVOLUME_w0R();
-
-		for (int i = 11; i <= 14; i++)
-			volumes[i] = environment.getEnvProps("REGIONAL", "VOLUME.w1R"); // this.regional.getVOLUME_w1R();
-
-		for (int i = 15; i <= 18; i++)
-			volumes[i] = environment.getEnvProps("REGIONAL", "VOLUME.w2R"); // this.regional.getVOLUME_w2R();
-
-		for (int i = 19; i <= 22; i++)
-			volumes[i] = environment.getEnvProps("REGIONAL", "VOLUME.sd0R"); // this.regional.getVOLUME_sd0R();
-
-		for (int i = 23; i <= 26; i++)
-			volumes[i] = environment.getEnvProps("REGIONAL", "VOLUME.sd1R"); // this.regional.getVOLUME_sd1R();
-
-		for (int i = 27; i <= 30; i++)
-			volumes[i] = environment.getEnvProps("REGIONAL", "VOLUME.sd2R"); // this.regional.getVOLUME_sd2R();
-
-		for (int i = 27; i <= 30; i++)
-			volumes[i] = environment.getEnvProps("REGIONAL", "VOLUME.sd2R"); // this.regional.getVOLUME_sd2R();
-
-		for (int i = 31; i <= 34; i++)
-			volumes[i] = environment.getEnvProps("REGIONAL", "VOLUME.s1R"); // this.regional.getVOLUME_s1R();
-
-		for (int i = 35; i <= 38; i++)
-			volumes[i] = environment.getEnvProps("REGIONAL", "VOLUME.s2R"); // this.regional.getVOLUME_s2R();
-
-		for (int i = 39; i <= 42; i++)
-			volumes[i] = environment.getEnvProps("REGIONAL", "VOLUME.s3R"); // this.regional.getVOLUME_s3R();
-
-		for (int i = 43; i <= 46; i++)
-			volumes[i] = environment.getEnvProps("CONTINENTAL", "VOLUME.aC"); // this.continental.getVOLUME_aC();
-
-		for (int i = 47; i <= 49; i++)
-			volumes[i] = environment.getEnvProps("CONTINENTAL", "VOLUME.cwC"); // this.continental.getVOLUME_cwC();
-
-		for (int i = 50; i <= 53; i++)
-			volumes[i] = environment.getEnvProps("CONTINENTAL", "VOLUME.w0C"); // this.continental.getVOLUME_w0C();
-
-		for (int i = 54; i <= 57; i++)
-			volumes[i] = environment.getEnvProps("CONTINENTAL", "VOLUME.w1C"); // this.continental.getVOLUME_w1C();
-
-		for (int i = 58; i <= 61; i++)
-			volumes[i] = environment.getEnvProps("CONTINENTAL", "VOLUME.w2C"); // this.continental.getVOLUME_w2C();
-
-		for (int i = 62; i <= 65; i++)
-			volumes[i] = environment.getEnvProps("CONTINENTAL", "VOLUME.sd0C"); // this.continental.getVOLUME_sd0C();
-
-		for (int i = 66; i <= 69; i++)
-			volumes[i] = environment.getEnvProps("CONTINENTAL", "VOLUME.sd1C"); // this.continental.getVOLUME_sd1C();
-
-		for (int i = 70; i <= 73; i++)
-			volumes[i] = environment.getEnvProps("CONTINENTAL", "VOLUME.sd2C"); // this.continental.getVOLUME_sd2C();
-
-		for (int i = 74; i <= 77; i++)
-			volumes[i] = environment.getEnvProps("CONTINENTAL", "VOLUME.s1C"); // this.continental.getVOLUME_s1C();
-
-		for (int i = 78; i <= 81; i++)
-			volumes[i] = environment.getEnvProps("CONTINENTAL", "VOLUME.s2C"); // this.continental.getVOLUME_s2C();
-
-		for (int i = 82; i <= 85; i++)
-			volumes[i] = environment.getEnvProps("CONTINENTAL", "VOLUME.s3C"); // this.continental.getVOLUME_s3C();
-
-		for (int i = 86; i <= 89; i++)
-			volumes[i] = environment.getEnvProps("MODERATE", "VOLUME.aM"); // this.global.getVOLUME_aM();
-
-		for (int i = 90; i <= 92; i++)
-			volumes[i] = environment.getEnvProps("MODERATE", "VOLUME.cwM"); // this.global.getVOLUME_cwM();
-
-		for (int i = 93; i <= 96; i++)
-			volumes[i] = environment.getEnvProps("MODERATE", "VOLUME.w2M"); // this.global.getVOLUME_w2M();
-
-		for (int i = 97; i <= 100; i++)
-			volumes[i] = environment.getEnvProps("MODERATE", "VOLUME.w3M"); // this.global.getVOLUME_w3M();
-
-		for (int i = 101; i <= 104; i++)
-			volumes[i] = environment.getEnvProps("MODERATE", "VOLUME.sdM"); // this.global.getVOLUME_sdM();
-
-		for (int i = 105; i <= 108; i++)
-			volumes[i] = environment.getEnvProps("MODERATE", "VOLUME.sM"); // this.global.getVOLUME_sM();
-
-		for (int i = 109; i <= 112; i++)
-			volumes[i] = environment.getEnvProps("ARCTIC", "VOLUME.aA"); // this.global.getVOLUME_aA();
-
-		for (int i = 113; i <= 115; i++)
-			volumes[i] = environment.getEnvProps("ARCTIC", "VOLUME.cwA"); // this.global.getVOLUME_cwA();
-
-		for (int i = 116; i <= 119; i++)
-			volumes[i] = environment.getEnvProps("ARCTIC", "VOLUME.w2A"); // this.global.getVOLUME_w2A();
-
-		for (int i = 120; i <= 123; i++)
-			volumes[i] = environment.getEnvProps("ARCTIC", "VOLUME.w3A"); // this.global.getVOLUME_w3A();
-
-		for (int i = 124; i <= 127; i++)
-			volumes[i] = environment.getEnvProps("ARCTIC", "VOLUME.sdA"); // this.global.getVOLUME_sdA();
-
-		for (int i = 128; i <= 131; i++)
-			volumes[i] = environment.getEnvProps("ARCTIC", "VOLUME.sA"); // this.global.getVOLUME_sA();
-
-		for (int i = 132; i <= 135; i++)
-			volumes[i] = environment.getEnvProps("TROPICAL", "VOLUME.aT"); // this.global.getVOLUME_aT();
-
-		for (int i = 136; i <= 138; i++)
-			volumes[i] = environment.getEnvProps("TROPICAL", "VOLUME.cwT"); // this.global.getVOLUME_cwT();
-
-		for (int i = 139; i <= 142; i++)
-			volumes[i] = environment.getEnvProps("TROPICAL", "VOLUME.w2T"); // this.global.getVOLUME_w2T();
-
-		for (int i = 143; i <= 146; i++)
-			volumes[i] = environment.getEnvProps("TROPICAL", "VOLUME.w3T"); // this.global.getVOLUME_w3T();
-
-		for (int i = 147; i <= 150; i++)
-			volumes[i] = environment.getEnvProps("TROPICAL", "VOLUME.sdT"); // this.global.getVOLUME_sdT();
-
-		for (int i = 151; i <= 154; i++)
-			volumes[i] = environment.getEnvProps("TROPICAL", "VOLUME.sT"); // this.global.getVOLUME_sT();
+		volumes[0] = environment.getEnvProps("REGIONAL", "VOLUME.aR"); // this.regional.getVOLUME_aR();
+		volumes[1] = environment.getEnvProps("REGIONAL", "VOLUME.w0R"); // this.regional.getVOLUME_w0R();
+		volumes[2] = environment.getEnvProps("REGIONAL", "VOLUME.w1R"); // this.regional.getVOLUME_w1R();
+		volumes[3] = environment.getEnvProps("REGIONAL", "VOLUME.w2R"); // this.regional.getVOLUME_w2R();
+		volumes[4] = environment.getEnvProps("REGIONAL", "VOLUME.sd1R"); // this.regional.getVOLUME_sd1R();
+		volumes[5] = environment.getEnvProps("REGIONAL", "VOLUME.sd2R"); // this.regional.getVOLUME_sd2R();
+		volumes[6] = environment.getEnvProps("REGIONAL", "VOLUME.s1R"); // this.regional.getVOLUME_s1R();
+		volumes[7] = environment.getEnvProps("REGIONAL", "VOLUME.s2R"); // this.regional.getVOLUME_s2R();
+		volumes[8] = environment.getEnvProps("REGIONAL", "VOLUME.s3R"); // this.regional.getVOLUME_s3R();
+		volumes[9] = environment.getEnvProps("CONTINENTAL", "VOLUME.aC"); // this.continental.getVOLUME_aC();
+		volumes[10] = environment.getEnvProps("CONTINENTAL", "VOLUME.w0C"); // this.continental.getVOLUME_w1C();
+		volumes[11] = environment.getEnvProps("CONTINENTAL", "VOLUME.w1C"); // this.continental.getVOLUME_w1C();
+		volumes[12] = environment.getEnvProps("CONTINENTAL", "VOLUME.w2C"); // this.continental.getVOLUME_w2C();
+		volumes[13] = environment.getEnvProps("CONTINENTAL", "VOLUME.sd1C"); // this.continental.getVOLUME_w2C();
+		volumes[14] = environment.getEnvProps("CONTINENTAL", "VOLUME.sd2C"); // this.continental.getVOLUME_w2C();
+		volumes[15] = environment.getEnvProps("CONTINENTAL", "VOLUME.s1C"); // this.continental.getVOLUME_s1C();
+		volumes[16] = environment.getEnvProps("CONTINENTAL", "VOLUME.s2C"); // this.continental.getVOLUME_s2C();
+		volumes[17] = environment.getEnvProps("CONTINENTAL", "VOLUME.s3C"); // this.continental.getVOLUME_s2C();
+		volumes[18] = environment.getEnvProps("MODERATE", "VOLUME.aM"); // this.global.getVOLUME_aM();
+		volumes[19] = environment.getEnvProps("MODERATE", "VOLUME.w2M"); // this.global.getVOLUME_w2M();
+		volumes[20] = environment.getEnvProps("MODERATE", "VOLUME.w3M"); // this.global.getVOLUME_w2M();
+		volumes[21] = environment.getEnvProps("MODERATE", "VOLUME.sdM"); // this.global.getVOLUME_sdM();
+		volumes[22] = environment.getEnvProps("MODERATE", "VOLUME.sM"); // this.global.getVOLUME_sM();
+		volumes[23] = environment.getEnvProps("ARCTIC", "VOLUME.aA"); // this.global.getVOLUME_aA();
+		volumes[24] = environment.getEnvProps("ARCTIC", "VOLUME.w2A"); // this.global.getVOLUME_w2A();
+		volumes[25] = environment.getEnvProps("ARCTIC", "VOLUME.w3A"); // this.global.getVOLUME_w2A();
+		volumes[26] = environment.getEnvProps("ARCTIC", "VOLUME.sdA"); // this.global.getVOLUME_sdA();
+		volumes[27] = environment.getEnvProps("ARCTIC", "VOLUME.sA"); // this.global.getVOLUME_sA();
+		volumes[28] = environment.getEnvProps("TROPICAL", "VOLUME.aT"); // this.global.getVOLUME_sA();
+		volumes[29] = environment.getEnvProps("TROPICAL", "VOLUME.w2T"); // this.global.getVOLUME_w2T();
+		volumes[30] = environment.getEnvProps("TROPICAL", "VOLUME.w3T"); // this.global.getVOLUME_w3T();
+		volumes[31] = environment.getEnvProps("TROPICAL", "VOLUME.sdT"); // this.global.getVOLUME_w3T();
+		volumes[32] = environment.getEnvProps("TROPICAL", "VOLUME.sT"); // this.global.getVOLUME_sT();
 
 		this.rVolumes = new Array2DRowRealMatrix(volumes);
 	}
