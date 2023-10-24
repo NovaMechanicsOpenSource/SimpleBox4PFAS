@@ -1220,8 +1220,6 @@ public class output extends SelectorComposer<Window> {
 				);
 
 		//red
-
-		/*
 		graphics.setColor(new Color(227, 30, 36) );
 		if ( transport.get("water-air").get("Global Scale - Moderate climate zone").get("upper ocean water") > 0 )
 			graphics.drawString(
@@ -1247,9 +1245,9 @@ public class output extends SelectorComposer<Window> {
 					190, 530  	  				
 					);
 
-		if ( environment.getEnvProps("MODERATE","k.w3M.w2M")*engine.getMassMol(97)*input.getSubstancesData("Molweight") > 0 )
+		if ( environment.getEnvProps("MODERATE","k.w3M.w2M")*engine.getMassMol(20)*input.getSubstancesData("Molweight") > 0 )
 			graphics.drawString(
-					String.format("%.2e", environment.getEnvProps("MODERATE","k.w3M.w2M")*engine.getMassMol(97)*input.getSubstancesData("Molweight") ),
+					String.format("%.2e", environment.getEnvProps("MODERATE","k.w3M.w2M")*engine.getMassMol(20)*input.getSubstancesData("Molweight") ),
 					190, 592  	  				
 					);
 		else
@@ -1258,9 +1256,9 @@ public class output extends SelectorComposer<Window> {
 					190, 592  	  				
 					);
 
-		if (environment.getEnvProps("MODERATE","k.w2M.w3M")*engine.getMassMol(93)*input.getSubstancesData("Molweight") > 0 )
+		if (environment.getEnvProps("MODERATE","k.w2M.w3M")*engine.getMassMol(19)*input.getSubstancesData("Molweight") > 0 )
 			graphics.drawString(
-					String.format("%.2e", environment.getEnvProps("MODERATE","k.w2M.w3M")*engine.getMassMol(93)*input.getSubstancesData("Molweight") ),
+					String.format("%.2e", environment.getEnvProps("MODERATE","k.w2M.w3M")*engine.getMassMol(19)*input.getSubstancesData("Molweight") ),
 					190, 725  	  				
 					);
 		else
@@ -1269,9 +1267,9 @@ public class output extends SelectorComposer<Window> {
 					190, 725  	  				
 					);
 
-		if (  environment.getEnvProps("MODERATE","k.sdMD.w3MD")*engine.getMassMol(101)*input.getSubstancesData("Molweight") > 0 )
+		if (  environment.getEnvProps("MODERATE","k.sdMD.w3MD")*engine.getMassMol(21)*input.getSubstancesData("Molweight") > 0 )
 			graphics.drawString(
-					String.format("%.2e", environment.getEnvProps("MODERATE","k.sdMD.w3MD")*engine.getMassMol(101)*input.getSubstancesData("Molweight") ),
+					String.format("%.2e", environment.getEnvProps("MODERATE","k.sdMD.w3MD")*engine.getMassMol(21)*input.getSubstancesData("Molweight") ),
 					380, 850  	  				
 					);
 		else
@@ -1312,8 +1310,6 @@ public class output extends SelectorComposer<Window> {
 					String.format("%.2e", 0.0 ),
 					670, 480  	  				
 					);
-
-		 */
 
 		//orange
 		graphics.setColor(new Color(255, 102, 36) );
@@ -1446,10 +1442,10 @@ public class output extends SelectorComposer<Window> {
 				);
 
 		//red			
-		/*		graphics.setColor(new Color(227, 30, 36) );
-		if ( environment.getEnvProps("ARCTIC","k.w2AD.aAG")*engine.getMassMol(116)*input.getSubstancesData("Molweight") > 0 )
+		graphics.setColor(new Color(227, 30, 36) );
+		if ( environment.getEnvProps("ARCTIC","k.w2AD.aAG")*engine.getMassMol(24)*input.getSubstancesData("Molweight") > 0 )
 			graphics.drawString(
-					String.format("%.2e", environment.getEnvProps("ARCTIC","k.w2AD.aAG")*engine.getMassMol(116)*input.getSubstancesData("Molweight") ),
+					String.format("%.2e", environment.getEnvProps("ARCTIC","k.w2AD.aAG")*engine.getMassMol(24)*input.getSubstancesData("Molweight") ),
 					190 + x, 390  	  				
 					);
 		else
@@ -1469,9 +1465,9 @@ public class output extends SelectorComposer<Window> {
 					190 + x, 530  	  				
 					);
 
-		if ( environment.getEnvProps("ARCTIC","k.w3A.w2A")*engine.getMassMol(120)*input.getSubstancesData("Molweight") > 0 )
+		if ( environment.getEnvProps("ARCTIC","k.w3A.w2A")*engine.getMassMol(25)*input.getSubstancesData("Molweight") > 0 )
 			graphics.drawString(
-					String.format("%.2e", environment.getEnvProps("ARCTIC","k.w3A.w2A")*engine.getMassMol(120)*input.getSubstancesData("Molweight") ),
+					String.format("%.2e", environment.getEnvProps("ARCTIC","k.w3A.w2A")*engine.getMassMol(25)*input.getSubstancesData("Molweight") ),
 					190 + x, 592  	  				
 					);
 		else
@@ -1480,9 +1476,9 @@ public class output extends SelectorComposer<Window> {
 					190 + x, 592  	  				
 					);
 
-		if (environment.getEnvProps("ARCTIC","k.w2A.w3A")*engine.getMassMol(116)*input.getSubstancesData("Molweight") > 0 )
+		if (environment.getEnvProps("ARCTIC","k.w2A.w3A")*engine.getMassMol(24)*input.getSubstancesData("Molweight") > 0 )
 			graphics.drawString(
-					String.format("%.2e", environment.getEnvProps("ARCTIC","k.w2A.w3A")*engine.getMassMol(116)*input.getSubstancesData("Molweight") ),
+					String.format("%.2e", environment.getEnvProps("ARCTIC","k.w2A.w3A")*engine.getMassMol(24)*input.getSubstancesData("Molweight") ),
 					190 + x, 725  	  				
 					);
 		else
@@ -1491,9 +1487,9 @@ public class output extends SelectorComposer<Window> {
 					190 + x, 725  	  				
 					);
 
-		if (  environment.getEnvProps("ARCTIC","k.sdAD.w3AD")*engine.getMassMol(124)*input.getSubstancesData("Molweight") > 0 )
+		if (  environment.getEnvProps("ARCTIC","k.sdAD.w3AD")*engine.getMassMol(26)*input.getSubstancesData("Molweight") > 0 )
 			graphics.drawString(
-					String.format("%.2e", environment.getEnvProps("ARCTIC","k.sdAD.w3AD")*engine.getMassMol(124)*input.getSubstancesData("Molweight") ),
+					String.format("%.2e", environment.getEnvProps("ARCTIC","k.sdAD.w3AD")*engine.getMassMol(26)*input.getSubstancesData("Molweight") ),
 					380 + x, 850  	  				
 					);
 		else
@@ -1534,8 +1530,6 @@ public class output extends SelectorComposer<Window> {
 					String.format("%.2e", 0.0 ),
 					670 + x, 480  	  				
 					);
-
-		 */
 
 		//orange
 		graphics.setColor(new Color(255, 102, 36) );
@@ -1669,9 +1663,9 @@ public class output extends SelectorComposer<Window> {
 		graphics.setColor(new Color(227, 30, 36) );
 
 		//red
-		/*		if ( environment.getEnvProps("TROPICAL","k.w2TD.aTG")*engine.getMassMol(139)*input.getSubstancesData("Molweight") > 0 )
+		if ( environment.getEnvProps("TROPICAL","k.w2TD.aTG")*engine.getMassMol(29)*input.getSubstancesData("Molweight") > 0 )
 			graphics.drawString(					
-					String.format("%.2e", environment.getEnvProps("TROPICAL","k.w2TD.aTG")*engine.getMassMol(139)*input.getSubstancesData("Molweight") ),					
+					String.format("%.2e", environment.getEnvProps("TROPICAL","k.w2TD.aTG")*engine.getMassMol(29)*input.getSubstancesData("Molweight") ),					
 					190 + x, 390  	  				
 					);
 		else
@@ -1691,9 +1685,9 @@ public class output extends SelectorComposer<Window> {
 					190 + x, 530  	  				
 					);
 
-		if ( environment.getEnvProps("TROPICAL","k.w3T.w2T")*engine.getMassMol(143)*input.getSubstancesData("Molweight") > 0 )
+		if ( environment.getEnvProps("TROPICAL","k.w3T.w2T")*engine.getMassMol(30)*input.getSubstancesData("Molweight") > 0 )
 			graphics.drawString(
-					String.format("%.2e", environment.getEnvProps("TROPICAL","k.w3T.w2T")*engine.getMassMol(143)*input.getSubstancesData("Molweight") ),
+					String.format("%.2e", environment.getEnvProps("TROPICAL","k.w3T.w2T")*engine.getMassMol(30)*input.getSubstancesData("Molweight") ),
 					190 + x, 592  	  				
 					);
 		else
@@ -1702,9 +1696,9 @@ public class output extends SelectorComposer<Window> {
 					190 + x, 592  	  				
 					);
 
-		if (environment.getEnvProps("TROPICAL","k.w2T.w3T")*engine.getMassMol(139)*input.getSubstancesData("Molweight") > 0 )
+		if (environment.getEnvProps("TROPICAL","k.w2T.w3T")*engine.getMassMol(29)*input.getSubstancesData("Molweight") > 0 )
 			graphics.drawString(
-					String.format("%.2e", environment.getEnvProps("TROPICAL","k.w2T.w3T")*engine.getMassMol(139)*input.getSubstancesData("Molweight") ),
+					String.format("%.2e", environment.getEnvProps("TROPICAL","k.w2T.w3T")*engine.getMassMol(29)*input.getSubstancesData("Molweight") ),
 					190 + x, 725  	  				
 					);
 		else
@@ -1713,9 +1707,9 @@ public class output extends SelectorComposer<Window> {
 					190 + x, 725  	  				
 					);
 
-		if (  environment.getEnvProps("TROPICAL","k.sdTD.w3TD")*engine.getMassMol(147)*input.getSubstancesData("Molweight") > 0 )
+		if (  environment.getEnvProps("TROPICAL","k.sdTD.w3TD")*engine.getMassMol(31)*input.getSubstancesData("Molweight") > 0 )
 			graphics.drawString(
-					String.format("%.2e", environment.getEnvProps("TROPICAL","k.sdTD.w3TD")*engine.getMassMol(147)*input.getSubstancesData("Molweight") ),
+					String.format("%.2e", environment.getEnvProps("TROPICAL","k.sdTD.w3TD")*engine.getMassMol(31)*input.getSubstancesData("Molweight") ),
 					380 + x, 850  	  				
 					);
 		else
@@ -1763,8 +1757,6 @@ public class output extends SelectorComposer<Window> {
 				String.format("%.2e", transport.get("soil-water").get("Global Scale - Tropical climate zone").get("upper ocean water") ),
 				440 + x, 510  	  				
 				);
-
-		 */
 
 		//gray
 		graphics.setColor( Color.GRAY );
