@@ -2235,9 +2235,8 @@ public class output extends SelectorComposer<Window> {
 				);
 
 		concentrations.get("Fresh water sediment").get("Cont").put("Fresh water sediment",
-				( engine.getConcentration(13)*
-						(input.getSubstancesData("Molweight")*1000.)/
-						environment.getEnvProps("CONTINENTAL", "VOLUME.sd1C") )/
+				engine.getConcentration(13)*
+						(input.getSubstancesData("Molweight")*1000.) /
 				(environment.getEnvProps("CONTINENTAL", "FRACw.sdC")*1000 + 
 						environment.getEnvProps("CONTINENTAL", "FRACs.sdC")*
 						input.getLandscapeSettings("ALL-SCALE", "RHOsolid") )
@@ -2374,9 +2373,10 @@ public class output extends SelectorComposer<Window> {
 		concentrations.get("Marine sediment").get("Reg").put("Marine sediment",
 				engine.getConcentration(5)*input.getSubstancesData("Molweight")*1000./
 				(environment.getEnvProps("REGIONAL", "FRACw.sdR")*1000 + 
-						environment.getEnvProps("REGIONAL", "FRACs.sdR") )*
-				input.getLandscapeSettings("ALL-SCALE", "RHOsolid") 
+						environment.getEnvProps("REGIONAL", "FRACs.sdR") *
+				input.getLandscapeSettings("ALL-SCALE", "RHOsolid") )
 				);
+		
 		concentrations.get("Marine sediment").get("Reg").put("* SOLID PHASE",
 				engine.getConcentration(5)*environment.getEnvProps("REGIONAL", "FRACs.sdR")/
 				(environment.getEnvProps("REGIONAL", "FRACw.sdR")/
@@ -4771,48 +4771,6 @@ public class output extends SelectorComposer<Window> {
 			tropSeaWSedRes.setValue( formatter.format( Double.valueOf(  masses.get("Marine sediment").get("Trop").get("Marine sediment") ) ) );
 			tropSoilRes.setValue( formatter.format( Double.valueOf(  masses.get("Other soil").get("Trop").get("Other soil") ) ) );			
 		}
-/*		else if ( resultsCombo.getSelectedItem().getValue().equals(regPart) ) {
-			airRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Air").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );	
-			freshWaterlakeRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water lake").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );
-			freshWaterRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );
-			seaWaterRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Surface sea/ocean water").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );
-			freshWaterSedRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water sediment").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );
-			seaWaterSedRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Marine sediment").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );
-			naturalSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Natural soil").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );
-			agriSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Agricultural soil").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );
-			otherSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Other soil").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );						
-		}
-		else if ( resultsCombo.getSelectedItem().getValue().equals(contPart) ) {
-			airRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Air").get("Cont").get("Species attached to NCs (<450 nm) (A)") ) ) );	
-			freshWaterlakeRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water lake").get("Cont").get("Species attached to NCs (<450 nm) (A)") ) ) );
-			freshWaterRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water").get("Cont").get("Species attached to NCs (<450 nm) (A)") ) ) );
-			seaWaterRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Surface sea/ocean water").get("Cont").get("Species attached to NCs (<450 nm) (A)") ) ) );
-			freshWaterSedRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water sediment").get("Cont").get("Species attached to NCs (<450 nm) (A)") ) ) );
-			seaWaterSedRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Marine sediment").get("Cont").get("Species attached to NCs (<450 nm) (A)") ) ) );
-			naturalSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Natural soil").get("Cont").get("Species attached to NCs (<450 nm) (A)") ) ) );
-			agriSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Agricultural soil").get("Cont").get("Species attached to NCs (<450 nm) (A)") ) ) );
-			otherSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Other soil").get("Cont").get("Species attached to NCs (<450 nm) (A)") ) ) );						
-		}
-		else if ( resultsCombo.getSelectedItem().getValue().equals(globPart) ) {
-			modAirRes.setValue( formatter.format( Double.valueOf(  masses.get("Air").get("Mod").get("Species attached to NCs (<450 nm) (A)") ) ) );	
-			modSurfSeaWRes.setValue( formatter.format( Double.valueOf(  masses.get("Surface sea/ocean water").get("Mod").get("Species attached to NCs (<450 nm) (A)") ) ) );
-			modDeepSeaWRes.setValue( formatter.format( Double.valueOf(  masses.get("Deep sea/ocean water").get("Mod").get("Species attached to NCs (<450 nm) (A)") ) ) );
-			modSeaWSedRes.setValue( formatter.format( Double.valueOf(  masses.get("Marine sediment").get("Mod").get("Species attached to NCs (<450 nm) (A)") ) ) );
-			modSoilRes.setValue( formatter.format( Double.valueOf(  masses.get("Other soil").get("Mod").get("Species attached to NCs (<450 nm) (A)") ) ) );
-
-			arctAirRes.setValue( formatter.format( Double.valueOf(  masses.get("Air").get("Arct").get("Species attached to NCs (<450 nm) (A)") ) ) );	
-			arctSurfSeaWRes.setValue( formatter.format( Double.valueOf(  masses.get("Surface sea/ocean water").get("Arct").get("Species attached to NCs (<450 nm) (A)") ) ) );
-			arctDeepSeaWRes.setValue( formatter.format( Double.valueOf(  masses.get("Deep sea/ocean water").get("Arct").get("Species attached to NCs (<450 nm) (A)") ) ) );
-			arctSeaWSedRes.setValue( formatter.format( Double.valueOf(  masses.get("Marine sediment").get("Arct").get("Species attached to NCs (<450 nm) (A)") ) ) );
-			arctSoilRes.setValue( formatter.format( Double.valueOf(  masses.get("Other soil").get("Arct").get("Species attached to NCs (<450 nm) (A)") ) ) );
-
-			tropAirRes.setValue( formatter.format( Double.valueOf(  masses.get("Air").get("Trop").get("Species attached to NCs (<450 nm) (A)") ) ) );	
-			tropSurfSeaWRes.setValue( formatter.format( Double.valueOf(  masses.get("Surface sea/ocean water").get("Trop").get("Species attached to NCs (<450 nm) (A)") ) ) );
-			tropDeepSeaWRes.setValue( formatter.format( Double.valueOf(  masses.get("Deep sea/ocean water").get("Trop").get("Species attached to NCs (<450 nm) (A)") ) ) );
-			tropSeaWSedRes.setValue( formatter.format( Double.valueOf(  masses.get("Marine sediment").get("Trop").get("Species attached to NCs (<450 nm) (A)") ) ) );
-			tropSoilRes.setValue( formatter.format( Double.valueOf(  masses.get("Other soil").get("Trop").get("Species attached to NCs (<450 nm) (A)") ) ) );			
-		}		
-		*/
 	}
 
 	@Listen("onClick = #download")
