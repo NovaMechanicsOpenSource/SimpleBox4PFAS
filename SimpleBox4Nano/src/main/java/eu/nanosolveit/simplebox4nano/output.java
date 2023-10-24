@@ -305,10 +305,10 @@ public class output extends SelectorComposer<Window> {
 		nanomaterialName = (String) current.getAttribute("Nanomaterial name");
 
 		//build info and tables for output
-		buildMasses();
+/*		buildMasses();
 		buildConcentrations();
 		buildFugacities();
-		buildEmission();
+		buildEmission();*/
 
 		ListModelList<String> availRegions = new ListModelList<String>();
 		//		availRegions.add( regPart );
@@ -348,21 +348,26 @@ public class output extends SelectorComposer<Window> {
 
 		NumberFormat formatter = new DecimalFormat("0.##E0", otherSymbols); 
 
-		/*		airRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Air").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );	
-		freshWaterlakeRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water lake").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );
-		freshWaterRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );
-		seaWaterRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Surface sea/ocean water").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );
-		freshWaterSedRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water sediment").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );
-		seaWaterSedRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Marine sediment").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );
-		naturalSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Natural soil").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );
-		agriSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Agricultural soil").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );
-		otherSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Other soil").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );			
-		 */
-
+		airRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Air").get("Reg").get("Air") ) ) );	
+		freshWaterlakeRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water lake").get("Reg").get("Fresh water lake") ) ) );
+		freshWaterRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water").get("Reg").get("Fresh water") ) ) );
+		seaWaterRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Surface sea/ocean water").get("Reg").get("Surface sea/ocean water") ) ) );
+		freshWaterSedRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water sediment").get("Reg").get("Fresh water sediment") ) ) );
+		seaWaterSedRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Marine sediment").get("Reg").get("Marine sediment") ) ) );
+		naturalSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Natural soil").get("Reg").get("Natural soil") ) ) );
+		agriSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Agricultural soil").get("Reg").get("Agricultural soil") ) ) );
+		otherSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Other soil").get("Reg").get("Other soil") ) ) );			
+		
 		resultsCombo.setModel( availRegions );
 	}
 
 	private void disBuilder() {
+		buildMasses();
+		buildConcentrations();
+		
+		buildFugacities();
+		buildEmission();
+		
 		buildInflow();
 		buildOutflow();
 		buildRemoval();
@@ -2131,7 +2136,6 @@ public class output extends SelectorComposer<Window> {
 		concentrations.get("Air").get("Cont").put("* AEROSOL- and CLOUD PHASES",
 				(1.- environment.getEnvProps("CONTINENTAL","FRgas.aC"))* concentrations.get("Air").get("Cont").get("Air") );
 
-
 		concentrations.get("Air").get("Mod").put("Air",engine.getConcentration(18)*(input.getSubstancesData("Molweight")*1000.)  );
 		concentrations.get("Air").get("Mod").put("* GAS PHASE",
 				environment.getEnvProps("MODERATE","FRgas.aM")* concentrations.get("Air").get("Mod").get("Air") );
@@ -2159,20 +2163,20 @@ public class output extends SelectorComposer<Window> {
 		concentrations.get("Fresh water lake").put("Reg", new HashMap<String, Double>() );
 		concentrations.get("Fresh water lake").put("Cont", new HashMap<String, Double>() );
 
-		concentrations.get("Fresh water lake").get("Reg").put("Air", engine.getConcentration(1)*(input.getSubstancesData("Molweight")*1000.)
+		concentrations.get("Fresh water lake").get("Reg").put("Fresh water lake", engine.getConcentration(1)*(input.getSubstancesData("Molweight")*1000.)
 				);
 		concentrations.get("Fresh water lake").get("Reg").put("* DISSOLVED",
-				environment.getEnvProps("REGIONAL","FRwD.w0R")* concentrations.get("Fresh water lake").get("Reg").get("Air")
+				environment.getEnvProps("REGIONAL","FRwD.w0R")* concentrations.get("Fresh water lake").get("Reg").get("Fresh water lake")
 				);
 		concentrations.get("Fresh water lake").get("Reg").put("* SUSPENDED SOLIDS",
 				environment.getEnvProps("REGIONAL","Kp.susp1R")* concentrations.get("Fresh water lake").get("Reg").get("* DISSOLVED")
 				);
 
-		concentrations.get("Fresh water lake").get("Cont").put("Air",
+		concentrations.get("Fresh water lake").get("Cont").put("Fresh water lake",
 				engine.getConcentration(10)*(input.getSubstancesData("Molweight")*1000.)
 				);
 		concentrations.get("Fresh water lake").get("Cont").put("* DISSOLVED",
-				environment.getEnvProps("CONTINENTAL","FRw.w0C")* concentrations.get("Fresh water lake").get("Cont").get("Air")
+				environment.getEnvProps("CONTINENTAL","FRw.w0C")* concentrations.get("Fresh water lake").get("Cont").get("Fresh water lake")
 				);
 		concentrations.get("Fresh water lake").get("Cont").put("* SUSPENDED SOLIDS",
 				environment.getEnvProps("CONTINENTAL","Kp.susp1C")* concentrations.get("Fresh water lake").get("Cont").get("* DISSOLVED")
@@ -4716,7 +4720,7 @@ public class output extends SelectorComposer<Window> {
 			updateResTables();
 		}*/
 	}
-
+	
 	void updateResTables()
 	{
 		Locale locale = Locale.ENGLISH;
@@ -4726,49 +4730,48 @@ public class output extends SelectorComposer<Window> {
 
 		NumberFormat formatter = new DecimalFormat("0.##E0", otherSymbols); 
 
-		/*		if ( resultsCombo.getSelectedItem().getValue().equals( regDis ) ) {		
-			airRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Air").get("Reg").get("Dissolved/Gas species (G/D)") ) ) );	
-			freshWaterlakeRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water lake").get("Reg").get("Dissolved/Gas species (G/D)") ) ) );
-			freshWaterRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water").get("Reg").get("Dissolved/Gas species (G/D)") ) ) );
-			seaWaterRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Surface sea/ocean water").get("Reg").get("Dissolved/Gas species (G/D)") ) ) );
-			freshWaterSedRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water sediment").get("Reg").get("Dissolved/Gas species (G/D)") ) ) );
-			seaWaterSedRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Marine sediment").get("Reg").get("Dissolved/Gas species (G/D)") ) ) );
-			naturalSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Natural soil").get("Reg").get("Dissolved/Gas species (G/D)") ) ) );
-			agriSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Agricultural soil").get("Reg").get("Dissolved/Gas species (G/D)") ) ) );
-			otherSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Other soil").get("Reg").get("Dissolved/Gas species (G/D)") ) ) );			
+		if ( resultsCombo.getSelectedItem().getValue().equals( regDis ) ) {		
+			airRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Air").get("Reg").get("Air") ) ) );	
+			freshWaterlakeRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water lake").get("Reg").get("Fresh water lake") ) ) );
+			freshWaterRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water").get("Reg").get("Fresh water") ) ) );
+			seaWaterRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Surface sea/ocean water").get("Reg").get("Surface sea/ocean water") ) ) );
+			freshWaterSedRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water sediment").get("Reg").get("Fresh water sediment") ) ) );
+			seaWaterSedRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Marine sediment").get("Reg").get("Marine sediment") ) ) );
+			naturalSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Natural soil").get("Reg").get("Natural soil") ) ) );
+			agriSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Agricultural soil").get("Reg").get("Agricultural soil") ) ) );
+			otherSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Other soil").get("Reg").get("Other soil") ) ) );			
 		}
 		else if ( resultsCombo.getSelectedItem().getValue().equals( contDis ) ) {		
-			airRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Air").get("Cont").get("Dissolved/Gas species (G/D)") ) ) );	
-			freshWaterlakeRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water lake").get("Cont").get("Dissolved/Gas species (G/D)") ) ) );
-			freshWaterRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water").get("Cont").get("Dissolved/Gas species (G/D)") ) ) );
-			seaWaterRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Surface sea/ocean water").get("Cont").get("Dissolved/Gas species (G/D)") ) ) );
-			freshWaterSedRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water sediment").get("Cont").get("Dissolved/Gas species (G/D)") ) ) );
-			seaWaterSedRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Marine sediment").get("Cont").get("Dissolved/Gas species (G/D)") ) ) );
-			naturalSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Natural soil").get("Cont").get("Dissolved/Gas species (G/D)") ) ) );
-			agriSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Agricultural soil").get("Cont").get("Dissolved/Gas species (G/D)") ) ) );
-			otherSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Other soil").get("Cont").get("Dissolved/Gas species (G/D)") ) ) );						
+			airRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Air").get("Cont").get("Air") ) ) );	
+			freshWaterlakeRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water lake").get("Cont").get("Fresh water lake") ) ) );
+			freshWaterRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water").get("Cont").get("Fresh water") ) ) );
+			seaWaterRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Surface sea/ocean water").get("Cont").get("Surface sea/ocean water") ) ) );
+			freshWaterSedRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water sediment").get("Cont").get("Fresh water sediment") ) ) );
+			seaWaterSedRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Marine sediment").get("Cont").get("Marine sediment") ) ) );
+			naturalSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Natural soil").get("Cont").get("Natural soil") ) ) );
+			agriSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Agricultural soil").get("Cont").get("Agricultural soil") ) ) );
+			otherSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Other soil").get("Cont").get("Other soil") ) ) );						
 		}
 		else if ( resultsCombo.getSelectedItem().getValue().equals( globDis ) ) {
-			modAirRes.setValue( formatter.format( Double.valueOf(  masses.get("Air").get("Mod").get("Dissolved/Gas species (G/D)") ) ) );	
-			modSurfSeaWRes.setValue( formatter.format( Double.valueOf(  masses.get("Surface sea/ocean water").get("Mod").get("Dissolved/Gas species (G/D)") ) ) );
-			modDeepSeaWRes.setValue( formatter.format( Double.valueOf(  masses.get("Deep sea/ocean water").get("Mod").get("Dissolved/Gas species (G/D)") ) ) );
-			modSeaWSedRes.setValue( formatter.format( Double.valueOf(  masses.get("Marine sediment").get("Mod").get("Dissolved/Gas species (G/D)") ) ) );
-			modSoilRes.setValue( formatter.format( Double.valueOf(  masses.get("Other soil").get("Mod").get("Dissolved/Gas species (G/D)") ) ) );
+			modAirRes.setValue( formatter.format( Double.valueOf(  masses.get("Air").get("Mod").get("Air") ) ) );	
+			modSurfSeaWRes.setValue( formatter.format( Double.valueOf(  masses.get("Surface sea/ocean water").get("Mod").get("Surface sea/ocean water") ) ) );
+			modDeepSeaWRes.setValue( formatter.format( Double.valueOf(  masses.get("Deep sea/ocean water").get("Mod").get("Deep sea/ocean water") ) ) );
+			modSeaWSedRes.setValue( formatter.format( Double.valueOf(  masses.get("Marine sediment").get("Mod").get("Marine sediment") ) ) );
+			modSoilRes.setValue( formatter.format( Double.valueOf(  masses.get("Other soil").get("Mod").get("Other soil") ) ) );
 
-			arctAirRes.setValue( formatter.format( Double.valueOf(  masses.get("Air").get("Arct").get("Dissolved/Gas species (G/D)") ) ) );	
-			arctSurfSeaWRes.setValue( formatter.format( Double.valueOf(  masses.get("Surface sea/ocean water").get("Arct").get("Dissolved/Gas species (G/D)") ) ) );
-			arctDeepSeaWRes.setValue( formatter.format( Double.valueOf(  masses.get("Deep sea/ocean water").get("Arct").get("Dissolved/Gas species (G/D)") ) ) );
-			arctSeaWSedRes.setValue( formatter.format( Double.valueOf(  masses.get("Marine sediment").get("Arct").get("Dissolved/Gas species (G/D)") ) ) );
-			arctSoilRes.setValue( formatter.format( Double.valueOf(  masses.get("Other soil").get("Arct").get("Dissolved/Gas species (G/D)") ) ) );
+			arctAirRes.setValue( formatter.format( Double.valueOf(  masses.get("Air").get("Arct").get("Air") ) ) );	
+			arctSurfSeaWRes.setValue( formatter.format( Double.valueOf(  masses.get("Surface sea/ocean water").get("Arct").get("Surface sea/ocean water") ) ) );
+			arctDeepSeaWRes.setValue( formatter.format( Double.valueOf(  masses.get("Deep sea/ocean water").get("Arct").get("Deep sea/ocean water") ) ) );
+			arctSeaWSedRes.setValue( formatter.format( Double.valueOf(  masses.get("Marine sediment").get("Arct").get("Marine sediment") ) ) );
+			arctSoilRes.setValue( formatter.format( Double.valueOf(  masses.get("Other soil").get("Arct").get("Other soil") ) ) );
 
-			tropAirRes.setValue( formatter.format( Double.valueOf(  masses.get("Air").get("Trop").get("Dissolved/Gas species (G/D)") ) ) );	
-			tropSurfSeaWRes.setValue( formatter.format( Double.valueOf(  masses.get("Surface sea/ocean water").get("Trop").get("Dissolved/Gas species (G/D)") ) ) );
-			tropDeepSeaWRes.setValue( formatter.format( Double.valueOf(  masses.get("Deep sea/ocean water").get("Trop").get("Dissolved/Gas species (G/D)") ) ) );
-			tropSeaWSedRes.setValue( formatter.format( Double.valueOf(  masses.get("Marine sediment").get("Trop").get("Dissolved/Gas species (G/D)") ) ) );
-			tropSoilRes.setValue( formatter.format( Double.valueOf(  masses.get("Other soil").get("Trop").get("Dissolved/Gas species (G/D)") ) ) );			
+			tropAirRes.setValue( formatter.format( Double.valueOf(  masses.get("Air").get("Trop").get("Air") ) ) );	
+			tropSurfSeaWRes.setValue( formatter.format( Double.valueOf(  masses.get("Surface sea/ocean water").get("Trop").get("Surface sea/ocean water") ) ) );
+			tropDeepSeaWRes.setValue( formatter.format( Double.valueOf(  masses.get("Deep sea/ocean water").get("Trop").get("Deep sea/ocean water") ) ) );
+			tropSeaWSedRes.setValue( formatter.format( Double.valueOf(  masses.get("Marine sediment").get("Trop").get("Marine sediment") ) ) );
+			tropSoilRes.setValue( formatter.format( Double.valueOf(  masses.get("Other soil").get("Trop").get("Other soil") ) ) );			
 		}
-
-		if ( resultsCombo.getSelectedItem().getValue().equals(regPart) ) {
+/*		else if ( resultsCombo.getSelectedItem().getValue().equals(regPart) ) {
 			airRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Air").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );	
 			freshWaterlakeRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water lake").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );
 			freshWaterRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );
@@ -4808,7 +4811,8 @@ public class output extends SelectorComposer<Window> {
 			tropDeepSeaWRes.setValue( formatter.format( Double.valueOf(  masses.get("Deep sea/ocean water").get("Trop").get("Species attached to NCs (<450 nm) (A)") ) ) );
 			tropSeaWSedRes.setValue( formatter.format( Double.valueOf(  masses.get("Marine sediment").get("Trop").get("Species attached to NCs (<450 nm) (A)") ) ) );
 			tropSoilRes.setValue( formatter.format( Double.valueOf(  masses.get("Other soil").get("Trop").get("Species attached to NCs (<450 nm) (A)") ) ) );			
-		}		*/
+		}		
+		*/
 	}
 
 	@Listen("onClick = #download")
