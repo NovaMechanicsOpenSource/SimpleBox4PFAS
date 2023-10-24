@@ -632,54 +632,54 @@ public class output extends SelectorComposer<Window> {
 		graphics.setColor(new Color(255, 102, 36) );
 		graphics.drawString(
 				String.format("%.2e", transport.get("soil-water").get("Regional Scale").get("fresh water") ),
-				1150, 660  	  				
+				1430, 780  	  				
 				);
 
 		//gray
 		graphics.setColor( Color.GRAY );
 		graphics.drawString(
 				String.format("%.2e", degradation.get("Regional Scale").get("air") ),
-				680, 340
-				);
-
-		graphics.drawString(
-				String.format("%.2e", degradation.get("Regional Scale").get("fresh water") ),
-				1120, 830  	  				
+				860, 410
 				);
 
 		graphics.drawString(
 				String.format("%.2e", degradation.get("Regional Scale").get("fresh water lakes") ),
-				1500, 830  	  				
+				1390, 1020  	  				
 				);
 
 		graphics.drawString(
-				String.format("%.2e", degradation.get("Regional Scale").get("fresh water sediment") ),
-				1080, 1070  	  				
+				String.format("%.2e", degradation.get("Regional Scale").get("fresh water") ),
+				1850, 1020  	  				
 				);
-
+		
 		graphics.drawString(
 				String.format("%.2e", degradation.get("Regional Scale").get("natural soil") ),
-				1925, 1110  	  				
+				2370, 1350  	  				
 				);
-
+		
 		graphics.drawString(
 				String.format("%.2e", degradation.get("Regional Scale").get("other soil") ),
-				2370, 1110  	  				
+				2900, 1350  	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", degradation.get("Regional Scale").get("agricultural soil") ),
-				2940, 1110  	  				
+				3600, 1350   	  				
+				);
+		
+		graphics.drawString(
+				String.format("%.2e", degradation.get("Regional Scale").get("fresh water sediment") ),
+				1350, 1300  	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", degradation.get("Regional Scale").get("coastal sea water") ),
-				475, 1240  	  				
+				610, 1510  	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", degradation.get("Regional Scale").get("coastal marine sediment") ),
-				490, 1470  	  				
+				630, 1790  	  				
 				);
 
 
@@ -688,77 +688,77 @@ public class output extends SelectorComposer<Window> {
 
 		graphics.drawString(
 				String.format("%.2f", masses.get("Air").get("Reg").get("Air")/totalReg*100 ) + " %",
-				980, 100	  				
+				1190, 120	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2f", masses.get("Fresh water").get("Reg").get("Fresh water")/totalReg*100 ) + " %",
-				1100, 970	  				
+				1490, 1130	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2f", masses.get("Fresh water sediment").get("Reg").get("Fresh water sediment")/totalReg*100 ) + " %",
-				995, 1200	  				
+				1210, 1460	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2f", masses.get("Surface sea/ocean water").get("Reg").get("Surface sea/ocean water")/totalReg*100 ) + " %",
-				475, 1380  	  	  				
+				730, 1620  	  	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2f", masses.get("Natural soil").get("Reg").get("Natural soil")/totalReg*100 ) + " %",
-				1925, 1000	   	  	  				
+				2390, 1170   	  	  				
 				);
 		
 		graphics.drawString(
 				String.format("%.2f", masses.get("Other soil").get("Reg").get("Other soil")/totalReg*100 ) + " %",
-				2370, 1000	   	  	  				
+				3000, 1170	   	  	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2f", masses.get("Agricultural soil").get("Reg").get("Agricultural soil")/totalReg*100 ) + " %",
-				2940, 1000	   	  	  				
+				3620, 1170	   	  	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2f", masses.get("Marine sediment").get("Reg").get("Marine sediment")/totalReg*100 ) + " %",
-				570, 1584  	  	  				
+				690, 1930  	  	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2f", masses.get("Fresh water lake").get("Reg").get("Fresh water lake")/totalReg*100 ) + " %",
-				1444, 748	   	  	  				
+				1750, 910	   	  	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", removal.get("Regional Scale").get("coastal marine sediment" ) ),
-				250, 1750	   	  	  				
+				310, 2120	   	  	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", removal.get("Regional Scale").get("fresh water sediment" ) ),
-				860, 1750	   	  	  				
+				1050, 2120	   	  	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", removal.get("Regional Scale").get("natural soil" ) ),
-				1810, 1750	   	  	  				
+				2200, 2120	   	  	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", removal.get("Regional Scale").get("other soil" ) ),
-				2450, 1750	   	  	  				
+				2980, 2120	   	  	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", removal.get("Regional Scale").get("agricultural soil" ) ),
-				2970, 1750	   	  	  				
+				3600, 2120	   	  	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", removal.get("Regional Scale").get("air" ) ),
-				3165, 30	   	  	  				
+				3650, 130	   	  	  				
 				);
 
 		graphics.dispose();
