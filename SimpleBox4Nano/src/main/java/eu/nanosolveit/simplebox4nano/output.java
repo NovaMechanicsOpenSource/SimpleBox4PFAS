@@ -62,13 +62,13 @@ public class output extends SelectorComposer<Window> {
 	Map<String, String> nanoData = null;
 
 	//Names of regions
-//	private String regPart = "Regional - particulate";
-//	private String contPart = "Continental - particulate";
-//	private String globPart = "Global - particulate";
+	//	private String regPart = "Regional - particulate";
+	//	private String contPart = "Continental - particulate";
+	//	private String globPart = "Global - particulate";
 	private String regDis = "Regional";
 	private String contDis = "Continental";
 	private String globDis = "Global";
-//	private String nanoSpec = "Nanomaterial PEC summary";
+	//	private String nanoSpec = "Nanomaterial PEC summary";
 
 	@Wire
 	Image imgResA, imgResB;
@@ -276,14 +276,14 @@ public class output extends SelectorComposer<Window> {
 		buildInflow();
 		buildOutflow();
 		buildRemoval();
-//		buildFormation();
+		//		buildFormation();
 		buildDegradation();
 		buildEmission();
 		buildTransport();
-//		buildTotals();
+		//		buildTotals();
 
 		//build the tables for the NMs only.
-/*		buildTable1();
+		/*		buildTable1();
 		buildTable2();
 		buildTable3();
 		buildTableTotal();*/
@@ -311,14 +311,14 @@ public class output extends SelectorComposer<Window> {
 		buildEmission();
 
 		ListModelList<String> availRegions = new ListModelList<String>();
-//		availRegions.add( regPart );
-//		availRegions.add( contPart );
-//		availRegions.add( globPart );
+		//		availRegions.add( regPart );
+		//		availRegions.add( contPart );
+		//		availRegions.add( globPart );
 		availRegions.add( regDis );
 		availRegions.add( contDis );
 		availRegions.add( globDis );
-//		availRegions.add( nanoSpec );
-		availRegions.addToSelection( availRegions.get(1) );
+		//		availRegions.add( nanoSpec );
+		availRegions.addToSelection( availRegions.get(0) );
 
 		//First show the results for regional since the combobox is not auto 
 		//Compute the particulate matter to show first
@@ -348,7 +348,7 @@ public class output extends SelectorComposer<Window> {
 
 		NumberFormat formatter = new DecimalFormat("0.##E0", otherSymbols); 
 
-/*		airRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Air").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );	
+		/*		airRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Air").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );	
 		freshWaterlakeRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water lake").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );
 		freshWaterRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );
 		seaWaterRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Surface sea/ocean water").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );
@@ -357,8 +357,8 @@ public class output extends SelectorComposer<Window> {
 		naturalSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Natural soil").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );
 		agriSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Agricultural soil").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );
 		otherSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Other soil").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );			
-*/
-		
+		 */
+
 		resultsCombo.setModel( availRegions );
 	}
 
@@ -378,11 +378,10 @@ public class output extends SelectorComposer<Window> {
 
 		BufferedImage bimg = ImageIO.read( c.getResourceAsStream("/resources/ResultsA_v2.png") );
 
-		Font font = new Font("Calibri", Font.BOLD, 30);Graphics2D graphics = bimg.createGraphics();
+		Font font = new Font("Calibri", Font.BOLD, 30); Graphics2D graphics = bimg.createGraphics();
 		graphics.setFont(font);
 
 		graphics.setColor(Color.BLUE);
-
 		graphics.drawString(
 				String.format("%.2e", inflow.get("Regional Scale").get("air") ),
 				200, 230  				
@@ -407,7 +406,7 @@ public class output extends SelectorComposer<Window> {
 				String.format("%.2e", inflow.get("Regional Scale").get("fresh water") ),
 				1030, 920  				
 				);
-		
+
 		graphics.drawString(
 				String.format("%.2e", outflow.get("Regional Scale").get("coastal sea water") ),
 				0, 1050  				
@@ -651,12 +650,12 @@ public class output extends SelectorComposer<Window> {
 				String.format("%.2e", degradation.get("Regional Scale").get("fresh water") ),
 				1850, 1020  	  				
 				);
-		
+
 		graphics.drawString(
 				String.format("%.2e", degradation.get("Regional Scale").get("natural soil") ),
 				2370, 1350  	  				
 				);
-		
+
 		graphics.drawString(
 				String.format("%.2e", degradation.get("Regional Scale").get("other soil") ),
 				2900, 1350  	  				
@@ -666,7 +665,7 @@ public class output extends SelectorComposer<Window> {
 				String.format("%.2e", degradation.get("Regional Scale").get("agricultural soil") ),
 				3600, 1350   	  				
 				);
-		
+
 		graphics.drawString(
 				String.format("%.2e", degradation.get("Regional Scale").get("fresh water sediment") ),
 				1350, 1300  	  				
@@ -685,7 +684,6 @@ public class output extends SelectorComposer<Window> {
 
 		//black
 		graphics.setColor( Color.BLACK );
-
 		graphics.drawString(
 				String.format("%.2f", masses.get("Air").get("Reg").get("Air")/totalReg*100 ) + " %",
 				1190, 120	  				
@@ -710,7 +708,7 @@ public class output extends SelectorComposer<Window> {
 				String.format("%.2f", masses.get("Natural soil").get("Reg").get("Natural soil")/totalReg*100 ) + " %",
 				2390, 1170   	  	  				
 				);
-		
+
 		graphics.drawString(
 				String.format("%.2f", masses.get("Other soil").get("Reg").get("Other soil")/totalReg*100 ) + " %",
 				3000, 1170	   	  	  				
@@ -775,41 +773,45 @@ public class output extends SelectorComposer<Window> {
 		//		File img = new File("C:/Users/nikol/eclipse-workspace/nanosolveit/NanoSolveIT/src/main/webapp/resources/ResultsA_v2.png");
 		BufferedImage bimg = ImageIO.read( c.getResourceAsStream("/resources/ResultsA_v2.png") );
 
-		Font font = new Font("Calibri", Font.BOLD, 20); 
-		Graphics2D graphics = bimg.createGraphics();
+		Font font = new Font("Calibri", Font.BOLD, 30); Graphics2D graphics = bimg.createGraphics();
 		graphics.setFont(font);
 
 		graphics.setColor(Color.BLUE);
-
 		graphics.drawString(
 				String.format("%.2e", inflow.get("Continental Scale").get("air") ),
-				200, 200  				
+				200, 230  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", outflow.get("Continental Scale").get("air") ),
-				0, 280  				
+				0, 340  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", outflow.get("Continental Scale").get("fresh water lakes") ),
-				0, 700  				
+				0, 860  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", outflow.get("Continental Scale").get("fresh water") ),
-				0, 800  				
+				0, 970  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", inflow.get("Continental Scale").get("fresh water") ),
-				840, 760  				
+				1030, 920  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", outflow.get("Continental Scale").get("coastal sea water") ),
-				0, 860  				
+				0, 1050  				
 				);
+
+		graphics.drawString(
+				String.format("%.2e", inflow.get("Continental Scale").get("coastal sea water") ),
+				280, 990  				
+				);
+
 
 		//green
 		graphics.setColor(new Color(0, 128, 0) );
@@ -819,27 +821,28 @@ public class output extends SelectorComposer<Window> {
 				);
 
 		graphics.drawString(
-				String.format("%.2e", 0.00 ), 1440, 890 		
+				String.format("%.2e", 0.00 ), 1760, 1070 		
 				);
 
 		graphics.drawString(
-				String.format("%.2e", emission.get("Continental Scale").get("fresh water") ), 750, 970 		
+				String.format("%.2e", emission.get("Continental Scale").get("fresh water") ),760, 1100 	 		
 				);
 
 		graphics.drawString(
-				String.format("%.2e", emission.get("Continental Scale").get("coastal sea water") ), 220, 970 		
+				String.format("%.2e", emission.get("Continental Scale").get("coastal sea water") ), 280, 1180 	 		
 				);
 
 		graphics.drawString(
-				String.format("%.2e", emission.get("Continental Scale").get("agricultural soil") ), 2740, 1390 		
+				String.format("%.2e", emission.get("Continental Scale").get("other soil") ), 3910, 1660 		
 				);
 
 		graphics.drawString(
-				String.format("%.2e", emission.get("Continental Scale").get("other soil") ), 2300, 1430 		
+				String.format("%.2e", emission.get("Continental Scale").get("agricultural soil") ),  3910, 1720	
 				);
 
+
 		graphics.drawString(
-				String.format("%.2e", emission.get("Continental Scale").get("natural soil") ), 1490, 1480 		
+				String.format("%.2e", emission.get("Continental Scale").get("natural soil") ), 3910, 1780 		
 				);
 
 		//red
@@ -847,312 +850,308 @@ public class output extends SelectorComposer<Window> {
 		if ( transport.get("water-air").get("Continental Scale").get("coastal sea water") > 0.0 )
 			graphics.drawString(
 					String.format("%.2e", transport.get("water-air").get("Continental Scale").get("coastal sea water") ),
-					360, 480  				
+					470, 570  				
 					);
 		else
 			graphics.drawString(
 					String.format("%.2e", 0.0),
-					360, 480  				
+					470, 570  				
 					);
 
-		if ( transport.get("water-air").get("Continental Scale").get("fresh water") > 0.0 )
+		if ( transport.get("soil-water").get("Continental Scale").get("fresh water") > 0.0 )
 			graphics.drawString(
-					String.format("%.2e", transport.get("water-air").get("Continental Scale").get("fresh water") ),
-					850, 480  				
+					String.format("%.2e", transport.get("soil-water").get("Continental Scale").get("fresh water") ),
+					1050, 570  				
 					);
 		else
 			graphics.drawString(
 					String.format("%.2e", 0.0 ),
-					850, 480  				
+					1050, 570  				
 					);
 
 		if ( transport.get("water-air").get("Continental Scale").get("fresh water lakes") > 0.0 )
 			graphics.drawString(
 					String.format("%.2e", transport.get("water-air").get("Continental Scale").get("fresh water lakes") ),
-					1510, 410  				
+					1860, 490  				
 					);
 		else
 			graphics.drawString(
 					String.format("%.2e", 0.0 ),
-					1510, 410  				
+					1860, 490  				
 					);
 
 		if ( transport.get("soil-air").get("Continental Scale").get("natural soil") > 0.0 )
 			graphics.drawString(
 					String.format("%.2e", transport.get("soil-air").get("Continental Scale").get("natural soil") ),
-					1940, 410  				
+					2380, 490  				
 					);
 		else
 			graphics.drawString(
 					String.format("%.2e", 0.0 ),
-					1940, 410  				
+					2380, 490  				
 					);
-
 
 		if ( transport.get("soil-air").get("Continental Scale").get("other soil") > 0.0 )
 			graphics.drawString(
 					String.format("%.2e", transport.get("soil-air").get("Continental Scale").get("other soil") ),
-					2460, 410  				
+					3010, 490  				
 					);
 		else
 			graphics.drawString(
 					String.format("%.2e", 0.0 ),
-					2460, 410  				
+					3010, 490  				
 					);
 
 		if ( transport.get("soil-air").get("Continental Scale").get("agricultural soil") > 0.0 )
 			graphics.drawString(
 					String.format("%.2e", transport.get("soil-air").get("Continental Scale").get("agricultural soil") ),
-					2800, 410  				
+					3420, 490  				
 					);
 		else
 			graphics.drawString(
 					String.format("%.2e", 0.0 ),
-					2800, 410  				
+					3420, 490  				
 					);
 
 		if ( transport.get("air-water").get("Continental Scale").get("coastal sea water") > 0.0 )
 			graphics.drawString(
 					String.format("%.2e", transport.get("air-water").get("Continental Scale").get("coastal sea water") ),
-					360, 670  				
+					470, 820  				
 					);
 		else
 			graphics.drawString(
 					String.format("%.2e", 0.0 ),
-					360, 670  				
+					470, 820  				
 					);
 
 		if ( transport.get("air-water").get("Continental Scale").get("fresh water") > 0.0 )
 			graphics.drawString(
 					String.format("%.2e", transport.get("air-water").get("Continental Scale").get("fresh water") ),
-					850, 670  				
+					1050, 820  				
 					);
 		else
 			graphics.drawString(
 					String.format("%.2e", 0.0 ),
-					850, 670  				
+					1050, 820  				
 					);
 
 		if ( transport.get("air-water").get("Continental Scale").get("fresh water lakes") > 0.0 )
 			graphics.drawString(
 					String.format("%.2e", transport.get("air-water").get("Continental Scale").get("fresh water lakes") ),
-					1510, 670  				
+					1860, 820  				
 					);
 		else
 			graphics.drawString(
 					String.format("%.2e", 0.0 ),
-					1510, 670  				
+					1860, 820  				
 					);
 
 		if ( transport.get("air-soil").get("Continental Scale").get("natural soil") > 0.0 )
 			graphics.drawString(
 					String.format("%.2e", transport.get("air-soil").get("Continental Scale").get("natural soil") ),
-					1940, 670  				
+					2380, 820  				
 					);
 		else
 			graphics.drawString(
 					String.format("%.2e", 0.0 ),
-					1940, 670  				
+					2380, 820  				
 					);
 
 		if ( transport.get("air-soil").get("Continental Scale").get("other soil") > 0.0 )
 			graphics.drawString(
 					String.format("%.2e", transport.get("air-soil").get("Continental Scale").get("other soil") ),
-					2460, 670  				
+					3010, 820  				
 					);
 		else
 			graphics.drawString(
 					String.format("%.2e", 0.0 ),
-					2460, 670  				
+					3010, 820  				
 					);
 
 		if ( transport.get("air-soil").get("Continental Scale").get("agricultural soil") > 0.0 )
 			graphics.drawString(
 					String.format("%.2e", transport.get("air-soil").get("Continental Scale").get("agricultural soil") ),
-					2800, 670  				
+					3420, 820  				
 					);
 		else
 			graphics.drawString(
 					String.format("%.2e", 0.0 ),
-					2800, 670  				
+					3420, 820  				
 					);
-
 
 		if ( transport.get("sed-water").get("Continental Scale").get("fresh water sediment") > 0.0 )
 			graphics.drawString(
 					String.format("%.2e", transport.get("sed-water").get("Continental Scale").get("fresh water sediment") ),
-					850, 920  				
+					1050, 1110  				
 					);
 		else
 			graphics.drawString(
 					String.format("%.2e", 0.0 ),
-					850, 920 				
+					1050, 1110  				
 					);
 
 		if ( transport.get("water-sed").get("Continental Scale").get("fresh water sediment") > 0.0 )
 			graphics.drawString(
 					String.format("%.2e", transport.get("water-sed").get("Continental Scale").get("fresh water sediment") ),
-					850, 1100  				
+					1050, 1340  				
 					);
 		else
 			graphics.drawString(
 					String.format("%.2e", 0.0 ),
-					850, 1100  				
+					1050, 1340  				
 					);
 
 		if ( transport.get("sed-water").get("Continental Scale").get("coastal marine sediment") > 0.0 )
 			graphics.drawString(
 					String.format("%.2e", transport.get("sed-water").get("Continental Scale").get("coastal marine sediment") ),
-					230, 1310  				
+					300, 1580  				
 					);
 		else
 			graphics.drawString(
 					String.format("%.2e", 0.0 ),
-					230, 1310 				
+					300, 1580 				
 					);
 
 		if ( transport.get("water-sed").get("Continental Scale").get("coastal marine sediment") > 0.0 )
 			graphics.drawString(
 					String.format("%.2e", transport.get("water-sed").get("Continental Scale").get("coastal marine sediment") ),
-					230, 1490  				
+					300, 1810  				
 					);
 		else
 			graphics.drawString(
 					String.format("%.2e", 0.0 ),
-					230, 1490  				
+					300, 1810  				
 					);
 
 		//orange
 		graphics.setColor(new Color(255, 102, 36) );
 		graphics.drawString(
 				String.format("%.2e", transport.get("soil-water").get("Continental Scale").get("fresh water") ),
-				1150, 660  	  				
+				1430, 780  	  				
 				);
 
 		//gray
 		graphics.setColor( Color.GRAY );
 		graphics.drawString(
 				String.format("%.2e", degradation.get("Continental Scale").get("air") ),
-				680, 340
-				);
-
-		graphics.drawString(
-				String.format("%.2e", degradation.get("Continental Scale").get("fresh water") ),
-				1120, 830  	  				
+				860, 410
 				);
 
 		graphics.drawString(
 				String.format("%.2e", degradation.get("Continental Scale").get("fresh water lakes") ),
-				1500, 830  	  				
+				1390, 1020  	  				
 				);
 
 		graphics.drawString(
-				String.format("%.2e", degradation.get("Continental Scale").get("fresh water sediment") ),
-				1080, 1070  	  				
+				String.format("%.2e", degradation.get("Continental Scale").get("fresh water") ),
+				1850, 1020  	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", degradation.get("Continental Scale").get("natural soil") ),
-				1925, 1110  	  				
+				2370, 1350  	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", degradation.get("Continental Scale").get("other soil") ),
-				2370, 1110  	  				
+				2900, 1350  	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", degradation.get("Continental Scale").get("agricultural soil") ),
-				2940, 1110  	  				
+				3600, 1350   	  				
+				);
+
+		graphics.drawString(
+				String.format("%.2e", degradation.get("Continental Scale").get("fresh water sediment") ),
+				1350, 1300  	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", degradation.get("Continental Scale").get("coastal sea water") ),
-				475, 1240  	  				
+				610, 1510  	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", degradation.get("Continental Scale").get("coastal marine sediment") ),
-				490, 1470  	  				
+				630, 1790  	  				
 				);
 
-
-		//black
+		
 		graphics.setColor( Color.BLACK );
-
 		graphics.drawString(
-				String.format("%.2f", masses.get("Air").get("Cont").get("Dissolved/Gas species (G/D)")/totalCont*100 ) + " %",
-				980, 100	  				
+				String.format("%.2f", masses.get("Air").get("Cont").get("Air")/totalCont*100 ) + " %",
+				1190, 120	  				
 				);
 
 		graphics.drawString(
-				String.format("%.2f", masses.get("Fresh water").get("Cont").get("Dissolved/Gas species (G/D)")/totalCont*100 ) + " %",
-				1100, 970	  				
+				String.format("%.2f", masses.get("Fresh water").get("Cont").get("Fresh water")/totalCont*100 ) + " %",
+				1490, 1130	  				
 				);
 
 		graphics.drawString(
-				String.format("%.2f", masses.get("Fresh water sediment").get("Cont").get("Dissolved/Gas species (G/D)")/totalCont*100 ) + " %",
-				995, 1200	  				
+				String.format("%.2f", masses.get("Fresh water sediment").get("Cont").get("Fresh water sediment")/totalCont*100 ) + " %",
+				1210, 1460	  				
 				);
 
 		graphics.drawString(
-				String.format("%.2f", masses.get("Surface sea/ocean water").get("Cont").get("Dissolved/Gas species (G/D)")/totalCont*100 ) + " %",
-				475, 1380  	  	  				
+				String.format("%.2f", masses.get("Surface sea/ocean water").get("Cont").get("Surface sea/ocean water")/totalCont*100 ) + " %",
+				730, 1620  	  	  				
 				);
 
 		graphics.drawString(
-				String.format("%.2f", masses.get("Natural soil").get("Cont").get("Dissolved/Gas species (G/D)")/totalCont*100 ) + " %",
-				1925, 1000	   	  	  				
+				String.format("%.2f", masses.get("Natural soil").get("Cont").get("Natural soil")/totalCont*100 ) + " %",
+				2390, 1170   	  	  				
 				);
 
 		graphics.drawString(
-				String.format("%.2f", masses.get("Other soil").get("Cont").get("Dissolved/Gas species (G/D)")/totalCont*100 ) + " %",
-				2370, 1000	   	  	  				
+				String.format("%.2f", masses.get("Other soil").get("Cont").get("Other soil")/totalCont*100 ) + " %",
+				3000, 1170	   	  	  				
 				);
 
 		graphics.drawString(
-				String.format("%.2f", masses.get("Agricultural soil").get("Cont").get("Dissolved/Gas species (G/D)")/totalCont*100 ) + " %",
-				2940, 1000	   	  	  				
+				String.format("%.2f", masses.get("Agricultural soil").get("Cont").get("Agricultural soil")/totalCont*100 ) + " %",
+				3620, 1170	   	  	  				
 				);
 
 		graphics.drawString(
-				String.format("%.2f", masses.get("Marine sediment").get("Cont").get("Dissolved/Gas species (G/D)")/totalCont*100 ) + " %",
-				570, 1584  	  	  				
+				String.format("%.2f", masses.get("Marine sediment").get("Cont").get("Marine sediment")/totalCont*100 ) + " %",
+				690, 1930  	  	  				
 				);
 
 		graphics.drawString(
-				String.format("%.2f", masses.get("Fresh water lake").get("Cont").get("Dissolved/Gas species (G/D)")/totalCont*100 ) + " %",
-				1444, 748	   	  	  				
+				String.format("%.2f", masses.get("Fresh water lake").get("Cont").get("Fresh water lake")/totalCont*100 ) + " %",
+				1750, 910	   	  	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", removal.get("Continental Scale").get("coastal marine sediment" ) ),
-				250, 1750	   	  	  				
+				310, 2120	   	  	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", removal.get("Continental Scale").get("fresh water sediment" ) ),
-				860, 1750	   	  	  				
+				1050, 2120	   	  	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", removal.get("Continental Scale").get("natural soil" ) ),
-				1810, 1750	   	  	  				
+				2200, 2120	   	  	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", removal.get("Continental Scale").get("other soil" ) ),
-				2450, 1750	   	  	  				
+				2980, 2120	   	  	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", removal.get("Continental Scale").get("agricultural soil" ) ),
-				2970, 1750	   	  	  				
+				3600, 2120	   	  	  				
 				);
 
 		graphics.drawString(
 				String.format("%.2e", removal.get("Continental Scale").get("air" ) ),
-				3165, 30	   	  	  				
+				3650, 130	   	  	  				
 				);
 
 		graphics.dispose();
@@ -1221,8 +1220,8 @@ public class output extends SelectorComposer<Window> {
 				);
 
 		//red
-		
-/*
+
+		/*
 		graphics.setColor(new Color(227, 30, 36) );
 		if ( transport.get("water-air").get("Global Scale - Moderate climate zone").get("upper ocean water") > 0 )
 			graphics.drawString(
@@ -1313,8 +1312,8 @@ public class output extends SelectorComposer<Window> {
 					String.format("%.2e", 0.0 ),
 					670, 480  	  				
 					);
-		
-		*/
+
+		 */
 
 		//orange
 		graphics.setColor(new Color(255, 102, 36) );
@@ -1447,7 +1446,7 @@ public class output extends SelectorComposer<Window> {
 				);
 
 		//red			
-/*		graphics.setColor(new Color(227, 30, 36) );
+		/*		graphics.setColor(new Color(227, 30, 36) );
 		if ( environment.getEnvProps("ARCTIC","k.w2AD.aAG")*engine.getMassMol(116)*input.getSubstancesData("Molweight") > 0 )
 			graphics.drawString(
 					String.format("%.2e", environment.getEnvProps("ARCTIC","k.w2AD.aAG")*engine.getMassMol(116)*input.getSubstancesData("Molweight") ),
@@ -1535,8 +1534,8 @@ public class output extends SelectorComposer<Window> {
 					String.format("%.2e", 0.0 ),
 					670 + x, 480  	  				
 					);
-					
-					*/
+
+		 */
 
 		//orange
 		graphics.setColor(new Color(255, 102, 36) );
@@ -1670,7 +1669,7 @@ public class output extends SelectorComposer<Window> {
 		graphics.setColor(new Color(227, 30, 36) );
 
 		//red
-/*		if ( environment.getEnvProps("TROPICAL","k.w2TD.aTG")*engine.getMassMol(139)*input.getSubstancesData("Molweight") > 0 )
+		/*		if ( environment.getEnvProps("TROPICAL","k.w2TD.aTG")*engine.getMassMol(139)*input.getSubstancesData("Molweight") > 0 )
 			graphics.drawString(					
 					String.format("%.2e", environment.getEnvProps("TROPICAL","k.w2TD.aTG")*engine.getMassMol(139)*input.getSubstancesData("Molweight") ),					
 					190 + x, 390  	  				
@@ -1764,8 +1763,8 @@ public class output extends SelectorComposer<Window> {
 				String.format("%.2e", transport.get("soil-water").get("Global Scale - Tropical climate zone").get("upper ocean water") ),
 				440 + x, 510  	  				
 				);
-				
-		*/
+
+		 */
 
 		//gray
 		graphics.setColor( Color.GRAY );
@@ -1866,19 +1865,19 @@ public class output extends SelectorComposer<Window> {
 		masses.get("Air").get("Mod").put("Air", engine.getMassMol(18)*input.getSubstancesData("Molweight") );
 		masses.get("Air").get("Mod").put("* GAS PHASE", environment.getEnvProps("CONTINENTAL", "FRgas.aC")*
 				masses.get("Air").get("Mod").get("Air") );
-		masses.get("Air").get("Mod").put("* AEROSOL- and CLOUD PHASES", (1.-environment.getEnvProps("CONTINENTAL", "FRgas.aC") )*
+		masses.get("Air").get("Mod").put("* AEROSOL- and CLOUD PHASES", (1.-environment.getEnvProps("MODERATE", "FRgas.aM") )*
 				masses.get("Air").get("Mod").get("Air"));
 
 		masses.get("Air").get("Arct").put("Air", engine.getMassMol(23)*input.getSubstancesData("Molweight") );
-		masses.get("Air").get("Arct").put("* GAS PHASE", environment.getEnvProps("CONTINENTAL", "FRgas.aC")*
+		masses.get("Air").get("Arct").put("* GAS PHASE", environment.getEnvProps("ARCTIC", "FRgas.aA")*
 				masses.get("Air").get("Arct").get("Air") );
-		masses.get("Air").get("Arct").put("* AEROSOL- and CLOUD PHASES", (1.-environment.getEnvProps("CONTINENTAL", "FRgas.aC") )*
+		masses.get("Air").get("Arct").put("* AEROSOL- and CLOUD PHASES", (1.-environment.getEnvProps("ARCTIC", "FRgas.aA") )*
 				masses.get("Air").get("Arct").get("Air"));
 
 		masses.get("Air").get("Trop").put("Air", engine.getMassMol(28)*input.getSubstancesData("Molweight") );
-		masses.get("Air").get("Trop").put("* GAS PHASE", environment.getEnvProps("CONTINENTAL", "FRgas.aC")*
+		masses.get("Air").get("Trop").put("* GAS PHASE", environment.getEnvProps("TROPICAL", "FRgas.aT")*
 				masses.get("Air").get("Trop").get("Air") );
-		masses.get("Air").get("Trop").put("* AEROSOL- and CLOUD PHASES", (1.-environment.getEnvProps("CONTINENTAL", "FRgas.aC") )*
+		masses.get("Air").get("Trop").put("* AEROSOL- and CLOUD PHASES", (1.-environment.getEnvProps("TROPICAL", "FRgas.aT") )*
 				masses.get("Air").get("Trop").get("Air"));
 
 		masses.put("Fresh water lake", new HashMap< String, Map< String, Double > >() );		
@@ -1947,7 +1946,7 @@ public class output extends SelectorComposer<Window> {
 				masses.get("Surface sea/ocean water").get("Reg").get("Surface sea/ocean water") );
 		masses.get("Surface sea/ocean water").get("Reg").put("* SUSPENDED SOLIDS", (1.-environment.getEnvProps("REGIONAL", "FRwD.w2R") )*
 				masses.get("Surface sea/ocean water").get("Reg").get("Surface sea/ocean water"));
-		
+
 		masses.get("Surface sea/ocean water").get("Cont").put("Surface sea/ocean water", engine.getMassMol(12)*input.getSubstancesData("Molweight") );
 		masses.get("Surface sea/ocean water").get("Cont").put("* DISSOLVED", environment.getEnvProps("CONTINENTAL", "FRw.w2C")*
 				masses.get("Surface sea/ocean water").get("Cont").get("Surface sea/ocean water") );
@@ -2056,7 +2055,7 @@ public class output extends SelectorComposer<Window> {
 				masses.get("Natural soil").get("Cont").get("Natural soil") );
 		masses.get("Natural soil").get("Cont").put("* SOLID PHASE", environment.getEnvProps("CONTINENTAL", "FRs.s1C")*
 				masses.get("Natural soil").get("Cont").get("Natural soil"));
-	
+
 		masses.put("Agricultural soil", new HashMap< String, Map< String, Double > >() );		
 		masses.get("Agricultural soil").put("Reg", new HashMap<String, Double>() );
 		masses.get("Agricultural soil").put("Cont", new HashMap<String, Double>() );
@@ -2068,7 +2067,7 @@ public class output extends SelectorComposer<Window> {
 		masses.get("Agricultural soil").get("Reg").put("* SOLID PHASE", environment.getEnvProps("REGIONAL", "FRs.s1R")*
 				masses.get("Agricultural soil").get("Reg").get("Agricultural soil"));
 
-		masses.get("Agricultural soil").get("Cont").put("Agricultural soil", engine.getMassMol(12)*
+		masses.get("Agricultural soil").get("Cont").put("Agricultural soil", engine.getMassMol(16)*
 				input.getSubstancesData("Molweight") );
 		masses.get("Agricultural soil").get("Cont").put("* PORE WATER / GROUNDWATER", environment.getEnvProps("CONTINENTAL", "FRw.s1C")*
 				masses.get("Agricultural soil").get("Cont").get("Agricultural soil") );
@@ -2140,7 +2139,7 @@ public class output extends SelectorComposer<Window> {
 		concentrations.get("Air").get("Cont").put("* AEROSOL- and CLOUD PHASES",
 				(1.- environment.getEnvProps("CONTINENTAL","FRgas.aC"))* concentrations.get("Air").get("Cont").get("Air") );
 
-		
+
 		concentrations.get("Air").get("Mod").put("Air",engine.getConcentration(18)*(input.getSubstancesData("Molweight")*1000.)  );
 		concentrations.get("Air").get("Mod").put("* GAS PHASE",
 				environment.getEnvProps("MODERATE","FRgas.aM")* concentrations.get("Air").get("Mod").get("Air") );
@@ -2380,7 +2379,7 @@ public class output extends SelectorComposer<Window> {
 				engine.getConcentration(5)*input.getSubstancesData("Molweight")*1000./
 				(environment.getEnvProps("REGIONAL", "FRACw.sdR")*1000 + 
 						environment.getEnvProps("REGIONAL", "FRACs.sdR") )*
-						input.getLandscapeSettings("ALL-SCALE", "RHOsolid") 
+				input.getLandscapeSettings("ALL-SCALE", "RHOsolid") 
 				);
 		concentrations.get("Marine sediment").get("Reg").put("* SOLID PHASE",
 				engine.getConcentration(5)*environment.getEnvProps("REGIONAL", "FRACs.sdR")/
@@ -2480,7 +2479,7 @@ public class output extends SelectorComposer<Window> {
 				environment.getEnvProps("TROPICAL", "Kp.sdT")
 				);
 
-		
+
 		concentrations.put("Natural soil", new HashMap< String, Map< String, Double > >() );		
 		concentrations.get("Natural soil").put("Reg", new HashMap<String, Double>() );
 		concentrations.get("Natural soil").put("Cont", new HashMap<String, Double>() );
@@ -4208,7 +4207,7 @@ public class output extends SelectorComposer<Window> {
 		transport.get("sed-water").put("Global Scale - Arctic climate zone", new HashMap<String, Double>() );
 		transport.get("sed-water").put("Global Scale - Tropical climate zone", new HashMap<String, Double>() );
 
-			transport.get("sed-water").get("Regional Scale").put("fresh water", 
+		transport.get("sed-water").get("Regional Scale").put("fresh water", 
 				environment.getEnvProps("REGIONAL","k.sd1RD.w1RD")*
 				engine.getMassMol(4)*
 				input.getSubstancesData("Molweight")
@@ -4554,7 +4553,7 @@ public class output extends SelectorComposer<Window> {
 
 		NumberFormat formatter = new DecimalFormat("0.##E0", otherSymbols); 
 
-/*		if ( resultsCombo.getSelectedItem().getValue().equals( regPart) ) {
+		/*		if ( resultsCombo.getSelectedItem().getValue().equals( regPart) ) {
 			disBuilder();
 
 			showImageRegional();
@@ -4640,7 +4639,7 @@ public class output extends SelectorComposer<Window> {
 			updateResTables();
 		}
 		else
-*/
+		 */
 		if ( resultsCombo.getSelectedItem().getValue().equals(regDis) ) {
 			disBuilder();
 
@@ -4704,7 +4703,7 @@ public class output extends SelectorComposer<Window> {
 			concLab3.setVisible(false);
 			updateResTables();
 		}
-/*		else if ( resultsCombo.getSelectedItem().getValue().equals(nanoSpec) ) {
+		/*		else if ( resultsCombo.getSelectedItem().getValue().equals(nanoSpec) ) {
 			disBuilder();
 
 			imgResA.setVisible(false);
@@ -4735,7 +4734,7 @@ public class output extends SelectorComposer<Window> {
 
 		NumberFormat formatter = new DecimalFormat("0.##E0", otherSymbols); 
 
-/*		if ( resultsCombo.getSelectedItem().getValue().equals( regDis ) ) {		
+		/*		if ( resultsCombo.getSelectedItem().getValue().equals( regDis ) ) {		
 			airRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Air").get("Reg").get("Dissolved/Gas species (G/D)") ) ) );	
 			freshWaterlakeRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water lake").get("Reg").get("Dissolved/Gas species (G/D)") ) ) );
 			freshWaterRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water").get("Reg").get("Dissolved/Gas species (G/D)") ) ) );
@@ -4776,7 +4775,7 @@ public class output extends SelectorComposer<Window> {
 			tropSeaWSedRes.setValue( formatter.format( Double.valueOf(  masses.get("Marine sediment").get("Trop").get("Dissolved/Gas species (G/D)") ) ) );
 			tropSoilRes.setValue( formatter.format( Double.valueOf(  masses.get("Other soil").get("Trop").get("Dissolved/Gas species (G/D)") ) ) );			
 		}
-		
+
 		if ( resultsCombo.getSelectedItem().getValue().equals(regPart) ) {
 			airRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Air").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );	
 			freshWaterlakeRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Fresh water lake").get("Reg").get("Species attached to NCs (<450 nm) (A)") ) ) );
@@ -5034,7 +5033,7 @@ public class output extends SelectorComposer<Window> {
 			for ( String entry:prop3) 
 				rows.get( iRow++ ).createCell(j).setCellValue( masses.get("Fresh water lake").get(regions.get(k)).get( entry ) );
 
-/*			iRow++;
+			/*			iRow++;
 			rows.get( iRow++ ).createCell(j).setCellValue(masses.get("Fresh water lake sediment").get(regions.get(k)).get("Fresh water lake sediment"));
 			for ( String entry:prop2) 
 				rows.get( iRow++ ).createCell(j).setCellValue( masses.get("Fresh water lake sediment").get(regions.get(k)).get( entry ) );*/
@@ -5159,7 +5158,7 @@ public class output extends SelectorComposer<Window> {
 
 			iRow++;
 			rows.get( iRow ).createCell(17).setCellValue( "g.m-3" );		
-//			rows.get( iRow++ ).createCell(j).setCellValue(concentrations.get("Fresh water lake").get(regions.get(k) ).get("Fresh water lake") );
+			//			rows.get( iRow++ ).createCell(j).setCellValue(concentrations.get("Fresh water lake").get(regions.get(k) ).get("Fresh water lake") );
 			for ( String entry:prop3) {
 				if ( entry ==  "* SUSPENDED SOLIDS" )
 					rows.get( iRow ).createCell(17).setCellValue( "g.kg(d)-1" );		
@@ -5474,17 +5473,17 @@ public class output extends SelectorComposer<Window> {
 					iRow++;
 
 		}
-		
+
 		//Re-build in order to write the info - Disolved species
 		disBuilder();
 		int iCol = addNewSheet( "Steady state mass flows for dissolved species", "Output table 2: Steady-state mass flows for D species only (kg.s-1)",
 				workbook, regions, iRow);
 
-//		partBuilder();
-//		iCol = addNewSheet( "Steady state mass flows for particulate species", "Output table 2b: Steady-state mass flows for total particulate species only (kg.s-1)",
-//				workbook, regions, iRow);
+		//		partBuilder();
+		//		iCol = addNewSheet( "Steady state mass flows for particulate species", "Output table 2b: Steady-state mass flows for total particulate species only (kg.s-1)",
+		//				workbook, regions, iRow);
 	}
-	
+
 	int addNewSheet( String sheetName, String tableName, XSSFWorkbook workbook,  ArrayList<String> regions, int iRow ) {
 		// STEADY-STATE output
 		XSSFSheet spreadsheet = workbook.createSheet( sheetName );
@@ -5502,7 +5501,7 @@ public class output extends SelectorComposer<Window> {
 		XSSFFont noBoldFont = workbook.createFont();
 		noBoldFont.setBold(false);
 		noBoldStyle.setFont(noBoldFont);  
-		
+
 		regions.clear();
 		regions.add("Regional Scale");
 		regions.add("Continental Scale");
@@ -5775,7 +5774,7 @@ public class output extends SelectorComposer<Window> {
 			iCol++;
 		}
 
-		
+
 		return iCol;
 	}
 
