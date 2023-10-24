@@ -104,7 +104,7 @@ public class Engine {
 		this.rConc = new Array2DRowRealMatrix(new double[N]);
 		this.rFugacity = new Array2DRowRealMatrix(new double[N]);
 
-		this.rMassFlows = new Array2DRowRealMatrix(32, N);
+		this.rMassFlows = new Array2DRowRealMatrix(N, N);
 		this.rMassDistrubution = new Array2DRowRealMatrix(new double[N]);
 		this.rMassMolRemoval = new Array2DRowRealMatrix(new double[N]);
 	}
@@ -124,7 +124,7 @@ public class Engine {
 		this.createEmissions();
 		this.createCoeffMatrix();
 		this.createMassMatrices();
-		this.createMassMolRemoval();
+//		this.createMassMolRemoval();
 		this.createMassFlows();
 	}
 
@@ -149,8 +149,7 @@ public class Engine {
 					dSumRows += this.rMassFlows.getEntry(j, i);
 			}
 
-			this.rMassFlows.setEntry(i, i,
-					this.rEmissions.getEntry(i, 0) + dSumCols - dSumRows - this.rMassMolRemoval.getEntry(i, 0));
+			this.rMassFlows.setEntry(i, i, dSumCols - dSumRows);
 		}
 
 		/*
@@ -164,7 +163,6 @@ public class Engine {
 		 * } catch (IOException e) { System.out.println("An error occurred.");
 		 * e.printStackTrace(); }
 		 */
-
 	}
 
 	void createMassMolRemoval() {
@@ -174,11 +172,11 @@ public class Engine {
 //		this.rMassMolRemoval.setEntry(2, 0, environment.getEnvProps("REGIONAL","k.aRA")*this.rMassMol.getEntry(2, 0) );
 //		this.rMassMolRemoval.setEntry(3, 0, environment.getEnvProps("REGIONAL","k.aRP")*this.rMassMol.getEntry(3, 0) );
 		this.rMassMolRemoval.setEntry(1, 0,
-				environment.getEnvProps("REGIONAL", "k.w0RD") * this.rMassMol.getEntry(7, 0));
+				environment.getEnvProps("REGIONAL", "k.w0RD") * this.rMassMol.getEntry(1, 0));
 		this.rMassMolRemoval.setEntry(2, 0,
-				environment.getEnvProps("REGIONAL", "k.w1RD") * this.rMassMol.getEntry(11, 0));
+				environment.getEnvProps("REGIONAL", "k.w1RD") * this.rMassMol.getEntry(2, 0));
 		this.rMassMolRemoval.setEntry(3, 0,
-				environment.getEnvProps("REGIONAL", "k.w2RD") * this.rMassMol.getEntry(15, 0));
+				environment.getEnvProps("REGIONAL", "k.w2RD") * this.rMassMol.getEntry(3, 0));
 		/*
 		 * this.rMassMolRemoval.setEntry(19, 0,
 		 * environment.getEnvProps("REGIONAL","k.sd0RD")*this.rMassMol.getEntry(19, 0)
@@ -207,12 +205,12 @@ public class Engine {
 		 * );
 		 */
 		this.rMassMolRemoval.setEntry(6, 0,
-				environment.getEnvProps("REGIONAL", "k.s1RD") * this.rMassMol.getEntry(31, 0));
+				environment.getEnvProps("REGIONAL", "k.s1RD") * this.rMassMol.getEntry(4, 0));
 //		this.rMassMolRemoval.setEntry(32, 0, environment.getEnvProps("REGIONAL","k.s1RS")*this.rMassMol.getEntry(32, 0) );
 //		this.rMassMolRemoval.setEntry(33, 0, environment.getEnvProps("REGIONAL","k.s1RA")*this.rMassMol.getEntry(33, 0) );
 //		this.rMassMolRemoval.setEntry(34, 0, environment.getEnvProps("REGIONAL","k.s1RP")*this.rMassMol.getEntry(34, 0) );
 		this.rMassMolRemoval.setEntry(7, 0,
-				environment.getEnvProps("REGIONAL", "k.s2RD") * this.rMassMol.getEntry(35, 0));
+				environment.getEnvProps("REGIONAL", "k.s2RD") * this.rMassMol.getEntry(5, 0));
 		/*
 		 * this.rMassMolRemoval.setEntry(36, 0,
 		 * environment.getEnvProps("REGIONAL","k.s2RS")*this.rMassMol.getEntry(36, 0) );
@@ -222,7 +220,7 @@ public class Engine {
 		 * environment.getEnvProps("REGIONAL","k.s2RP")*this.rMassMol.getEntry(38, 0) );
 		 */
 		this.rMassMolRemoval.setEntry(8, 0,
-				environment.getEnvProps("REGIONAL", "k.s3RD") * this.rMassMol.getEntry(39, 0));
+				environment.getEnvProps("REGIONAL", "k.s3RD") * this.rMassMol.getEntry(6, 0));
 		/*
 		 * this.rMassMolRemoval.setEntry(40, 0,
 		 * environment.getEnvProps("REGIONAL","k.s3RS")*this.rMassMol.getEntry(40, 0) );
@@ -233,7 +231,7 @@ public class Engine {
 		 */
 
 		this.rMassMolRemoval.setEntry(9, 0,
-				environment.getEnvProps("CONTINENTAL", "k.aC") * this.rMassMol.getEntry(43, 0));
+				environment.getEnvProps("CONTINENTAL", "k.aC") * this.rMassMol.getEntry(7, 0));
 		/*
 		 * this.rMassMolRemoval.setEntry(44, 0,
 		 * environment.getEnvProps("CONTINENTAL","k.aCS")*this.rMassMol.getEntry(44, 0)
@@ -518,97 +516,97 @@ public class Engine {
 		iCount = 0;
 		for (double val : this.rMassMol.getColumn(0))
 			this.rMassDistrubution.setEntry(iCount, 0, val / this.dTotalMassMol);
-
+		
 		this.rFugacity.setEntry(0, 0,
 				this.rConc.getEntry(0, 0) * 8.314 * input.getLandscapeSettings("REGIONAL", "TEMP.R"));
-		this.rFugacity.setEntry(7, 0, this.rConc.getEntry(7, 0) * environment.getEnvProps("REGIONAL", "KawD.R") * 8.314
+		this.rFugacity.setEntry(1, 0, this.rConc.getEntry(1, 0) * environment.getEnvProps("REGIONAL", "KawD.R") * 8.314
 				* input.getLandscapeSettings("REGIONAL", "TEMP.R"));
-		this.rFugacity.setEntry(11, 0, this.rConc.getEntry(11, 0) * environment.getEnvProps("REGIONAL", "KawD.R")
+		this.rFugacity.setEntry(2, 0, this.rConc.getEntry(2, 0) * environment.getEnvProps("REGIONAL", "KawD.R")
 				* 8.314 * input.getLandscapeSettings("REGIONAL", "TEMP.R"));
-		this.rFugacity.setEntry(15, 0, this.rConc.getEntry(15, 0) * environment.getEnvProps("REGIONAL", "KawD.R")
+		this.rFugacity.setEntry(3, 0, this.rConc.getEntry(3, 0) * environment.getEnvProps("REGIONAL", "KawD.R")
 				* 8.314 * input.getLandscapeSettings("REGIONAL", "TEMP.R"));
-		this.rFugacity.setEntry(23, 0, this.rConc.getEntry(23, 0)
+		this.rFugacity.setEntry(4, 0, this.rConc.getEntry(4, 0)
 				* (environment.getEnvProps("REGIONAL", "KawD.R") / environment.getEnvProps("REGIONAL", "Ksdw1.R"))
 				* 8.314 * input.getLandscapeSettings("REGIONAL", "TEMP.R"));
-		this.rFugacity.setEntry(27, 0, this.rConc.getEntry(27, 0)
+		this.rFugacity.setEntry(5, 0, this.rConc.getEntry(5, 0)
 				* (environment.getEnvProps("REGIONAL", "KawD.R") / environment.getEnvProps("REGIONAL", "Ksdw2.R"))
 				* 8.314 * input.getLandscapeSettings("REGIONAL", "TEMP.R"));
-		this.rFugacity.setEntry(31, 0, this.rConc.getEntry(31, 0)
+		this.rFugacity.setEntry(6, 0, this.rConc.getEntry(6, 0)
 				* (environment.getEnvProps("REGIONAL", "KawD.R") / environment.getEnvProps("REGIONAL", "Ks1w.R"))
 				* 8.314 * input.getLandscapeSettings("REGIONAL", "TEMP.R"));
-		this.rFugacity.setEntry(35, 0, this.rConc.getEntry(35, 0)
+		this.rFugacity.setEntry(7, 0, this.rConc.getEntry(7, 0)
 				* (environment.getEnvProps("REGIONAL", "KawD.R") / environment.getEnvProps("REGIONAL", "Ks2w.R"))
 				* 8.314 * input.getLandscapeSettings("REGIONAL", "TEMP.R"));
-		this.rFugacity.setEntry(39, 0, this.rConc.getEntry(39, 0)
+		this.rFugacity.setEntry(8, 0, this.rConc.getEntry(8, 0)
 				* (environment.getEnvProps("REGIONAL", "KawD.R") / environment.getEnvProps("REGIONAL", "Ks3w.R"))
 				* 8.314 * input.getLandscapeSettings("REGIONAL", "TEMP.R"));
 
-		this.rFugacity.setEntry(43, 0,
-				this.rConc.getEntry(43, 0) * 8.314 * input.getLandscapeSettings("CONTINENTAL", "TEMP.C"));
-		this.rFugacity.setEntry(50, 0, this.rConc.getEntry(50, 0) * environment.getEnvProps("CONTINENTAL", "Kaw.C")
+		this.rFugacity.setEntry(9, 0,
+				this.rConc.getEntry(9, 0) * 8.314 * input.getLandscapeSettings("CONTINENTAL", "TEMP.C"));
+		this.rFugacity.setEntry(10, 0, this.rConc.getEntry(10, 0) * environment.getEnvProps("CONTINENTAL", "Kaw.C")
 				* 8.314 * input.getLandscapeSettings("CONTINENTAL", "TEMP.C"));
-		this.rFugacity.setEntry(54, 0, this.rConc.getEntry(54, 0) * environment.getEnvProps("CONTINENTAL", "Kaw.C")
+		this.rFugacity.setEntry(11, 0, this.rConc.getEntry(11, 0) * environment.getEnvProps("CONTINENTAL", "Kaw.C")
 				* 8.314 * input.getLandscapeSettings("CONTINENTAL", "TEMP.C"));
-		this.rFugacity.setEntry(58, 0, this.rConc.getEntry(58, 0) * environment.getEnvProps("CONTINENTAL", "Kaw.C")
+		this.rFugacity.setEntry(12, 0, this.rConc.getEntry(12, 0) * environment.getEnvProps("CONTINENTAL", "Kaw.C")
 				* 8.314 * input.getLandscapeSettings("CONTINENTAL", "TEMP.C"));
-		this.rFugacity.setEntry(66, 0, this.rConc.getEntry(66, 0)
+		this.rFugacity.setEntry(13, 0, this.rConc.getEntry(13, 0)
 				* (environment.getEnvProps("CONTINENTAL", "Kaw.C") / environment.getEnvProps("CONTINENTAL", "Ksdw1.C"))
 				* 8.314 * input.getLandscapeSettings("CONTINENTAL", "TEMP.C"));
-		this.rFugacity.setEntry(70, 0, this.rConc.getEntry(70, 0)
+		this.rFugacity.setEntry(14, 0, this.rConc.getEntry(14, 0)
 				* (environment.getEnvProps("CONTINENTAL", "Kaw.C") / environment.getEnvProps("CONTINENTAL", "Ksdw2.C"))
 				* 8.314 * input.getLandscapeSettings("CONTINENTAL", "TEMP.C"));
-		this.rFugacity.setEntry(74, 0, this.rConc.getEntry(74, 0)
+		this.rFugacity.setEntry(15, 0, this.rConc.getEntry(15, 0)
 				* (environment.getEnvProps("CONTINENTAL", "Kaw.C") / environment.getEnvProps("CONTINENTAL", "Ks1w.C"))
 				* 8.314 * input.getLandscapeSettings("CONTINENTAL", "TEMP.C"));
-		this.rFugacity.setEntry(78, 0, this.rConc.getEntry(78, 0)
+		this.rFugacity.setEntry(16, 0, this.rConc.getEntry(16, 0)
 				* (environment.getEnvProps("CONTINENTAL", "Kaw.C") / environment.getEnvProps("CONTINENTAL", "Ks2w.C"))
 				* 8.314 * input.getLandscapeSettings("CONTINENTAL", "TEMP.C"));
-		this.rFugacity.setEntry(82, 0, this.rConc.getEntry(82, 0)
+		this.rFugacity.setEntry(17, 0, this.rConc.getEntry(17, 0)
 				* (environment.getEnvProps("CONTINENTAL", "Kaw.C") / environment.getEnvProps("CONTINENTAL", "Ks3w.C"))
 				* 8.314 * input.getLandscapeSettings("CONTINENTAL", "TEMP.C"));
 
-		this.rFugacity.setEntry(86, 0,
-				this.rConc.getEntry(86, 0) * 8.314 * environment.getEnvProps("MODERATE", "TEMP.M"));
-		this.rFugacity.setEntry(93, 0, this.rConc.getEntry(93, 0) * environment.getEnvProps("MODERATE", "Kaw.M") * 8.314
+		this.rFugacity.setEntry(18, 0,
+				this.rConc.getEntry(18, 0) * 8.314 * environment.getEnvProps("MODERATE", "TEMP.M"));
+		this.rFugacity.setEntry(19, 0, this.rConc.getEntry(19, 0) * environment.getEnvProps("MODERATE", "Kaw.M") * 8.314
 				* environment.getEnvProps("MODERATE", "TEMP.M"));
-		this.rFugacity.setEntry(97, 0, this.rConc.getEntry(97, 0) * environment.getEnvProps("MODERATE", "Kaw.M") * 8.314
+		this.rFugacity.setEntry(20, 0, this.rConc.getEntry(20, 0) * environment.getEnvProps("MODERATE", "Kaw.M") * 8.314
 				* environment.getEnvProps("MODERATE", "TEMP.M"));
-		this.rFugacity.setEntry(101, 0,
-				this.rConc.getEntry(101, 0)
+		this.rFugacity.setEntry(21, 0,
+				this.rConc.getEntry(21, 0)
 						* (environment.getEnvProps("MODERATE", "Kaw.M") / environment.getEnvProps("MODERATE", "Ksdw.M"))
 						* 8.314 * environment.getEnvProps("MODERATE", "TEMP.M"));
-		this.rFugacity.setEntry(105, 0,
-				this.rConc.getEntry(105, 0)
+		this.rFugacity.setEntry(22, 0,
+				this.rConc.getEntry(22, 0)
 						* (environment.getEnvProps("MODERATE", "Kaw.M") / environment.getEnvProps("MODERATE", "Ksw.M"))
 						* 8.314 * environment.getEnvProps("MODERATE", "TEMP.M"));
 
-		this.rFugacity.setEntry(109, 0,
-				this.rConc.getEntry(109, 0) * 8.314 * environment.getEnvProps("ARCTIC", "TEMP.A"));
-		this.rFugacity.setEntry(116, 0, this.rConc.getEntry(116, 0) * environment.getEnvProps("ARCTIC", "Kaw.A") * 8.314
+		this.rFugacity.setEntry(23, 0,
+				this.rConc.getEntry(23, 0) * 8.314 * environment.getEnvProps("ARCTIC", "TEMP.A"));
+		this.rFugacity.setEntry(24, 0, this.rConc.getEntry(24, 0) * environment.getEnvProps("ARCTIC", "Kaw.A") * 8.314
 				* environment.getEnvProps("ARCTIC", "TEMP.A"));
-		this.rFugacity.setEntry(120, 0, this.rConc.getEntry(120, 0) * environment.getEnvProps("ARCTIC", "Kaw.A") * 8.314
+		this.rFugacity.setEntry(25, 0, this.rConc.getEntry(25, 0) * environment.getEnvProps("ARCTIC", "Kaw.A") * 8.314
 				* environment.getEnvProps("ARCTIC", "TEMP.A"));
-		this.rFugacity.setEntry(124, 0,
-				this.rConc.getEntry(124, 0)
+		this.rFugacity.setEntry(26, 0,
+				this.rConc.getEntry(26, 0)
 						* (environment.getEnvProps("ARCTIC", "Kaw.A") / environment.getEnvProps("ARCTIC", "Ksdw.A"))
 						* 8.314 * environment.getEnvProps("ARCTIC", "TEMP.A"));
-		this.rFugacity.setEntry(128, 0,
-				this.rConc.getEntry(128, 0)
+		this.rFugacity.setEntry(27, 0,
+				this.rConc.getEntry(27, 0)
 						* (environment.getEnvProps("ARCTIC", "Kaw.A") / environment.getEnvProps("ARCTIC", "Ksw.A"))
 						* 8.314 * environment.getEnvProps("ARCTIC", "TEMP.A"));
 
-		this.rFugacity.setEntry(132, 0,
-				this.rConc.getEntry(132, 0) * 8.314 * environment.getEnvProps("TROPICAL", "TEMP.T"));
-		this.rFugacity.setEntry(139, 0, this.rConc.getEntry(139, 0) * environment.getEnvProps("TROPICAL", "Kaw.T")
+		this.rFugacity.setEntry(28, 0,
+				this.rConc.getEntry(28, 0) * 8.314 * environment.getEnvProps("TROPICAL", "TEMP.T"));
+		this.rFugacity.setEntry(29, 0, this.rConc.getEntry(29, 0) * environment.getEnvProps("TROPICAL", "Kaw.T")
 				* 8.314 * environment.getEnvProps("TROPICAL", "TEMP.T"));
-		this.rFugacity.setEntry(143, 0, this.rConc.getEntry(143, 0) * environment.getEnvProps("TROPICAL", "Kaw.T")
+		this.rFugacity.setEntry(30, 0, this.rConc.getEntry(30, 0) * environment.getEnvProps("TROPICAL", "Kaw.T")
 				* 8.314 * environment.getEnvProps("TROPICAL", "TEMP.T"));
-		this.rFugacity.setEntry(147, 0,
-				this.rConc.getEntry(147, 0)
+		this.rFugacity.setEntry(31, 0,
+				this.rConc.getEntry(31, 0)
 						* (environment.getEnvProps("TROPICAL", "Kaw.T") / environment.getEnvProps("TROPICAL", "Ksdw.T"))
 						* 8.314 * environment.getEnvProps("TROPICAL", "TEMP.T"));
-		this.rFugacity.setEntry(151, 0,
-				this.rConc.getEntry(151, 0)
+		this.rFugacity.setEntry(32, 0,
+				this.rConc.getEntry(32, 0)
 						* (environment.getEnvProps("TROPICAL", "Kaw.T") / environment.getEnvProps("TROPICAL", "Ksw.T"))
 						* 8.314 * environment.getEnvProps("TROPICAL", "TEMP.T"));
 	}
