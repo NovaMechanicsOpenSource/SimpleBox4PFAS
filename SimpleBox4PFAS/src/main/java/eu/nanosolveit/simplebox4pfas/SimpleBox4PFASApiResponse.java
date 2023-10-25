@@ -14,39 +14,39 @@ public class SimpleBox4PFASApiResponse {
 	Map<String, Map<String, Map<String, Double> > > masses;
 
 	@Getter @Setter
-	@ApiModelProperty(value="Thracheobronchial deposited dose (mg)")
+	@ApiModelProperty(value="Ôhe concentrations")
 	Map<String, Map<String, Map<String, Double> > > concentrations;
 
 	@Getter @Setter
-	@ApiModelProperty(value="Head airways deposited dose (mg)")
+	@ApiModelProperty(value="Ôhe fugacities")
 	Map<String, Map<String, Map<String, Double> > > fugacities;
 
 	@Getter @Setter
-	@ApiModelProperty(value="Head airways deposited dose (mg)")
+	@ApiModelProperty(value="Inflow data")
 	Map<String, Map<String, Double> > inflow;
 
 	@Getter @Setter
-	@ApiModelProperty(value="Head airways deposited dose (mg)")
+	@ApiModelProperty(value="Outflow data")
 	Map<String, Map<String, Double> > outflow;
 
 	@Getter @Setter
-	@ApiModelProperty(value="Head airways deposited dose (mg)")
+	@ApiModelProperty(value="Removal data")
 	Map<String, Map<String, Double> > removal;
 
 	@Getter @Setter
-	@ApiModelProperty(value="Head airways deposited dose (mg)")
+	@ApiModelProperty(value="Formation data")
 	Map<String, Map<String, Double> > formation;
 
 	@Getter @Setter
-	@ApiModelProperty(value="Head airways deposited dose (mg)")
+	@ApiModelProperty(value="Degradation data")
 	Map<String, Map<String, Double> > degradation;
 
 	@Getter @Setter
-	@ApiModelProperty(value="Head airways deposited dose (mg)")
+	@ApiModelProperty(value="Emission data")
 	Map<String, Map<String, Double> > emission;
 	
 	@Getter @Setter
-	@ApiModelProperty(value="The masses ")
+	@ApiModelProperty(value="Transport data ")
 	Map<String, Map<String, Map<String, Double> > > transport;
 
 	@Getter @Setter
@@ -56,12 +56,4 @@ public class SimpleBox4PFASApiResponse {
 	@Getter @Setter
 	@ApiModelProperty(value="The masses ")
 	Map<String, Double> totalS;
-
-	@Getter @Setter
-	@ApiModelProperty(value="The masses ")
-	Map<String, Double> totalA;
-
-	@Getter @Setter
-	@ApiModelProperty(value="The masses ")
-	Map<String, Double> totalP;
 }

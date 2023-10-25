@@ -93,7 +93,6 @@ public class RESTApis{
 						model.getSceneName(), 
 						model.getNanoName() 
 						);		
-			
 				
 				SimpleBox4PFASApiResponse res = new SimpleBox4PFASApiResponse();
 				res.setConcentrations( outSB4Nano.getConcentrations() );
@@ -105,9 +104,6 @@ public class RESTApis{
 				res.setInflow( outSB4Nano.getInflow() );
 				res.setOutflow( outSB4Nano.getOutflow() );
 				res.setRemoval( outSB4Nano.getRemoval() );
-				res.setTotalA( outSB4Nano.getTotalA() );
-				res.setTotalS( outSB4Nano.getTotalS() );
-				res.setTotalP( outSB4Nano.getTotalP() );
 				res.setTotalD( outSB4Nano.getTotalD() );
 
 				return Response.ok( res ).type(MediaType.APPLICATION_JSON).build();

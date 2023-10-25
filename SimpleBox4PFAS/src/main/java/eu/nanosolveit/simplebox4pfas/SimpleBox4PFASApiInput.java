@@ -15,11 +15,11 @@ public class SimpleBox4PFASApiInput {
 	String scenario;
 	
 	@Getter @Setter
-	@ApiModelProperty(value="Nanomaterial's name")
+	@ApiModelProperty(value="Substance's name")
 	String nanomaterial;
 	
 	@Getter @Setter
-	@ApiModelProperty(value="The molecular weight of the nanomaterial substance")
+	@ApiModelProperty(value="The molecular weight of the substance")
 	Double Molweight;
 
 	@Getter @Setter
@@ -28,31 +28,31 @@ public class SimpleBox4PFASApiInput {
 	
 	//Emission rates
 	@Getter @Setter
-	@ApiModelProperty(value="Descr")
+	@ApiModelProperty(value="Emission to air")
 	Double E_aRS;
 
 	@Getter @Setter
-	@ApiModelProperty(value="Descr")
+	@ApiModelProperty(value="Emission to lake water")
 	Double E_w0RS;
 	
 	@Getter @Setter
-	@ApiModelProperty(value="Descr")
+	@ApiModelProperty(value="Emission to fresh water")
 	Double E_w1RS;
 
 	@Getter @Setter
-	@ApiModelProperty(value="Descr")
+	@ApiModelProperty(value="Emission to sea water")
 	Double E_w2RS;
 
 	@Getter @Setter
-	@ApiModelProperty(value="Descr")
+	@ApiModelProperty(value="Emission to natural soil")
 	Double E_s1RS;
 
 	@Getter @Setter
-	@ApiModelProperty(value="Descr")
+	@ApiModelProperty(value="Emission to agricaltural soil")
 	Double E_s2RS;
 
 	@Getter @Setter
-	@ApiModelProperty(value="Descr")
+	@ApiModelProperty(value="Emission to other soil")
 	Double E_s3RS;
 
 	//Advanced 
