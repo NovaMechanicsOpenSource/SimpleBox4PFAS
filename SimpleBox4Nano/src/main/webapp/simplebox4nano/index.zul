@@ -80,7 +80,7 @@
 		<separator height="20px" />
 
 		<vlayout>
-			<label value="Nanomaterial properties"
+			<label value="Substance properties"
 				style="font-size:1.5em;" />
 			<separator />
 			<hlayout style="border: 1px groove black;" />
@@ -94,14 +94,14 @@
 			</columns>
 			<rows>
 				<row tooltip="msg">
-					Nanomaterial
+					Substance
 					<combobox id="nanomaterials" readonly="true"
 						width="145px" />
 
 					<popup id="msg" width="300px">
-						Choose a nanomaterial in this list to prefill
+						Choose a substance in this list to prefill
 						properties with properties for this
-						nanomaterial.
+						substance.
 					</popup>
 				</row>
 				<row tooltip="msg1">
@@ -111,10 +111,11 @@
 						constraint="no negative,no empty" />
 
 					<popup id="msg1" width="300px">
-						The molecular weight of the nanomaterial.
+						The molecular weight of the substance.
 					</popup>
 				</row>
-				<row tooltip="msg2">
+
+				<row tooltip="msg2" visible="false">
 					<label value="Primary radius [nm]" />
 					<doublebox id="radius"
 						constraint="no negative,no empty" />
@@ -123,16 +124,17 @@
 						Primary radius of the nanomaterial.
 					</popup>
 				</row>
-				<row tooltip="msg3">
+				<row tooltip="msg3" >
 					<label value="Primary density [kg/m3]" />
 					<doublebox id="density"
 						constraint="no negative,no empty" />
 
 					<popup id="msg3" width="300px">
-						Density of the nanomaterial.
+						Density of the substance.
 					</popup>
 				</row>
-				<row tooltip="msg4">
+
+				<row tooltip="msg4" visible="false">
 					<label
 						value="Hamaker constant heteroagglomerate (ENP, water, SiO2)[J]" />
 					<doublebox id="hamaker"
@@ -146,9 +148,9 @@
 			</rows>
 		</grid>
 
-		<separator height="20px" />
-
-		<vlayout>
+		<separator height="20px" visible="false" />
+ 
+		<vlayout visible="false">
 			<label
 				value="Nanomaterial-Environment interaction parameters "
 				style="font-size:1.5em;" />
@@ -157,13 +159,12 @@
 			<separator />
 		</vlayout>
 
-
 		<!-- START Attachment efficiency -->
-		<label value="Attachement efficiency" style="font-size:1.3em;" />
+		<label value="Attachement efficiency" style="font-size:1.3em;" visible="false" />
 
-		<separator bar="true" height="20px" />
+		<separator bar="true" height="20px" visible="false" />
 
-		<listbox id="attachmentEfficiency">
+		<listbox id="attachmentEfficiency" visible="false">
 
 			<listhead sizable="false">
 				<listheader label="" width="150px" />
@@ -410,7 +411,7 @@
 				</listcell>
 			</listitem>
 
-			<!-- START Fresh sediments -->
+			<!-- START Fresh sediments -->			
 			<listitem id="attachmentFreshSediDbItem">
 				<listcell>
 					<radiogroup id="attachmentFreshSediDbRadio">
@@ -514,7 +515,7 @@
 			<!-- END Fresh sediments -->
 
 			<!-- START Marine sediments -->
-			<listitem id="attachmentMarineSediDbItem">
+			<listitem id="attachmentMarineSediDbItem" >
 				<listcell>
 					<radiogroup id="attachmentMarineSediDbRadio">
 						<vlayout>
@@ -586,31 +587,28 @@
 
 				</listcell>
 			</listitem>
-			<!-- END Marine sediments -->
 		</listbox>
-		<!-- END Attachment efficiency -->
 
 		<separator bar="false" height="20px" />
 
 		<!-- START Dissolution rates -->
 		<label value="Dissolution rates" style="font-size:1.3em;"
-			tooltip="msg9" />
+			tooltip="msg9" visible="false"  />
 
-		<popup id="msg9" width="300px">
+<!-- 		<popup id="msg9" width="300px" >
 			The rate constant at which nanomaterials dissolve. If you
 			have a half-life (t_half), you can convert it to a rate
 			constant (k) by the following formula: k = 0.693/t_half.
 			Note that the unit of time is seconds.
 		</popup>
+-->
+		<separator bar="true" height="10px" visible="false"/>
 
-		<separator bar="true" height="10px" />
-
-		<listbox id="dissolutionRates">
+		<listbox id="dissolutionRates" visible="false">
 			<listhead sizable="false">
 				<listheader label="" width="150px" />
 				<listheader label="" />
 			</listhead>
-
 			<!-- START Dissolution fresh water -->
 			<listitem id="dissolutionFreshDbItem">
 				<listcell>
@@ -737,6 +735,7 @@
 					</popup>
 				</listcell>
 			</listitem>
+			
 			<!-- END Dissolution fresh water -->
 
 			<!-- START Dissolution sea water -->
@@ -1100,27 +1099,26 @@
 						Dissolution rate constant in marine sediments.
 					</popup>
 				</listcell>
-				<!-- END Dissolution marine sediments -->
 			</listitem>
 		</listbox>
-		<!-- END Dissolution rates -->
 
 		<separator bar="false" height="20px" />
 
 		<!-- START Degradation rates -->
 		<label value="Degradation rates" style="font-size:1.3em;"
-			tooltip="msg15" />
+			tooltip="msg15" visible="false"/>
 
-		<popup id="msg15" width="300px">
+<!-- 		<popup id="msg15" width="300px">
 			The rate constant at which nanomaterials degrade. If you
 			have a half-life (t_half), you can convert it to a rate
 			constant (k) by the following formula: k = 0.693/t_half.
 			Note that the unit of time is seconds.
 		</popup>
+-->
 
-		<separator bar="true" height="10px" />
+		<separator bar="true" height="10px" visible="false"/>
 
-		<listbox id="degradationRates">
+		<listbox id="degradationRates" visible="false">
 			<listhead sizable="false">
 				<listheader label="" width="150px" />
 				<listheader label="" />
