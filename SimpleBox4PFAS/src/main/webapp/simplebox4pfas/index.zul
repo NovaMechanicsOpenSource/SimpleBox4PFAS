@@ -1,4 +1,4 @@
-<?page id="thePage" title="SimpleBox4Nano" contentType="text/html;charset=UTF-8"?>
+<?page id="thePage" title="SimpleBox4PFAS" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:native="native" xmlns:client="client">
 
 	<style dynamic="true">
@@ -38,7 +38,7 @@
 							</td>
 							<td>
 								<h1 style="font-size:30px;">
-									SimpleBox4Nano
+									SimpleBox4PFAS
 								</h1>
 							</td>
 						</tr>
@@ -1754,7 +1754,7 @@
 			<button id="calculate" label="Calculate" width="200px" />
 		</div>
 
-		<html>
+<!-- 		<html>
 			<br />
 			<br />
 			<p style="font-size:2">
@@ -1766,6 +1766,7 @@
 				under grant agreement number 814572
 			</p>
 		</html>
+ -->
 
 		<!-- Start of StatCounter Code for Default Guide -->
 		<html>
