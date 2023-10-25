@@ -5423,9 +5423,9 @@ public class output extends SelectorComposer<Window> {
 		}
 
 		//Re-build in order to write the info
-		//		disBuilder();
-		//		int iCol = addNewSheet( "Steady state mass flows", "Output table 2: Steady-state mass flows (kg.s-1)",
-		//				workbook, regions, iRow);
+		disBuilder();
+		int iCol = addNewSheet( "Steady state mass flows", "Output table 2: Steady-state mass flows (kg.s-1)",
+				workbook, regions, iRow);
 
 		//Write to the excel 
 		workbook.write( os );
@@ -5505,15 +5505,14 @@ public class output extends SelectorComposer<Window> {
 		transLabels.add("Inflow");
 		transLabels.add("Outflow");
 		transLabels.add("Removal");
-		//		transLabels.add("Formation (S,A,P->D)");
 		transLabels.add("Degradation");
-		transLabels.add("air-water transport");
-		transLabels.add("water-air transport");
-		transLabels.add("air-soil transport");
-		transLabels.add("soil-air transport");
-		transLabels.add("soil-water transport");
-		transLabels.add("water-sed transport");
-		transLabels.add("sed-water transport");
+		transLabels.add("air-water");
+		transLabels.add("water-air");
+		transLabels.add("air-soil");
+		transLabels.add("soil-air");
+		transLabels.add("soil-water");
+		transLabels.add("water-sed");
+		transLabels.add("sed-water");
 
 		rowsSS.get(8).createCell( 1 ).setCellValue("Species");	
 		rowsSS.get(8).getCell( 1 ).setCellStyle( boldStyle );	
@@ -5674,9 +5673,9 @@ public class output extends SelectorComposer<Window> {
 			if ( region == "Regional Scale" || region == "Continental Scale" ) {
 				for ( int i= 1; i <= compartLabels.size(); i++ ) {
 					if ( degradation.get(region).get( compartLabels.get(i - 1) ) != null )
-						rowsSS.get( iRow + i ).createCell( 7 ).setCellValue( degradation.get(region).get( compartLabels.get(i - 1) ) );
+						rowsSS.get( iRow + i ).createCell( 6 ).setCellValue( degradation.get(region).get( compartLabels.get(i - 1) ) );
 					else
-						rowsSS.get( iRow + i ).createCell( 7 ).setCellValue("");
+						rowsSS.get( iRow + i ).createCell( 6 ).setCellValue("");
 				}
 
 				iRow += compartLabels.size()+1;
@@ -5685,16 +5684,16 @@ public class output extends SelectorComposer<Window> {
 			else {
 				for ( int i= 1; i <= globalLabels.size(); i++ ) 
 					if ( degradation.get(region).get( globalLabels.get( i - 1 ) ) != null )
-						rowsSS.get( iRow + i ).createCell( 7 ).setCellValue( degradation.get(region).get( globalLabels.get(i - 1) ) );
+						rowsSS.get( iRow + i ).createCell( 6 ).setCellValue( degradation.get(region).get( globalLabels.get(i - 1) ) );
 					else
-						rowsSS.get( iRow + i ).createCell( 7 ).setCellValue("");
+						rowsSS.get( iRow + i ).createCell( 6 ).setCellValue("");
 
 				iRow += globalLabels.size()+1;
 			}
 		}
 
 		//Write air-water transport
-		iCol = 8;
+		iCol = 7;
 		for ( String trans:transLabels ) {
 			if ( transport.get( trans ) == null ) continue;
 
