@@ -1077,15 +1077,15 @@ public class SimpleBox4NanoModelController extends SelectorComposer<Window>{
 		out = "Scenario;" + scenarios.getSelectedItem().getValue().toString() + "\n"; 
 
 		out += "\n"; 
-		out += "Nanomaterials properties\n";
-		out += "Nanomaterial;" + nanomaterials.getSelectedItem().getValue().toString() + "\n"; 
+		out += "Substance properties\n";
+		out += "Substance;" + nanomaterials.getSelectedItem().getValue().toString() + "\n"; 
 		out += "Molecular weight [gr/mol];" +  String.valueOf(molweight.getValue()) + "\n" ; 
-		out += "Primary radius [nm];" +  String.valueOf(radius.getValue() ) + "\n"; 
+//		out += "Primary radius [nm];" +  String.valueOf(radius.getValue() ) + "\n"; 
 		out += "Primary density [kg/m3];" +  String.valueOf(density.getValue() ) + "\n"; 
-		out += "Hamaker constant heteroagglomerate (ENP, water, SiO2);" +  String.valueOf(hamaker.getValue() ) + "\n"; 
+//		out += "Hamaker constant heteroagglomerate (ENP, water, SiO2);" +  String.valueOf(hamaker.getValue() ) + "\n"; 
 
 		out += "\n"; 
-		out += "Nanomaterial-Environment interaction parameters;"  + "\n"; 		
+/*		out += "Nanomaterial-Environment interaction parameters;"  + "\n"; 		
 		out += "Attachement efficiency;"  + "\n"; 
 
 		if ( freshWaterRadio.getSelectedIndex() == 0 ) {
@@ -1300,6 +1300,8 @@ public class SimpleBox4NanoModelController extends SelectorComposer<Window>{
 			out += "Heteroagglomerates of ENPs and SPM (P) in deep sea water [1/s];" +  String.valueOf(heteroDeepSeaENPsSPM.getValue() ) + "\n"; 		 		
 		}							
 
+*/
+
 		out += "\n"; 
 		out += "Emission rates;" + "\n"; 
 		out += "Regional;" + "\n"; 
@@ -1479,7 +1481,7 @@ public class SimpleBox4NanoModelController extends SelectorComposer<Window>{
 						e.addSuppressed(e);
 					}
 
-					if ( data[ 0 ].compareTo("Nanomaterial" ) == 0 ) {
+					if ( data[ 0 ].compareTo("Substance" ) == 0 ) {
 						int iCount = 0; 
 						for ( String entry:availNMs) {
 							if ( entry.compareTo(data[1] ) == 0 )
@@ -1493,20 +1495,20 @@ public class SimpleBox4NanoModelController extends SelectorComposer<Window>{
 					if ( data[ 0 ].compareTo( "Molecular weight [gr/mol]" ) == 0 )
 						molweight.setValue( Double.valueOf(  data[ 1 ] ) );
 
-					if ( data[ 0 ].compareTo( "Primary radius [nm]" ) == 0 )
-						radius.setValue( Double.valueOf(  data[ 1 ] ) );
+//					if ( data[ 0 ].compareTo( "Primary radius [nm]" ) == 0 )
+//						radius.setValue( Double.valueOf(  data[ 1 ] ) );
 
 					if ( data[ 0 ].compareTo( "Primary density [kg/m3]" ) == 0 )
 						density.setValue( Double.valueOf(  data[ 1 ] ) );
 
-					if ( data[ 0 ].compareTo( "Hamaker constant heteroagglomerate (ENP, water, SiO2)" ) == 0 )
-						hamaker.setValue( Double.valueOf(  data[ 1 ] ) );
+//					if ( data[ 0 ].compareTo( "Hamaker constant heteroagglomerate (ENP, water, SiO2)" ) == 0 )
+//						hamaker.setValue( Double.valueOf(  data[ 1 ] ) );
 
-					if ( data[ 0 ].compareTo( "Hamaker constant heteroagglomerate (ENP, water, SiO2)" ) == 0 )
-						hamaker.setValue( Double.valueOf(  data[ 1 ] ) );
+//					if ( data[ 0 ].compareTo( "Hamaker constant heteroagglomerate (ENP, water, SiO2)" ) == 0 )
+//						hamaker.setValue( Double.valueOf(  data[ 1 ] ) );
 
 					//Attachement efficiency
-					if ( data[ 0 ].compareTo( "attach fresh water" ) == 0 ) {
+/* if ( data[ 0 ].compareTo( "attach fresh water" ) == 0 ) {
 
 						readingAttachement = true;					
 						readingDissolution = false;
@@ -1949,7 +1951,7 @@ public class SimpleBox4NanoModelController extends SelectorComposer<Window>{
 					}
 
 					setCompactOfNotSelected();					
-
+*/
 					if ( data[0].compareTo( "Emission rates" ) == 0 ) {
 						readingAttachement = false;					
 						readingDissolution = false;
