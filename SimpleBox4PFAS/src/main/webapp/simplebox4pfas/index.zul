@@ -115,15 +115,6 @@
 					</popup>
 				</row>
 
-				<row tooltip="msg2" visible="false">
-					<label value="Primary radius [nm]" />
-					<doublebox id="radius"
-						constraint="no negative,no empty" />
-
-					<popup id="msg2" width="300px">
-						Primary radius of the nanomaterial.
-					</popup>
-				</row>
 				<row tooltip="msg3" >
 					<label value="Primary density [kg/m3]" />
 					<doublebox id="density"
@@ -131,18 +122,6 @@
 
 					<popup id="msg3" width="300px">
 						Density of the substance.
-					</popup>
-				</row>
-
-				<row tooltip="msg4" visible="false">
-					<label
-						value="Hamaker constant heteroagglomerate (ENP, water, SiO2)[J]" />
-					<doublebox id="hamaker"
-						constraint="no negative,no empty" />
-
-					<popup id="msg4" width="300px">
-						Hamaker constant between the engineered
-						nanoparticle (ENP) and soil grains.
 					</popup>
 				</row>
 			</rows>
