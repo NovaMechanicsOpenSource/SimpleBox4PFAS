@@ -1,4 +1,4 @@
-package eu.nanosolveit.simplebox4nano;
+package eu.nanosolveit.simplebox4pfas;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,11 +13,11 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.zkoss.zk.ui.Sessions;
 
-import eu.nanosolveit.simplebox4nano.Engine.Engine;
-import eu.nanosolveit.simplebox4nano.Engine.InputEngine;
-import eu.nanosolveit.simplebox4nano.Engine.RegionalEngine;
+import eu.nanosolveit.simplebox4pfas.Engine.Engine;
+import eu.nanosolveit.simplebox4pfas.Engine.InputEngine;
+import eu.nanosolveit.simplebox4pfas.Engine.RegionalEngine;
 
-public class SimpleBox4NanoModel {
+public class SimpleBox4PFASModel {
 
 	InputEngine input = null;
 	RegionalEngine environment = null;
@@ -29,7 +29,7 @@ public class SimpleBox4NanoModel {
 	String nanoName = null;
 	String sceneName = null;
 	
-	public SimpleBox4NanoModel( Map<String, Map<String, String> > nano, Map<String, Scenario> scenarios, 
+	public SimpleBox4PFASModel( Map<String, Map<String, String> > nano, Map<String, Scenario> scenarios, 
 			String scenario, String nanomaterial )
 	{	
 		sceneName = scenario;

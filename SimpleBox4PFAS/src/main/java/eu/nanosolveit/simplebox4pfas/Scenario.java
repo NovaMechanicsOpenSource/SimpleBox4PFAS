@@ -1,4 +1,4 @@
-package eu.nanosolveit.simplebox4nano;
+package eu.nanosolveit.simplebox4pfas;
 
 import java.io.File;
 import java.io.FileInputStream;

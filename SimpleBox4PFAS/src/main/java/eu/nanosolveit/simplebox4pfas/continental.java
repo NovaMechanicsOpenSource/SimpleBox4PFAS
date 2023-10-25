@@ -1,4 +1,4 @@
-package eu.nanosolveit.simplebox4nano;
+package eu.nanosolveit.simplebox4pfas;
 
 import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.Sessions;

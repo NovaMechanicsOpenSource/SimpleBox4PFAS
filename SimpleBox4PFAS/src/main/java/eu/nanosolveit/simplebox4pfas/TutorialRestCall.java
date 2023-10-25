@@ -1,4 +1,4 @@
-package eu.nanosolveit.simplebox4nano;
+package eu.nanosolveit.simplebox4pfas;
 
 import org.zkoss.util.media.AMedia;
 import org.zkoss.zk.ui.select.SelectorComposer;

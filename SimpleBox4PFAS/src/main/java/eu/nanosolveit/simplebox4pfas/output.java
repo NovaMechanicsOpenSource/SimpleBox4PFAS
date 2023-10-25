@@ -1,4 +1,4 @@
-package eu.nanosolveit.simplebox4nano;
+package eu.nanosolveit.simplebox4pfas;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -49,9 +49,9 @@ import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
-import eu.nanosolveit.simplebox4nano.Engine.Engine;
-import eu.nanosolveit.simplebox4nano.Engine.InputEngine;
-import eu.nanosolveit.simplebox4nano.Engine.RegionalEngine;
+import eu.nanosolveit.simplebox4pfas.Engine.Engine;
+import eu.nanosolveit.simplebox4pfas.Engine.InputEngine;
+import eu.nanosolveit.simplebox4pfas.Engine.RegionalEngine;
 
 public class output extends SelectorComposer<Window> {
 

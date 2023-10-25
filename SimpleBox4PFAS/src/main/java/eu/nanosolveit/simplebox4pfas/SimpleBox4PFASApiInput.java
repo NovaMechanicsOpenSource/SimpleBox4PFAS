@@ -1,4 +1,4 @@
-package eu.nanosolveit.simplebox4nano;
+package eu.nanosolveit.simplebox4pfas;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @ApiModel(value="Simple box 4 nano input")
-public class SimpleBox4NanoApiInput {
+public class SimpleBox4PFASApiInput {
 	@Getter @Setter
 	@ApiModelProperty(value="Scenarios's name")
 	String scenario;
@@ -530,7 +530,7 @@ public class SimpleBox4NanoApiInput {
 	@ApiModelProperty(value="Continental concentration suspended matter in sea water")
 	Double SUSP_w2C;
 	
-	static public Map<String, Map<String, String> > getNanoData( SimpleBox4NanoApiInput input ) {
+	static public Map<String, Map<String, String> > getNanoData( SimpleBox4PFASApiInput input ) {
 		Map<String, Map<String, String> > nanoData = new HashMap<String, Map<String, String> >(); 
 		
 		nanoData.put( input.getNanomaterial(), new HashMap<String, String>() );  
@@ -636,7 +636,7 @@ public class SimpleBox4NanoApiInput {
 		return nanoData;
 	}
 	
-	static public Map<String, Scenario> getScenariosData( SimpleBox4NanoApiInput input ) {
+	static public Map<String, Scenario> getScenariosData( SimpleBox4PFASApiInput input ) {
 		Map<String, Scenario> scenariosData = new HashMap<String, Scenario>();
 		scenariosData.put( input.getScenario(), new Scenario( input.getScenario() ) );
 		scenariosData.get( input.getScenario() ).putSolidInfo("REGIONAL", "E.aRS",  String.valueOf(input.getE_aRS()  ));

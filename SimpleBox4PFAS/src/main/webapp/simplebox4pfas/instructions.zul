@@ -1,7 +1,7 @@
 <?page id="thePage" title="Simple box for nano tutorial" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:native="native" xmlns:client="client">
 	<window id="mainWin"
-		apply="eu.nanosolveit.simplebox4nano.TutorialRestCall"
+		apply="eu.nanosolveit.simplebox4pfas.TutorialRestCall"
 		border="normal" style="width:100%; height:100%;">
 		
 		<iframe id="tutorial" style="width:100%; height:100%;" />

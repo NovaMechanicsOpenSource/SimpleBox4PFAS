@@ -1,4 +1,4 @@
-package eu.nanosolveit.simplebox4nano;
+package eu.nanosolveit.simplebox4pfas;
 
 import java.util.Map;
 
@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @ApiModel(value="SimpleBox4Nano API Response Data Structure")
-public class SimpleBox4NanoApiResponse {
+public class SimpleBox4PFASApiResponse {
 	@Getter @Setter
 	@ApiModelProperty(value="The masses ")
 	Map<String, Map<String, Map<String, Double> > > masses;

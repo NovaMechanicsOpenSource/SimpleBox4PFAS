@@ -39,10 +39,10 @@ import org.zkoss.zul.Row;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import eu.nanosolveit.simplebox4nano.SimpleBox4NanoApiInput;
-import eu.nanosolveit.simplebox4nano.SimpleBox4NanoApiResponse;
-import eu.nanosolveit.simplebox4nano.SimpleBox4NanoModel;
-import eu.nanosolveit.simplebox4nano.output;
+import eu.nanosolveit.simplebox4pfas.SimpleBox4PFASApiInput;
+import eu.nanosolveit.simplebox4pfas.SimpleBox4PFASApiResponse;
+import eu.nanosolveit.simplebox4pfas.SimpleBox4PFASModel;
+import eu.nanosolveit.simplebox4pfas.output;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponses;
@@ -67,7 +67,7 @@ public class RESTApis{
             @ApiResponse(code = 500, message = "An unexpected error has occurred. The error has been logged and is being investigated.") 
             })
     */        
-	public Response simpleBox4NanoRestApi(SimpleBox4NanoApiInput input)
+	public Response simpleBox4NanoRestApi(SimpleBox4PFASApiInput input)
 	{
 		if(false)
 		{
@@ -77,9 +77,9 @@ public class RESTApis{
 		{
 			try
 			{
-				SimpleBox4NanoModel model = new SimpleBox4NanoModel( 
-						SimpleBox4NanoApiInput.getNanoData(input), 
-						SimpleBox4NanoApiInput.getScenariosData(input), 
+				SimpleBox4PFASModel model = new SimpleBox4PFASModel( 
+						SimpleBox4PFASApiInput.getNanoData(input), 
+						SimpleBox4PFASApiInput.getScenariosData(input), 
 						input.getScenario(), 
 						input.getNanomaterial() 
 						);
@@ -95,7 +95,7 @@ public class RESTApis{
 						);		
 			
 				
-				SimpleBox4NanoApiResponse res = new SimpleBox4NanoApiResponse();
+				SimpleBox4PFASApiResponse res = new SimpleBox4PFASApiResponse();
 				res.setConcentrations( outSB4Nano.getConcentrations() );
 				res.setMasses( outSB4Nano.getMasses() );
 				res.setDegradation( outSB4Nano.getDegradation() );

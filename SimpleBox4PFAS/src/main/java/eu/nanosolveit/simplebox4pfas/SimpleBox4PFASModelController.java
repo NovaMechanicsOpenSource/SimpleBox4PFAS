@@ -1,4 +1,4 @@
-package eu.nanosolveit.simplebox4nano;
+package eu.nanosolveit.simplebox4pfas;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -47,7 +47,7 @@ import org.zkoss.zul.Radiogroup;
 import org.zkoss.zul.Separator;
 import org.zkoss.zul.Window;
 
-public class SimpleBox4NanoModelController extends SelectorComposer<Window>{
+public class SimpleBox4PFASModelController extends SelectorComposer<Window>{
 
 	Window win, attach;
 
@@ -1035,7 +1035,7 @@ public class SimpleBox4NanoModelController extends SelectorComposer<Window>{
 		//Adjust scenario data coming from the user (if (s)he has changed it)
 		adjustScenarioData();
 
-		SimpleBox4NanoModel model = new SimpleBox4NanoModel( 
+		SimpleBox4PFASModel model = new SimpleBox4PFASModel( 
 				nanoData, 
 				scenariosData, 
 				scenarios.getSelectedItem().getValue().toString(),

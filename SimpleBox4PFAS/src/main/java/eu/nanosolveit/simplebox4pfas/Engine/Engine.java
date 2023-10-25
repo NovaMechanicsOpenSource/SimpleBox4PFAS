@@ -1,4 +1,4 @@
-package eu.nanosolveit.simplebox4nano.Engine;
+package eu.nanosolveit.simplebox4pfas.Engine;
 
 import org.apache.commons.math3.linear.MatrixUtils;
 
@@ -12,7 +12,7 @@ import org.apache.commons.math3.linear.DecompositionSolver;
 import org.apache.commons.math3.linear.LUDecomposition;
 import org.apache.commons.math3.linear.RealMatrix;
 
-import eu.nanosolveit.simplebox4nano.Scenario;
+import eu.nanosolveit.simplebox4pfas.Scenario;
 import lombok.Getter;
 import lombok.Setter;
 
