@@ -305,7 +305,7 @@ public class output extends SelectorComposer<Window> {
 		nanomaterialName = (String) current.getAttribute("Nanomaterial name");
 
 		//build info and tables for output
-/*		buildMasses();
+		/*		buildMasses();
 		buildConcentrations();
 		buildFugacities();
 		buildEmission();*/
@@ -357,17 +357,17 @@ public class output extends SelectorComposer<Window> {
 		naturalSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Natural soil").get("Reg").get("Natural soil") ) ) );
 		agriSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Agricultural soil").get("Reg").get("Agricultural soil") ) ) );
 		otherSoilRes.setValue( formatter.format( Double.valueOf(  concentrations.get("Other soil").get("Reg").get("Other soil") ) ) );			
-		
+
 		resultsCombo.setModel( availRegions );
 	}
 
 	private void disBuilder() {
 		buildMasses();
 		buildConcentrations();
-		
+
 		buildFugacities();
 		buildEmission();
-		
+
 		buildInflow();
 		buildOutflow();
 		buildRemoval();
@@ -1082,7 +1082,7 @@ public class output extends SelectorComposer<Window> {
 				630, 1790  	  				
 				);
 
-		
+
 		graphics.setColor( Color.BLACK );
 		graphics.drawString(
 				String.format("%.2f", masses.get("Air").get("Cont").get("Air")/totalCont*100 ) + " %",
@@ -2236,7 +2236,7 @@ public class output extends SelectorComposer<Window> {
 
 		concentrations.get("Fresh water sediment").get("Cont").put("Fresh water sediment",
 				engine.getConcentration(13)*
-						(input.getSubstancesData("Molweight")*1000.) /
+				(input.getSubstancesData("Molweight")*1000.) /
 				(environment.getEnvProps("CONTINENTAL", "FRACw.sdC")*1000 + 
 						environment.getEnvProps("CONTINENTAL", "FRACs.sdC")*
 						input.getLandscapeSettings("ALL-SCALE", "RHOsolid") )
@@ -2374,9 +2374,9 @@ public class output extends SelectorComposer<Window> {
 				engine.getConcentration(5)*input.getSubstancesData("Molweight")*1000./
 				(environment.getEnvProps("REGIONAL", "FRACw.sdR")*1000 + 
 						environment.getEnvProps("REGIONAL", "FRACs.sdR") *
-				input.getLandscapeSettings("ALL-SCALE", "RHOsolid") )
+						input.getLandscapeSettings("ALL-SCALE", "RHOsolid") )
 				);
-		
+
 		concentrations.get("Marine sediment").get("Reg").put("* SOLID PHASE",
 				engine.getConcentration(5)*environment.getEnvProps("REGIONAL", "FRACs.sdR")/
 				(environment.getEnvProps("REGIONAL", "FRACw.sdR")/
@@ -4720,7 +4720,7 @@ public class output extends SelectorComposer<Window> {
 			updateResTables();
 		}*/
 	}
-	
+
 	void updateResTables()
 	{
 		Locale locale = Locale.ENGLISH;
@@ -4797,7 +4797,7 @@ public class output extends SelectorComposer<Window> {
 		noBoldStyle.setFont(noBoldFont);  
 
 		//According to excel
-		int iRowsNum = 103;
+		int iRowsNum = 54;
 		for ( int i = 0; i < iRowsNum; i++ )
 			rows.add( spreadsheet.createRow( i ) );
 
@@ -4809,7 +4809,7 @@ public class output extends SelectorComposer<Window> {
 
 		rows.get(2).createCell( 1 ).setCellValue("Model");			
 		rows.get(2).getCell( 1 ).setCellStyle( boldStyle );
-		rows.get(2).createCell( 2 ).setCellValue("SimpleBox vs 4.0");			
+		rows.get(2).createCell( 2 ).setCellValue("SimpleBox vs 4.02");			
 
 		rows.get(3).createCell( 1 ).setCellValue( "Substance" );			
 		rows.get(3).getCell( 1 ).setCellStyle( boldStyle );
@@ -4912,13 +4912,6 @@ public class output extends SelectorComposer<Window> {
 			rows.get(iRow++).createCell(1).setCellValue( entry );
 
 		iRow++;
-		rows.get( iRow ).createCell(1).setCellValue("Fresh water lake sediment");
-		rows.get( iRow ).getCell(1).setCellStyle(boldStyle);
-		iRow++;
-		for ( String entry:prop3) 
-			rows.get(iRow++).createCell(1).setCellValue( entry );
-
-		iRow++;
 		rows.get( iRow ).createCell(1).setCellValue("Fresh water");
 		rows.get( iRow ).getCell(1).setCellStyle(boldStyle);
 		iRow++;
@@ -4987,11 +4980,6 @@ public class output extends SelectorComposer<Window> {
 			for ( String entry:prop3) 
 				rows.get( iRow++ ).createCell(j).setCellValue( masses.get("Fresh water lake").get(regions.get(k)).get( entry ) );
 
-			/*			iRow++;
-			rows.get( iRow++ ).createCell(j).setCellValue(masses.get("Fresh water lake sediment").get(regions.get(k)).get("Fresh water lake sediment"));
-			for ( String entry:prop2) 
-				rows.get( iRow++ ).createCell(j).setCellValue( masses.get("Fresh water lake sediment").get(regions.get(k)).get( entry ) );*/
-
 			iRow++;
 			rows.get( iRow++ ).createCell(j).setCellValue(masses.get("Fresh water").get(regions.get(k)).get("Fresh water"));
 			for ( String entry:prop3) 
@@ -5035,7 +5023,6 @@ public class output extends SelectorComposer<Window> {
 				rows.get( iRow++ ).createCell(j).setCellValue( masses.get("Other soil").get(regions.get(k)).get( entry ) );
 		}
 
-
 		//Writing masses for Mod, Arct and Trop
 		k = 2;
 		for ( int j = 6; j <= 10; j+=2, k++) {
@@ -5047,11 +5034,6 @@ public class output extends SelectorComposer<Window> {
 			iRow++;
 			iRow++;
 			for ( String entry:prop3) 
-				iRow++;
-
-			iRow++;
-			iRow++;
-			for ( String entry:prop2) 
 				iRow++;
 
 			iRow++;
@@ -5112,7 +5094,7 @@ public class output extends SelectorComposer<Window> {
 
 			iRow++;
 			rows.get( iRow ).createCell(17).setCellValue( "g.m-3" );		
-			//			rows.get( iRow++ ).createCell(j).setCellValue(concentrations.get("Fresh water lake").get(regions.get(k) ).get("Fresh water lake") );
+			rows.get( iRow++ ).createCell(j).setCellValue(concentrations.get("Fresh water lake").get(regions.get(k) ).get("Fresh water lake") );
 			for ( String entry:prop3) {
 				if ( entry ==  "* SUSPENDED SOLIDS" )
 					rows.get( iRow ).createCell(17).setCellValue( "g.kg(d)-1" );		
@@ -5121,16 +5103,6 @@ public class output extends SelectorComposer<Window> {
 				rows.get( iRow++ ).createCell(j).setCellValue( concentrations.get("Fresh water lake").get(regions.get(k)).get( entry ) );
 			}
 
-			iRow++;
-			rows.get( iRow ).createCell(17).setCellValue( "g.kg(w)-1" );		
-			rows.get( iRow++ ).createCell(j).setCellValue(concentrations.get("Fresh water lake sediment").get(regions.get(k)).get("Fresh water lake sediment"));
-			for ( String entry:prop2) {
-				if ( entry ==  "* PORE WATER" )
-					rows.get( iRow ).createCell(17).setCellValue( "g.L-1" );		
-				else
-					rows.get( iRow ).createCell(17).setCellValue( "g.kg(w)-1" );		
-				rows.get( iRow++ ).createCell(j).setCellValue( concentrations.get("Fresh water lake sediment").get(regions.get(k)).get( entry ) );
-			}
 
 			iRow++;
 			rows.get( iRow ).createCell(17).setCellValue( "g.L-1" );		
@@ -5218,7 +5190,6 @@ public class output extends SelectorComposer<Window> {
 
 				rows.get( iRow++ ).createCell(j).setCellValue( concentrations.get("Other soil").get(regions.get(k)).get( entry ) );
 			}
-
 		}
 
 		//Writing concentrations for Mod, Arct and Trop
@@ -5232,11 +5203,6 @@ public class output extends SelectorComposer<Window> {
 			iRow++;
 			iRow++;
 			for ( String entry:prop3) 
-				iRow++;
-
-			iRow++;
-			iRow++;
-			for ( String entry:prop2) 
 				iRow++;
 
 			iRow++;
@@ -5285,157 +5251,185 @@ public class output extends SelectorComposer<Window> {
 				rows.get( iRow++ ).createCell(j).setCellValue( concentrations.get("Other soil").get(regions.get(k)).get( entry ) );
 		}
 
-		//Writing fugacities (Pa) for Reg and Cont
+		
+		//Writing fugacities for Reg and Cont
 		k = 0;
 		for ( int j = 18; j <= 19; j++, k++) {
-			iRow = 9;
-			iRow+=2;
-			for ( String entry:prop1) 
-				if ( fugacities.get("Air").get(regions.get(k)).get( entry ) != null  )
-					rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Air").get(regions.get(k)).get( entry ) );
-				else
-					iRow++;
+			iRow = 10;
+			rows.get( iRow ).createCell(17).setCellValue( "g.m-3" );			
+			rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Air").get( regions.get( k ) ).get("Air") );
+			for ( String entry:prop1) {
+				rows.get( iRow ).createCell(17).setCellValue( "g.m-3" );			
+				rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Air").get(regions.get(k)).get( entry ) );
+			}
 
-			iRow+=2;
+			iRow++;
+			rows.get( iRow ).createCell(17).setCellValue( "g.m-3" );		
+			rows.get( iRow++ ).createCell(j).setCellValue(fugacities.get("Fresh water lake").get(regions.get(k) ).get("Fresh water lake") );
+			for ( String entry:prop3) {
+				if ( entry ==  "* SUSPENDED SOLIDS" )
+					rows.get( iRow ).createCell(17).setCellValue( "g.kg(d)-1" );		
+				else
+					rows.get( iRow ).createCell(17).setCellValue( "g.m-3" );		
+				rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Fresh water lake").get(regions.get(k)).get( entry ) );
+			}
+
+
+			iRow++;
+			rows.get( iRow ).createCell(17).setCellValue( "g.L-1" );		
+			rows.get( iRow++ ).createCell(j).setCellValue(fugacities.get("Fresh water").get(regions.get(k)).get("Fresh water"));
+			for ( String entry:prop3) {
+				if ( entry ==  "* SUSPENDED SOLIDS" )
+					rows.get( iRow ).createCell(17).setCellValue( "g.kg(d)-1" );		
+				else
+					rows.get( iRow ).createCell(17).setCellValue( "g.L-1" );		
+				rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Fresh water").get(regions.get(k)).get( entry ) );
+			}
+
+			iRow++;
+			rows.get( iRow ).createCell(17).setCellValue( "g.kg(w)-1" );		
+			rows.get( iRow++ ).createCell(j).setCellValue(fugacities.get("Fresh water sediment").get(regions.get(k)).get("Fresh water sediment"));
+			for ( String entry:prop2) {
+				if ( entry ==  "* PORE WATER" )
+					rows.get( iRow ).createCell(17).setCellValue( "g.L-1" );		
+				else
+					rows.get( iRow ).createCell(17).setCellValue( "g.kg(w)-1" );		
+
+				rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Fresh water sediment").get(regions.get(k)).get( entry ) );
+			}
+
+			iRow++;
+			rows.get( iRow ).createCell(17).setCellValue( "g.L-1" );		
+			rows.get( iRow++ ).createCell(j).setCellValue(fugacities.get("Surface sea/ocean water").get(regions.get(k)).get("Surface sea/ocean water"));
+			for ( String entry:prop3) {
+				if ( entry ==  "* SUSPENDED SOLIDS" )
+					rows.get( iRow ).createCell(17).setCellValue( "g.kg(d)-1" );		
+				else
+					rows.get( iRow ).createCell(17).setCellValue( "g.L-1" );		
+				rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Surface sea/ocean water").get(regions.get(k)).get( entry ) );
+			}
+
+			iRow++;
+			iRow++;
 			for ( String entry:prop3) 
-				if ( fugacities.get("Fresh water lake").get(regions.get(k)).get( entry ) != null )
-					rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Fresh water lake").get(regions.get(k)).get( entry ) );
-				else
-					iRow++;
-
-			iRow+=2;
-			for ( String entry:prop2) 
 				iRow++;
 
-			iRow+=2;
-			for ( String entry:prop3) 
-				if ( fugacities.get("Fresh water").get(regions.get(k)).get( entry ) != null )
-					rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Fresh water").get(regions.get(k)).get( entry ) );
+			iRow++;
+			rows.get( iRow ).createCell(17).setCellValue( "g.kg(w)-1" );		
+			rows.get( iRow++ ).createCell(j).setCellValue(fugacities.get("Marine sediment").get(regions.get(k)).get( "Marine sediment" ) );
+			for ( String entry:prop2) {
+				if ( entry ==  "* PORE WATER" )
+					rows.get( iRow ).createCell(17).setCellValue( "g.L-1" );		
 				else
-					iRow++;
+					rows.get( iRow ).createCell(17).setCellValue( "g.kg(w)-1" );		
+				rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Marine sediment").get(regions.get(k)).get( entry ) );
+			}
 
-			iRow+=2;
-			for ( String entry:prop2) 		
-				if ( fugacities.get("Fresh water sediment").get(regions.get(k)).get( entry ) != null  )
-					rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Fresh water sediment").get(regions.get(k)).get( entry ) );
+			iRow++;
+			rows.get( iRow ).createCell(17).setCellValue( "g.kg(w)-1" );		
+			rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Natural soil").get(regions.get(k)).get( "Natural soil" ));
+			for ( String entry:prop4) {
+				if ( entry ==  "* PORE WATER / GROUNDWATER" )
+					rows.get( iRow ).createCell(17).setCellValue( "g.L-1" );		
 				else
-					iRow++;
+					rows.get( iRow ).createCell(17).setCellValue( "g.kg(w)-1" );		
 
-			iRow+=2;
-			for ( String entry:prop3) 
-				if ( fugacities.get("Surface sea/ocean water").get(regions.get(k)).get( entry ) != null  )
-					rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Surface sea/ocean water").get(regions.get(k)).get( entry ) );
+				rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Natural soil").get(regions.get(k)).get( entry ) );				
+			}
+
+			iRow++;
+			rows.get( iRow ).createCell(17).setCellValue( "g.kg(w)-1" );		
+			rows.get( iRow++ ).createCell(j).setCellValue(fugacities.get("Agricultural soil").get(regions.get(k)).get( "Agricultural soil" ));
+			for ( String entry:prop4) { 
+				if ( entry ==  "* PORE WATER / GROUNDWATER" )
+					rows.get( iRow ).createCell(17).setCellValue( "g.L-1" );		
 				else
-					iRow++;
+					rows.get( iRow ).createCell(17).setCellValue( "g.kg(w)-1" );		
 
-			iRow+=2;
-			for ( String entry:prop3) 
-				iRow++;
+				rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Agricultural soil").get(regions.get(k)).get( entry ) );
+			}
 
-			iRow+=2;
-			for ( String entry:prop2) 
-				if ( fugacities.get("Marine sediment").get(regions.get(k)).get( entry ) != null  )
-					rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Marine sediment").get(regions.get(k)).get( entry ) );
+
+			iRow++;
+			rows.get( iRow ).createCell(17).setCellValue( "g.kg(w)-1" );		
+			rows.get( iRow++ ).createCell(j).setCellValue(fugacities.get("Other soil").get(regions.get(k)).get( "Other soil" ));
+			for ( String entry:prop4) {
+				if ( entry ==  "* PORE WATER / GROUNDWATER" )
+					rows.get( iRow ).createCell(17).setCellValue( "g.L-1" );		
 				else
-					iRow++;
+					rows.get( iRow ).createCell(17).setCellValue( "g.kg(w)-1" );		
 
-			iRow+=2;
-			for ( String entry:prop4) 
-				if ( fugacities.get("Natural soil").get(regions.get(k)).get( entry ) != null  )
-					rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Natural soil").get(regions.get(k)).get( entry ) );
-				else
-					iRow++;
-
-			iRow+=2;
-			for ( String entry:prop4) 
-				if ( fugacities.get("Agricultural soil").get(regions.get(k)).get( entry ) != null  )
-					rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Agricultural soil").get(regions.get(k)).get( entry ) );
-				else
-					iRow++;
-
-			iRow+=2;
-			for ( String entry:prop4) 
-				if ( fugacities.get("Other soil").get(regions.get(k)).get( entry ) != null  )
-					rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Other soil").get(regions.get(k)).get( entry ) );
-				else
-					iRow++;
-
+				rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Other soil").get(regions.get(k)).get( entry ) );
+			}
 		}
 
 		//Writing fugacities for Mod, Arct and Trop
 		k = 2;
 		for ( int j = 20; j <= 22; j++, k++) {
-			iRow = 9;
-			iRow+=2;
+			iRow = 10;
+			rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Air").get( regions.get( k ) ).get("Air") );
 			for ( String entry:prop1) 
-				if ( fugacities.get("Air").get(regions.get(k)).get( entry ) != null  )
-					rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Air").get(regions.get(k)).get( entry ) );
-				else
-					iRow++;
+				rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Air").get(regions.get(k)).get( entry ) );
 
-			iRow+=2;
+			iRow++;
+			iRow++;
 			for ( String entry:prop3) 
 				iRow++;
 
-			iRow+=2;
-			for ( String entry:prop2) 
-				iRow++;
-
-			iRow+=2;
+			iRow++;
+			iRow++;
 			for ( String entry:prop3) 
 				iRow++;
 
-			iRow+=2;
-			for ( String entry:prop2) 
+			iRow++;
+			iRow++;
+			for ( String entry:prop2) 		
 				iRow++;
 
-			iRow+=2;
+			iRow++;
+			rows.get( iRow++ ).createCell(j).setCellValue(fugacities.get("Surface sea/ocean water").get(regions.get(k)).get("Surface sea/ocean water"));
 			for ( String entry:prop3) 
-				if ( fugacities.get("Surface sea/ocean water").get(regions.get(k)).get( entry ) != null  )
-					rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Surface sea/ocean water").get(regions.get(k)).get( entry ) );
-				else
-					iRow++;
+				rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Surface sea/ocean water").get(regions.get(k)).get( entry ) );
 
-			iRow+=2;
+			iRow++;
+			rows.get( iRow++ ).createCell(j).setCellValue(fugacities.get("Deep sea/ocean water").get(regions.get(k)).get("Deep sea/ocean water"));
 			for ( String entry:prop3) {
-				if ( fugacities.get("Deep sea/ocean water").get(regions.get(k)).get( entry ) != null  )
-					rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Deep sea/ocean water").get(regions.get(k)).get( entry ) );
+				if ( entry ==  "* SUSPENDED SOLIDS" )
+					rows.get( iRow ).createCell(17).setCellValue( "g.kg(d)-1" );		
 				else
-					iRow++;
+					rows.get( iRow ).createCell(17).setCellValue( "g.L-1" );	
+				rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Deep sea/ocean water").get(regions.get(k)).get( entry ) );
 			}
 
-			iRow+=2;
+			iRow++;
+			rows.get( iRow++ ).createCell(j).setCellValue(fugacities.get("Marine sediment").get(regions.get(k)).get( "Marine sediment" ) );
 			for ( String entry:prop2) 
-				if ( fugacities.get("Marine sediment").get(regions.get(k)).get( entry ) != null  )
-					rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Marine sediment").get(regions.get(k)).get( entry ) );
-				else
-					iRow++;
+				rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Marine sediment").get(regions.get(k)).get( entry ) );
 
-			iRow+=2;
+			iRow++;
+			iRow++;
 			for ( String entry:prop4) 
 				iRow++;
 
-			iRow+=2;
+			iRow++;
+			iRow++;
 			for ( String entry:prop4) 
 				iRow++;
 
-			iRow+=2;
+			iRow++;
+			rows.get( iRow++ ).createCell(j).setCellValue(fugacities.get("Other soil").get(regions.get(k)).get( "Other soil" ));
 			for ( String entry:prop4) 
-				if ( fugacities.get("Other soil").get(regions.get(k)).get( entry ) != null  )
-					rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Other soil").get(regions.get(k)).get( entry ) );
-				else
-					iRow++;
-
+				rows.get( iRow++ ).createCell(j).setCellValue( fugacities.get("Other soil").get(regions.get(k)).get( entry ) );
 		}
 
-		//Re-build in order to write the info - Disolved species
-		disBuilder();
-		int iCol = addNewSheet( "Steady state mass flows for dissolved species", "Output table 2: Steady-state mass flows for D species only (kg.s-1)",
-				workbook, regions, iRow);
-
-		//		partBuilder();
-		//		iCol = addNewSheet( "Steady state mass flows for particulate species", "Output table 2b: Steady-state mass flows for total particulate species only (kg.s-1)",
+		//Re-build in order to write the info
+		//		disBuilder();
+		//		int iCol = addNewSheet( "Steady state mass flows", "Output table 2: Steady-state mass flows (kg.s-1)",
 		//				workbook, regions, iRow);
+
+		//Write to the excel 
+		workbook.write( os );
+		Filedownload.save( os.toByteArray(), null, "output.xlsx");
 	}
 
 	int addNewSheet( String sheetName, String tableName, XSSFWorkbook workbook,  ArrayList<String> regions, int iRow ) {
@@ -5511,15 +5505,15 @@ public class output extends SelectorComposer<Window> {
 		transLabels.add("Inflow");
 		transLabels.add("Outflow");
 		transLabels.add("Removal");
-		transLabels.add("Formation (S,A,P->D)");
+		//		transLabels.add("Formation (S,A,P->D)");
 		transLabels.add("Degradation");
-		transLabels.add("air-water");
-		transLabels.add("water-air");
-		transLabels.add("air-soil");
-		transLabels.add("soil-air");
-		transLabels.add("soil-water");
-		transLabels.add("water-sed");
-		transLabels.add("sed-water");
+		transLabels.add("air-water transport");
+		transLabels.add("water-air transport");
+		transLabels.add("air-soil transport");
+		transLabels.add("soil-air transport");
+		transLabels.add("soil-water transport");
+		transLabels.add("water-sed transport");
+		transLabels.add("sed-water transport");
 
 		rowsSS.get(8).createCell( 1 ).setCellValue("Species");	
 		rowsSS.get(8).getCell( 1 ).setCellStyle( boldStyle );	
@@ -5649,7 +5643,7 @@ public class output extends SelectorComposer<Window> {
 		}
 
 		//Write formation
-		iRow = 10;
+		/*		iRow = 10;
 		for (String region:regions) {
 			if ( region == "Regional Scale" || region == "Continental Scale" ) {
 				for ( int i= 1; i <= compartLabels.size(); i++ ) {
@@ -5672,6 +5666,7 @@ public class output extends SelectorComposer<Window> {
 				iRow += globalLabels.size()+1;
 			}
 		}
+		 */
 
 		//Write degradation
 		iRow = 10;
