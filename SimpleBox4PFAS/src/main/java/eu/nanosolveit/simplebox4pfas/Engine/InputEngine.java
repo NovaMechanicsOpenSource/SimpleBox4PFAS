@@ -525,90 +525,23 @@ public class InputEngine {
 		substancesData.put("kdegD.soil", Double.valueOf( nanomaterial.get("kdegD.soil") ));
 
 		// ENVIROMENTAL PROPERTIES (ALL-SCALES)
-		if ( Double.valueOf( scene.getEnviInfo("RadNuc") ) > 0.0 )
-			envProperties.put( "RadNuc", Double.valueOf( scene.getEnviInfo("RadNuc") )/1e+9 );
-		else
-			envProperties.put( "RadNuc", 1.00E-08 );
-
-		if ( Double.valueOf( scene.getEnviInfo("RhoNuc") ) > 0.0 )
-			envProperties.put( "RhoNuc", Double.valueOf( scene.getEnviInfo("RhoNuc") ) );
-		else
-			envProperties.put( "RhoNuc", 1300. );
-
-		if ( Double.valueOf( scene.getEnviInfo("RadAcc") ) > 0.0 )
-			envProperties.put( "RadAcc", Double.valueOf( scene.getEnviInfo("RadAcc") )/1e+9 );
-		else
-			envProperties.put( "RadAcc", 5.8E-08 );
-
-		if ( Double.valueOf( scene.getEnviInfo("RhoAcc") ) > 0.0 )
-			envProperties.put( "RhoAcc", Double.valueOf( scene.getEnviInfo("RhoAcc") ) );
-		else
-			envProperties.put( "RhoAcc",  landSettings.get("ALL-SCALE").get("RHOaers") );
-
-		if ( Double.valueOf( scene.getEnviInfo("RadCP.a") ) > 0.0 )
-			envProperties.put( "RadCP.a", Double.valueOf( scene.getEnviInfo("RadCP.a") )/1e6 );
-		else
-			envProperties.put( "RadCP.a", 9e-7);
-
-		if ( Double.valueOf( scene.getEnviInfo("RhoCP.a") ) > 0.0 )
-			envProperties.put( "RhoCP.a", Double.valueOf( scene.getEnviInfo("RhoCP.a") ) );
-		else
-			envProperties.put( "RhoCP.a",  landSettings.get("ALL-SCALE").get("RHOaers") );
-
-		if ( Double.valueOf( scene.getEnviInfo("RadNC.w") ) > 0.0 )
-			envProperties.put( "RadNC.w", Double.valueOf( scene.getEnviInfo("RadNC.w") )/1e+9 );
-		else
-			envProperties.put( "RadNC.w", 1.5e-7);
-
-		if ( Double.valueOf( scene.getEnviInfo("RhoNC.w") ) > 0.0 )
-			envProperties.put( "RhoNC.w", Double.valueOf( scene.getEnviInfo("RhoNC.w") ) );
-		else
-			envProperties.put( "RhoNC.w",  2000. );
-
-		if ( Double.valueOf( scene.getEnviInfo("RadSPM.w") ) > 0.0 )
-			envProperties.put( "RadSPM.w", Double.valueOf( scene.getEnviInfo("RadSPM.w") )/1e+6 );
-		else
-			envProperties.put( "RadSPM.w", 3.0e-6);
-
-		if ( Double.valueOf( scene.getEnviInfo("RhoSPM.w") ) > 0.0 )
-			envProperties.put( "RhoSPM.w", Double.valueOf( scene.getEnviInfo("RhoSPM.w") ) );
-		else
-			envProperties.put( "RhoSPM.w", 2.5e+3);
-
-		if ( Double.valueOf( scene.getEnviInfo("RadNC.sd") ) > 0.0 )
-			envProperties.put( "RadNC.sd", Double.valueOf( scene.getEnviInfo("RadNC.sd") )/1e+9 );
-		else
-			envProperties.put( "RadNC.sd", 1.5e-7);
-
-		if ( Double.valueOf( scene.getEnviInfo("RhoNC.sd") ) > 0.0 )
-			envProperties.put( "RhoNC.sd", Double.valueOf( scene.getEnviInfo("RhoNC.sd") ) );
-		else
-			envProperties.put( "RhoNC.sd", 2.0e+3);
-
-		if ( Double.valueOf( scene.getEnviInfo("RadFP.sd") ) > 0.0 )
-			envProperties.put( "RadFP.sd", Double.valueOf( scene.getEnviInfo("RadFP.sd") )/1e+6 );
-		else
-			envProperties.put( "RadFP.sd", 1.28e-4);
-
-		if ( Double.valueOf( scene.getEnviInfo("RadNC.s") ) > 0.0 )
-			envProperties.put( "RadNC.s", Double.valueOf( scene.getEnviInfo("RadNC.s") )/1e+9 );
-		else
-			envProperties.put( "RadNC.s", 1.5e-7);
-
-		if ( Double.valueOf( scene.getEnviInfo("RhoNC.s") ) > 0.0 )
-			envProperties.put( "RhoNC.s", Double.valueOf( scene.getEnviInfo("RhoNC.s") ) );
-		else
-			envProperties.put( "RhoNC.s", 2.0e+3);
-
-		if ( Double.valueOf( scene.getEnviInfo("RadFP.s") ) > 0.0 )
-			envProperties.put( "RadFP.s", Double.valueOf( scene.getEnviInfo("RadFP.s") )/1e+6 );
-		else
-			envProperties.put( "RadFP.s", 1.28e-4);
-
-		if ( Double.valueOf( scene.getEnviInfo("RhoFP.s") ) > 0.0 )
-			envProperties.put( "RhoFP.s", Double.valueOf( scene.getEnviInfo("RhoFP.s") ) );
-		else
-			envProperties.put( "RhoFP.s", 2.5e+3);
+		envProperties.put( "RadNuc", 1.00E-08 );
+		envProperties.put( "RhoNuc", 1300. );
+		envProperties.put( "RadAcc", 5.8E-08 );
+		envProperties.put( "RhoAcc",  landSettings.get("ALL-SCALE").get("RHOaers") );
+		envProperties.put( "RadCP.a", 9e-7);
+		envProperties.put( "RhoCP.a",  landSettings.get("ALL-SCALE").get("RHOaers") );
+		envProperties.put( "RadNC.w", 1.5e-7);
+		envProperties.put( "RhoNC.w",  2000. );
+		envProperties.put( "RadSPM.w", 3.0e-6);
+		envProperties.put( "RhoSPM.w", 2.5e+3);
+		envProperties.put( "RadNC.sd", 1.5e-7);
+		envProperties.put( "RhoNC.sd", 2.0e+3);
+		envProperties.put( "RadFP.sd", 1.28e-4);
+		envProperties.put( "RadNC.s", 1.5e-7);
+		envProperties.put( "RhoNC.s", 2.0e+3);
+		envProperties.put( "RadFP.s", 1.28e-4);
+		envProperties.put( "RhoFP.s", 2.5e+3);
 
 		envProperties.put( "SingleVolNuc",  (4./3.)*Math.PI*Math.pow(envProperties.get("RadNuc"), 3) );		
 		envProperties.put( "SingleVolAcc",  (4./3.)*Math.PI*Math.pow(envProperties.get("RadAcc"), 3) );
