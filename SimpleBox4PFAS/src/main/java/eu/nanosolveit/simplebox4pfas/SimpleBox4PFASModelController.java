@@ -336,46 +336,16 @@ public class SimpleBox4PFASModelController extends SelectorComposer<Window>{
 					tropSolidInfo.put( sheet.getRow( i ).getCell( 6 ).getStringCellValue(), String.valueOf( sheet.getRow( i ).getCell( iScenario ).getNumericCellValue() ) );			
 				scenariosData.get( str ).insertSolidInfo("TROPICAL", tropSolidInfo);
 
-				Map< String, String > regDissInfo = new HashMap<String, String>();
-				for ( int i = 37; i < 44; i++) 
-					regDissInfo.put( sheet.getRow( i ).getCell( 6 ).getStringCellValue(), String.valueOf( sheet.getRow( i ).getCell( iScenario ).getNumericCellValue() ) );			
-				scenariosData.get( str ).insertDissGasInfo("REGIONAL", regDissInfo);
-
-				Map< String, String > contDissInfo = new HashMap<String, String>();
-				for ( int i = 45; i < 52; i++) 
-					contDissInfo.put( sheet.getRow( i ).getCell( 6 ).getStringCellValue(), String.valueOf( sheet.getRow( i ).getCell( iScenario ).getNumericCellValue() ) );
-				scenariosData.get( str ).insertDissGasInfo("CONTINENTAL", contDissInfo);
-
-				Map< String, String > modDissInfo = new HashMap<String, String>();
-				for ( int i = 53; i < 56; i++)
-					modDissInfo.put( sheet.getRow( i ).getCell( 6 ).getStringCellValue(), String.valueOf( sheet.getRow( i ).getCell( iScenario ).getNumericCellValue() ) );
-				scenariosData.get( str ).insertDissGasInfo("MODERATE", modDissInfo);
-
-				Map< String, String > artDissInfo = new HashMap<String, String>();
-				for ( int i = 57; i < 60; i++) 
-					artDissInfo.put( sheet.getRow( i ).getCell( 6 ).getStringCellValue(), String.valueOf( sheet.getRow( i ).getCell( iScenario ).getNumericCellValue() ) );
-				scenariosData.get( str ).insertDissGasInfo("ARCTIC", artDissInfo);
-
-				Map< String, String > tropDissInfo = new HashMap<String, String>();
-				for ( int i = 61; i < 64; i++) 
-					tropDissInfo.put( sheet.getRow( i ).getCell( 6 ).getStringCellValue(), String.valueOf( sheet.getRow( i ).getCell( iScenario ).getNumericCellValue() ) );
-				scenariosData.get( str ).insertDissGasInfo("TROPICAL", tropDissInfo);
-
 				Map< String, String > regLandInfo = new HashMap<String, String>();
-				for ( int i = 68; i < 94; i++) 
+				for ( int i = 37; i < 63; i++) 
 					regLandInfo.put( sheet.getRow( i ).getCell( 6 ).getStringCellValue(), String.valueOf( sheet.getRow( i ).getCell( iScenario ).getNumericCellValue() ) );
 				scenariosData.get( str ).insertLandscapeInfo("REGIONAL", regLandInfo);
 
 				Map< String, String > contLandInfo = new HashMap<String, String>();
-				for ( int i = 96; i < 124; i++) 
+				for ( int i = 65; i < 93; i++) 
 					contLandInfo.put( sheet.getRow( i ).getCell( 6 ).getStringCellValue(), String.valueOf( sheet.getRow( i ).getCell( iScenario ).getNumericCellValue() ) );
 				scenariosData.get( str ).insertLandscapeInfo("CONTINENTAL", contLandInfo);
-
-				Map< String, String > enviInfo = new HashMap<String, String>();
-				for ( int i = 126; i < 143; i++) 
-					enviInfo.put( sheet.getRow( i ).getCell( 6 ).getStringCellValue() , String.valueOf( sheet.getRow( i ).getCell( iScenario ).getNumericCellValue() ) );
-				scenariosData.get( str ).insertEnviInfo( enviInfo );
-
+				
 				iScenario++;
 			}
 
