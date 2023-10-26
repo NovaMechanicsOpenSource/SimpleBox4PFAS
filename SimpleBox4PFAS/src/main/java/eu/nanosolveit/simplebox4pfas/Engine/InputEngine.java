@@ -57,12 +57,9 @@ public class InputEngine {
 		else
 			substancesData.put("RhoS", 4.23e+3 );
 
-		if ( Double.valueOf( nanomaterial.get("RadS") ) > 0 )
-			substancesData.put("RadS", Double.valueOf( nanomaterial.get("RadS") )*1e-9 );
-		else
-			substancesData.put("RadS", 10.*1e-9 );
+		substancesData.put("RadS", 0. );
 
-		if ( Double.valueOf( nanomaterial.get("Kow") ) > 0.0  )
+		if ( Double.valueOf( nanomaterial.get("Kaw") ) > 0.0  )
 			substancesData.put("Kaw", Double.valueOf( nanomaterial.get("Kaw") ) );
 		else
 			substancesData.put("Kaw", 1e-20 );
@@ -118,271 +115,59 @@ public class InputEngine {
 			substancesData.put( "H0vap", ( -3.82*Math.log( substancesData.get("Pvap25") ) + 70. )*1000.);
 
 		substancesData.put( "H0sol", 1e+4 );
-
-		if ( Double.valueOf( nanomaterial.get("AtefSP.w0") ) > 0.0 )
-			substancesData.put("AtefSP.w0", Double.valueOf( nanomaterial.get("AtefSP.w0") ) );
-		else
-			substancesData.put("AtefSP.w0", 0.1 );
-
-		if ( Double.valueOf( nanomaterial.get("AtefSA.w0") ) > 0.0 )
-			substancesData.put("AtefSA.w0", Double.valueOf( nanomaterial.get("AtefSA.w0") ) );
-		else
-			substancesData.put("AtefSA.w0", 0.1 );
-
-		if ( Double.valueOf( nanomaterial.get("AtefSP.w1") ) > 0.0 )
-			substancesData.put("AtefSP.w1", Double.valueOf( nanomaterial.get("AtefSP.w1") ) );
-		else
-			substancesData.put("AtefSP.w1", 0.1 );
-
-		if ( Double.valueOf( nanomaterial.get("AtefSA.w1") ) > 0.0 ) 
-			substancesData.put("AtefSA.w1", Double.valueOf( nanomaterial.get("AtefSA.w1") ) );
-		else
-			substancesData.put("AtefSA.w1", 0.1 );		
-
-		if ( Double.valueOf( nanomaterial.get("AtefSP.w2") ) > 0.0 )
-			substancesData.put("AtefSP.w2", Double.valueOf( nanomaterial.get("AtefSP.w2") ) );
-		else
-			substancesData.put("AtefSP.w2", 1. );
-
-		if ( Double.valueOf( nanomaterial.get("AtefSA.w2") ) > 0.0 )
-			substancesData.put("AtefSA.w2", Double.valueOf( nanomaterial.get("AtefSA.w2") ) );
-		else
-			substancesData.put("AtefSA.w2", 1. );
-
-		if ( Double.valueOf( nanomaterial.get("AtefSP.w3") ) > 0.0 )
-			substancesData.put("AtefSP.w3", Double.valueOf( nanomaterial.get("AtefSP.w3") ) );
-		else
-			substancesData.put("AtefSP.w3", 1. );
-
-		if ( Double.valueOf( nanomaterial.get("AtefSA.w3") ) > 0.0 )
-			substancesData.put("AtefSA.w3", Double.valueOf( nanomaterial.get("AtefSA.w3") ) );
-		else
-			substancesData.put("AtefSA.w3", 1. );
-
-		if ( Double.valueOf( nanomaterial.get("AtefSA.s1") ) > 0.0 )
-			substancesData.put("AtefSA.s1", Double.valueOf( nanomaterial.get("AtefSA.s1") ) );
-		else
-			substancesData.put("AtefSA.s1", 0.1 );		
-
-		if ( Double.valueOf( nanomaterial.get("AtefSP.s1") ) > 0.0 )
-			substancesData.put("AtefSP.s1", Double.valueOf( nanomaterial.get("AtefSP.s1") ) );
-		else
-			substancesData.put("AtefSP.s1", 0.1 );		
-
-		if ( Double.valueOf( nanomaterial.get("AtefSA.s2") ) > 0.0 )
-			substancesData.put("AtefSA.s2", Double.valueOf( nanomaterial.get("AtefSA.s2") ) );
-		else
-			substancesData.put("AtefSA.s2", 0.1 );		
-
-		if ( Double.valueOf( nanomaterial.get("AtefSP.s2") ) > 0.0 )
-			substancesData.put("AtefSP.s2", Double.valueOf( nanomaterial.get("AtefSP.s2") ) );
-		else
-			substancesData.put("AtefSP.s2", 0.1 );		
-
-		if ( Double.valueOf( nanomaterial.get("AtefSA.s3") ) > 0.0 )
-			substancesData.put("AtefSA.s3", Double.valueOf( nanomaterial.get("AtefSA.s3") ) );
-		else
-			substancesData.put("AtefSA.s3", 0.1 );		
-
-		if ( Double.valueOf( nanomaterial.get("AtefSP.s3") ) > 0.0 )
-			substancesData.put("AtefSP.s3", Double.valueOf( nanomaterial.get("AtefSP.s3") ) );
-		else
-			substancesData.put("AtefSP.s3", 0.1 );		
-
-		if ( Double.valueOf( nanomaterial.get("AtefSA.sd0") ) > 0.0 )
-			substancesData.put("AtefSA.sd0", Double.valueOf( nanomaterial.get("AtefSA.sd0") ) );
-		else
-			substancesData.put("AtefSA.sd0", 0.1 );		
-
-		if ( Double.valueOf( nanomaterial.get("AtefSP.sd0") ) > 0.0 )
-			substancesData.put("AtefSP.sd0", Double.valueOf( nanomaterial.get("AtefSP.sd0") ) );
-		else
-			substancesData.put("AtefSP.sd0", 0.1 );		
-
-		if ( Double.valueOf( nanomaterial.get("AtefSA.sd1") ) > 0.0 )
-			substancesData.put("AtefSA.sd1", Double.valueOf( nanomaterial.get("AtefSA.sd1") ) );
-		else
-			substancesData.put("AtefSA.sd1", 0.1 );		
-
-		if ( Double.valueOf( nanomaterial.get("AtefSP.sd1") ) > 0.0 )
-			substancesData.put("AtefSP.sd1", Double.valueOf( nanomaterial.get("AtefSP.sd1") ) );
-		else
-			substancesData.put("AtefSP.sd1", 0.1 );
-
-		if ( Double.valueOf( nanomaterial.get("AtefSA.sd2") ) > 0.0 )
-			substancesData.put("AtefSA.sd2", Double.valueOf( nanomaterial.get("AtefSA.sd2") ) );
-		else
-			substancesData.put("AtefSA.sd2", 1. );
-
-		if ( Double.valueOf( nanomaterial.get("AtefSP.sd2") ) > 0.0 )
-			substancesData.put("AtefSP.sd2", Double.valueOf( nanomaterial.get("AtefSP.sd2") ) );
-		else
-			substancesData.put("AtefSP.sd2", 1. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegS.a") ) > 0.0 )
-			substancesData.put("kdegS.a", Double.valueOf( nanomaterial.get("kdegS.a") ) );
-		else
-			substancesData.put("kdegS.a", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegA.a") ) > 0.0 )
-			substancesData.put("kdegA.a", Double.valueOf( nanomaterial.get("kdegA.a") ) );
-		else
-			substancesData.put("kdegA.a", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegP.a") ) > 0.0 )
-			substancesData.put("kdegP.a", Double.valueOf( nanomaterial.get("kdegP.a") ) );
-		else
-			substancesData.put("kdegP.a", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegS.w0") ) > 0.0 )
-			substancesData.put("kdegS.w0", Double.valueOf( nanomaterial.get("kdegS.w0") ) );
-		else
-			substancesData.put("kdegS.w0", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegS.w1") ) > 0.0 )
-			substancesData.put("kdegS.w1", Double.valueOf( nanomaterial.get("kdegS.w1") ) );
-		else
-			substancesData.put("kdegS.w1", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegS.w2") ) > 0.0 )
-			substancesData.put("kdegS.w2", Double.valueOf( nanomaterial.get("kdegS.w2") ) );
-		else
-			substancesData.put("kdegS.w2", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegS.s1") ) > 0.0 )
-			substancesData.put("kdegS.s1", Double.valueOf( nanomaterial.get("kdegS.s1") ) );
-		else
-			substancesData.put("kdegS.s1", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegS.s2") ) > 0.0 )
-			substancesData.put("kdegS.s2", Double.valueOf( nanomaterial.get("kdegS.s2") ) );
-		else
-			substancesData.put("kdegS.s2", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegS.s3") ) > 0.0 )
-			substancesData.put("kdegS.s3", Double.valueOf( nanomaterial.get("kdegS.s3") ) );
-		else
-			substancesData.put("kdegS.s3", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegS.sd0") ) > 0.0 )
-			substancesData.put("kdegS.sd0", Double.valueOf( nanomaterial.get("kdegS.sd0") ) );
-		else
-			substancesData.put("kdegS.sd0", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegS.sd1") ) > 0.0 )
-			substancesData.put("kdegS.sd1", Double.valueOf( nanomaterial.get("kdegS.sd1") ) );
-		else
-			substancesData.put("kdegS.sd1", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegS.sd2") ) > 0.0 )
-			substancesData.put("kdegS.sd2", Double.valueOf( nanomaterial.get("kdegS.sd2") ) );
-		else
-			substancesData.put("kdegS.sd2", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegS.w3") ) > 0.0 )
-			substancesData.put("kdegS.w3", Double.valueOf( nanomaterial.get("kdegS.w3") ) );
-		else
-			substancesData.put("kdegS.w3", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegA.w0") ) > 0.0 )
-			substancesData.put("kdegA.w0", Double.valueOf( nanomaterial.get("kdegA.w0") ) );
-		else
-			substancesData.put("kdegA.w0", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegA.w1") ) > 0.0 )
-			substancesData.put("kdegA.w1", Double.valueOf( nanomaterial.get("kdegA.w1") ) );
-		else
-			substancesData.put("kdegA.w1", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegA.w2") ) > 0.0 )
-			substancesData.put("kdegA.w2", Double.valueOf( nanomaterial.get("kdegA.w2") ) );
-		else
-			substancesData.put("kdegA.w2", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegP.w0") ) > 0.0 )
-			substancesData.put("kdegP.w0", Double.valueOf( nanomaterial.get("kdegP.w0") ) );
-		else
-			substancesData.put("kdegP.w0", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegP.w1") ) > 0.0 )
-			substancesData.put("kdegP.w1", Double.valueOf( nanomaterial.get("kdegP.w1") ) );
-		else
-			substancesData.put("kdegP.w1", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegP.w2") ) > 0.0 )
-			substancesData.put("kdegP.w2", Double.valueOf( nanomaterial.get("kdegP.w2") ) );
-		else
-			substancesData.put("kdegP.w2", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegA.s1") ) > 0.0 )
-			substancesData.put("kdegA.s1", Double.valueOf( nanomaterial.get("kdegA.s1") ) );
-		else
-			substancesData.put("kdegA.s1", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegA.s2") ) > 0.0 )
-			substancesData.put("kdegA.s2", Double.valueOf( nanomaterial.get("kdegA.s2") ) );
-		else
-			substancesData.put("kdegA.s2", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegA.s3") ) > 0.0 )
-			substancesData.put("kdegA.s3", Double.valueOf( nanomaterial.get("kdegA.s3") ) );
-		else
-			substancesData.put("kdegA.s3", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegP.s1") ) > 0.0 )
-			substancesData.put("kdegP.s1", Double.valueOf( nanomaterial.get("kdegP.s1") ) );
-		else
-			substancesData.put("kdegP.s1", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegP.s2") ) > 0.0 )
-			substancesData.put("kdegP.s2", Double.valueOf( nanomaterial.get("kdegP.s2") ) );
-		else
-			substancesData.put("kdegP.s2", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegP.s3") ) > 0.0 )
-			substancesData.put("kdegP.s3", Double.valueOf( nanomaterial.get("kdegP.s3") ) );
-		else
-			substancesData.put("kdegP.s3", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegA.sd0") ) > 0.0 ) 
-			substancesData.put("kdegA.sd0", Double.valueOf( nanomaterial.get("kdegA.sd0") ) );
-		else
-			substancesData.put("kdegA.sd0", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegA.sd1") ) > 0.0 )
-			substancesData.put("kdegA.sd1", Double.valueOf( nanomaterial.get("kdegA.sd1") ) );
-		else
-			substancesData.put("kdegA.sd1", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegA.sd2") ) > 0.0 )
-			substancesData.put("kdegA.sd2", Double.valueOf( nanomaterial.get("kdegA.sd2") ) );
-		else
-			substancesData.put("kdegA.sd2", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegP.sd0") ) > 0.0 )
-			substancesData.put("kdegP.sd0", Double.valueOf( nanomaterial.get("kdegP.sd0") ) );
-		else
-			substancesData.put("kdegP.sd0", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegP.sd1") ) > 0.0 )
-			substancesData.put("kdegP.sd1", Double.valueOf( nanomaterial.get("kdegP.sd1") ) );
-		else
-			substancesData.put("kdegP.sd1", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegP.sd2") ) > 0.0 )
-			substancesData.put("kdegP.sd2", Double.valueOf( nanomaterial.get("kdegP.sd2") ) );
-		else
-			substancesData.put("kdegP.sd2", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegA.w3") ) > 0.0 )
-			substancesData.put("kdegA.w3", Double.valueOf( nanomaterial.get("kdegA.w3") ) );
-		else
-			substancesData.put("kdegA.w3", 0. );
-
-		if ( Double.valueOf( nanomaterial.get("kdegP.w3") ) > 0.0 )
-			substancesData.put("kdegP.w3", Double.valueOf( nanomaterial.get("kdegP.w3") ) );
-		else
-			substancesData.put("kdegP.w3", 0. );
+		substancesData.put("AtefSP.w0", 0.1 );
+		substancesData.put("AtefSA.w0", 0.1 );
+		substancesData.put("AtefSP.w1", 0.1 );
+		substancesData.put("AtefSA.w1", 0.1 );		
+		substancesData.put("AtefSP.w2", 1. );
+		substancesData.put("AtefSA.w2", 1. );
+		substancesData.put("AtefSP.w3", 1. );
+		substancesData.put("AtefSA.w3", 1. );
+		substancesData.put("AtefSA.s1", 0.1 );		
+		substancesData.put("AtefSP.s1", 0.1 );		
+		substancesData.put("AtefSA.s2", 0.1 );		
+		substancesData.put("AtefSP.s2", 0.1 );		
+		substancesData.put("AtefSA.s3", 0.1 );		
+		substancesData.put("AtefSP.s3", 0.1 );		
+		substancesData.put("AtefSA.sd0", 0.1 );		
+		substancesData.put("AtefSP.sd0", 0.1 );		
+		substancesData.put("AtefSA.sd1", 0.1 );		
+		substancesData.put("AtefSP.sd1", 0.1 );
+		substancesData.put("AtefSA.sd2", 1. );
+		substancesData.put("AtefSP.sd2", 1. );
+		substancesData.put("kdegS.a", 0. );
+		substancesData.put("kdegA.a", 0. );
+		substancesData.put("kdegP.a", 0. );
+		substancesData.put("kdegS.w0", 0. );
+		substancesData.put("kdegS.w1", 0. );
+		substancesData.put("kdegS.w2", 0. );
+		substancesData.put("kdegS.s1", 0. );
+		substancesData.put("kdegS.s2", 0. );
+		substancesData.put("kdegS.s3", 0. );
+		substancesData.put("kdegS.sd0", 0. );
+		substancesData.put("kdegS.sd1", 0. );
+		substancesData.put("kdegS.sd2", 0. );
+		substancesData.put("kdegS.w3", 0. );
+		substancesData.put("kdegA.w0", 0. );
+		substancesData.put("kdegA.w1", 0. );
+		substancesData.put("kdegA.w2", 0. );
+		substancesData.put("kdegP.w0", 0. );
+		substancesData.put("kdegP.w1", 0. );
+		substancesData.put("kdegP.w2", 0. );
+		substancesData.put("kdegA.s1", 0. );
+		substancesData.put("kdegA.s2", 0. );
+		substancesData.put("kdegA.s3", 0. );
+		substancesData.put("kdegP.s1", 0. );
+		substancesData.put("kdegP.s2", 0. );
+		substancesData.put("kdegP.s3", 0. );
+		substancesData.put("kdegA.sd0", 0. );
+		substancesData.put("kdegA.sd1", 0. );
+		substancesData.put("kdegA.sd2", 0. );
+		substancesData.put("kdegP.sd0", 0. );
+		substancesData.put("kdegP.sd1", 0. );
+		substancesData.put("kdegP.sd2", 0. );
+		substancesData.put("kdegA.w3", 0. );
+		substancesData.put("kdegP.w3", 0. );
 
 		// We first must have made the substances (a part of it) and then create the QSARTable
 		makeQSARTable();			
@@ -512,10 +297,7 @@ public class InputEngine {
 			substancesData.put("kdegD.water", substancesData.get("C.OHrad")*substancesData.get("k0.OHrad")*v0 );
 		}
 
-		if ( Double.valueOf( nanomaterial.get("AHamakerSP.w") ) > 0.0  )
-			substancesData.put("AHamakerSP.w", Double.valueOf( nanomaterial.get("AHamakerSP.w") ));
-		else
-			substancesData.put("AHamakerSP.w", 6.9e-21 );
+		substancesData.put("AHamakerSP.w", 0. );
 
 		//Coming only from the nanomaterial
 		substancesData.put("kdegD.water", Double.valueOf( nanomaterial.get("kdegD.water") )); 

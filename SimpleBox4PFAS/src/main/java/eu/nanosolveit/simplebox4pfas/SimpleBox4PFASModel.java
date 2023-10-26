@@ -176,14 +176,15 @@ public class SimpleBox4PFASModel {
 				scenariosData.get( str ).insertSolidInfo("TROPICAL", tropSolidInfo);
 
 				Map< String, String > regLandInfo = new HashMap<String, String>();
-				for ( int i = 37; i < 64; i++) 
+				for ( int i = 37; i < 63; i++) 
 					regLandInfo.put( sheet.getRow( i ).getCell( 6 ).getStringCellValue(), String.valueOf( sheet.getRow( i ).getCell( iScenario ).getNumericCellValue() ) );
 				scenariosData.get( str ).insertLandscapeInfo("REGIONAL", regLandInfo);
 
 				Map< String, String > contLandInfo = new HashMap<String, String>();
-				for ( int i = 65; i < 94; i++) 
+				for ( int i = 65; i < 93; i++) 
 					contLandInfo.put( sheet.getRow( i ).getCell( 6 ).getStringCellValue(), String.valueOf( sheet.getRow( i ).getCell( iScenario ).getNumericCellValue() ) );
 				scenariosData.get( str ).insertLandscapeInfo("CONTINENTAL", contLandInfo);
+
 				
 				iScenario++;
 			}

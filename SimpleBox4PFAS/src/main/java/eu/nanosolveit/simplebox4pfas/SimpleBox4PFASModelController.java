@@ -265,9 +265,7 @@ public class SimpleBox4PFASModelController extends SelectorComposer<Window>{
 		nanomaterials.setModel( availNMs );
 
 		molweight.setValue(Double.valueOf( nanoData.get( availNMs.get( 0 ) ).get("Molweight") ) );
-		radius.setValue(  Double.valueOf( nanoData.get( availNMs.get( 0 ) ).get("RadS") ) );
 		density.setValue(  Double.valueOf( nanoData.get( availNMs.get( 0 ) ).get("RhoS") ) );
-		hamaker.setValue(  Double.valueOf( nanoData.get( availNMs.get( 0 ) ).get("AHamakerSP.w") ) );
 
 		toAir.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("REGIONAL").get("E.aRS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
 		toLakeWater.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("REGIONAL").get("E.w0RS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
@@ -438,9 +436,9 @@ public class SimpleBox4PFASModelController extends SelectorComposer<Window>{
 		loadScenarios();
 
 		molweight.setValue( Double.valueOf( nanoData.get( nanomaterials.getSelectedItem().getValue().toString() ).get("Molweight") ) );
-		radius.setValue( Double.valueOf( nanoData.get( nanomaterials.getSelectedItem().getValue().toString() ).get("RadS") ) );
+//		radius.setValue( Double.valueOf( nanoData.get( nanomaterials.getSelectedItem().getValue().toString() ).get("RadS") ) );
 		density.setValue( Double.valueOf( nanoData.get( nanomaterials.getSelectedItem().getValue().toString() ).get("RhoS") ) );
-		hamaker.setValue( Double.valueOf( nanoData.get( nanomaterials.getSelectedItem().getValue().toString() ).get("AHamakerSP.w") ) );
+//		hamaker.setValue( Double.valueOf( nanoData.get( nanomaterials.getSelectedItem().getValue().toString() ).get("AHamakerSP.w") ) );
 
 		//Fresh water
 		freshWater.setValue( Double.valueOf( nanoData.get( nanomaterials.getSelectedItem().getValue().toString() ).get("AtefSA.w0") ) );
@@ -648,8 +646,108 @@ public class SimpleBox4PFASModelController extends SelectorComposer<Window>{
 						break;
 					}
 					}  					
-				}  
+					
+					inputNanoData.put("AtefSA.w0", String.valueOf(0.) );
+					inputNanoData.put("AtefSP.w0", String.valueOf(0.) );	
+					
+					inputNanoData.put("AtefSA.w1", String.valueOf(0.) );
+					inputNanoData.put("AtefSP.w1", String.valueOf(0.) );
+					
+					inputNanoData.put("AtefSA.s1", String.valueOf(0.) );
+					inputNanoData.put("AtefSP.s1", String.valueOf(0.) );
 
+					inputNanoData.put("AtefSA.s2", String.valueOf(0.) );
+					inputNanoData.put("AtefSP.s2", String.valueOf(0.) );
+
+					inputNanoData.put("AtefSA.s3", String.valueOf(0.) );
+					inputNanoData.put("AtefSP.s3", String.valueOf(0.) );
+
+					inputNanoData.put("AtefSA.sd0", String.valueOf(0.) );
+					inputNanoData.put("AtefSP.sd0", String.valueOf(0.) );
+
+					inputNanoData.put("AtefSA.sd1", String.valueOf(0.) );
+					inputNanoData.put("AtefSP.sd1", String.valueOf(0.) );
+
+					inputNanoData.put("AtefSA.sd2", String.valueOf(0.) );
+					inputNanoData.put("AtefSP.sd2", String.valueOf(0.) );
+					
+					inputNanoData.put("kdis.w0S.w0D", String.valueOf(0.) );				
+					inputNanoData.put("kdis.w1S.w1D", String.valueOf(0.) );
+					inputNanoData.put("kdis.w0A.w0D", String.valueOf(0.) );
+					inputNanoData.put("kdis.w0P.w0D", String.valueOf(0.) );
+					inputNanoData.put("kdis.w1A.w1D", String.valueOf(0.) );
+					inputNanoData.put("kdis.w1P.w1D", String.valueOf(0.) );
+
+					inputNanoData.put("kdis.w2S.w2D", String.valueOf(0.) );
+					inputNanoData.put("kdis.w2A.w2D", String.valueOf(0.) );
+					inputNanoData.put("kdis.w2P.w2D", String.valueOf(0.) );
+
+					inputNanoData.put("kdis.s1S.s1D", String.valueOf(0.) );
+					inputNanoData.put("kdis.s2S.s2D", String.valueOf(0.) );
+					inputNanoData.put("kdis.s3S.s3D", String.valueOf(0.) );
+					inputNanoData.put("kdis.s1A.s1D", String.valueOf(0.) );
+					inputNanoData.put("kdis.s1P.s1D", String.valueOf(0.) );
+					inputNanoData.put("kdis.s2A.s2D", String.valueOf(0.) );
+					inputNanoData.put("kdis.s2P.s2D", String.valueOf(0.) );
+					inputNanoData.put("kdis.s3A.s3D", String.valueOf(0.) );
+					inputNanoData.put("kdis.s3P.s3D", String.valueOf(0.) );
+
+					inputNanoData.put("kdis.sd0S.sd0D", String.valueOf(0.) );
+					inputNanoData.put("kdis.sd1S.sd1D", String.valueOf(0.) );
+					inputNanoData.put("kdis.sd0P.sd0D", String.valueOf(0.) );
+					inputNanoData.put("kdis.sd0A.sd0D", String.valueOf(0.) );
+					inputNanoData.put("kdis.sd1A.sd1D", String.valueOf(0.) );
+					inputNanoData.put("kdis.sd1P.sd1D", String.valueOf(0.) );
+
+					inputNanoData.put("kdis.sd2S.sd2D", String.valueOf(0.) );
+					inputNanoData.put("kdis.w3S.w3D", String.valueOf(0.) );
+					inputNanoData.put("kdis.sd2A.sd2D", String.valueOf(0.) );
+					inputNanoData.put("kdis.sd2P.sd2D", String.valueOf(0.) );
+					inputNanoData.put("kdis.w3A.w3D", String.valueOf(0.) );
+					inputNanoData.put("kdis.w3P.w3D", String.valueOf(0.) );
+
+					inputNanoData.put("kdegS.a", String.valueOf(0.) );
+					inputNanoData.put("kdegA.a", String.valueOf(0.) );
+					inputNanoData.put("kdegP.a", String.valueOf(0.) );
+
+					inputNanoData.put("kdegS.w0", String.valueOf(0.) );
+					inputNanoData.put("kdegS.w1", String.valueOf(0.) );
+					inputNanoData.put("kdegA.w0", String.valueOf(0.) );
+					inputNanoData.put("kdegP.w0", String.valueOf(0.) );
+					inputNanoData.put("kdegA.w1", String.valueOf(0.) );
+					inputNanoData.put("kdegP.w1", String.valueOf(0.) );
+
+					inputNanoData.put("kdegS.w2", String.valueOf(0.) );
+					inputNanoData.put("kdegA.w2", String.valueOf(0.) );
+					inputNanoData.put("kdegP.w2", String.valueOf(0.) );
+					
+					inputNanoData.put("kdegS.s1", String.valueOf(0.) );
+					inputNanoData.put("kdegS.s2", String.valueOf(0.) );
+					inputNanoData.put("kdegS.s3", String.valueOf(0.) );
+					inputNanoData.put("kdegA.s1", String.valueOf(0.) );
+					inputNanoData.put("kdegP.s1", String.valueOf(0.) );
+					inputNanoData.put("kdegA.s2", String.valueOf(0.) );
+					inputNanoData.put("kdegP.s2", String.valueOf(0.) );
+					inputNanoData.put("kdegA.s3", String.valueOf(0.) );
+					inputNanoData.put("kdegP.s4", String.valueOf(0.) );
+
+					inputNanoData.put("kdegS.sd0", String.valueOf(0.) );
+					inputNanoData.put("kdegS.sd1", String.valueOf(0.) );
+					inputNanoData.put("kdegA.sd0", String.valueOf(0.) );
+					inputNanoData.put("kdegP.sd0", String.valueOf(0.) );
+					inputNanoData.put("kdegA.sd1", String.valueOf(0.) );
+					inputNanoData.put("kdegP.sd1", String.valueOf(0.) );
+
+					inputNanoData.put("kdegS.sd2", String.valueOf(0.) );
+					inputNanoData.put("kdegS.w3", String.valueOf(0.) );
+					inputNanoData.put("kdegA.sd2", String.valueOf(0.) );
+					inputNanoData.put("kdegP.sd2", String.valueOf(0.) );
+					inputNanoData.put("kdegA.w3", String.valueOf(0.) );
+					inputNanoData.put("kdegP.w3", String.valueOf(0.) );
+					
+					inputNanoData.put("kdegP.s3", String.valueOf(0.) );
+				}  
+				
 				labelsMade = true;				
 				nanoData.put( inputNanoData.get("Name"), (Map<String, String>) inputNanoData );
 			}  
@@ -707,12 +805,12 @@ public class SimpleBox4PFASModelController extends SelectorComposer<Window>{
 				scenariosData.get( str ).insertSolidInfo("TROPICAL", tropSolidInfo);
 
 				Map< String, String > regLandInfo = new HashMap<String, String>();
-				for ( int i = 37; i < 64; i++) 
+				for ( int i = 37; i < 63; i++) 
 					regLandInfo.put( sheet.getRow( i ).getCell( 6 ).getStringCellValue(), String.valueOf( sheet.getRow( i ).getCell( iScenario ).getNumericCellValue() ) );
 				scenariosData.get( str ).insertLandscapeInfo("REGIONAL", regLandInfo);
 
 				Map< String, String > contLandInfo = new HashMap<String, String>();
-				for ( int i = 65; i < 94; i++) 
+				for ( int i = 65; i < 93; i++) 
 					contLandInfo.put( sheet.getRow( i ).getCell( 6 ).getStringCellValue(), String.valueOf( sheet.getRow( i ).getCell( iScenario ).getNumericCellValue() ) );
 				scenariosData.get( str ).insertLandscapeInfo("CONTINENTAL", contLandInfo);
 
@@ -728,11 +826,11 @@ public class SimpleBox4PFASModelController extends SelectorComposer<Window>{
 	void adjustNanoData()
 	{		
 		nanoData.get( nanomaterials.getSelectedItem().getValue().toString() ).put("Molweight", String.valueOf(molweight.getValue() ) ); 
-		nanoData.get( nanomaterials.getSelectedItem().getValue().toString() ).put("RadS", String.valueOf(radius.getValue() ) ); 
+//		nanoData.get( nanomaterials.getSelectedItem().getValue().toString() ).put("RadS", String.valueOf(radius.getValue() ) ); 
 		nanoData.get( nanomaterials.getSelectedItem().getValue().toString() ).put("RhoS", String.valueOf(density.getValue() ) ); 
-		nanoData.get( nanomaterials.getSelectedItem().getValue().toString() ).put("AHamakerSP.w", String.valueOf(hamaker.getValue() ) ); 
+//		nanoData.get( nanomaterials.getSelectedItem().getValue().toString() ).put("AHamakerSP.w", String.valueOf(hamaker.getValue() ) ); 
 
-		if ( freshWaterRadio.getSelectedIndex() == 0 ) {
+/*		if ( freshWaterRadio.getSelectedIndex() == 0 ) {
 			nanoData.get( nanomaterials.getSelectedItem().getValue().toString() ).put("AtefSA.w0", String.valueOf(freshWater.getValue() ) ); 
 			nanoData.get( nanomaterials.getSelectedItem().getValue().toString() ).put("AtefSP.w0", String.valueOf(freshWater.getValue() ) ); 
 			nanoData.get( nanomaterials.getSelectedItem().getValue().toString() ).put("AtefSA.w1", String.valueOf(freshWater.getValue() ) ); 
@@ -963,7 +1061,7 @@ public class SimpleBox4PFASModelController extends SelectorComposer<Window>{
 			nanoData.get( nanomaterials.getSelectedItem().getValue().toString() ).put("kdegP.sd2", String.valueOf(heteroMarineENPsFP.getValue() ) ); 
 			nanoData.get( nanomaterials.getSelectedItem().getValue().toString() ).put("kdegA.w3", String.valueOf(heteroDeepSeaENPsNCs.getValue() ) );
 			nanoData.get( nanomaterials.getSelectedItem().getValue().toString() ).put("kdegP.w3", String.valueOf(heteroDeepSeaENPsSPM.getValue() ) );
-		}
+		}*/
 	}
 
 	void adjustScenarioData() {
