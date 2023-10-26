@@ -372,7 +372,6 @@ public class output extends SelectorComposer<Window> {
 		buildOutflow();
 		buildRemoval();
 		buildDegradation();
-		buildEmission();
 		buildTransport();
 		buildTotals();
 	}
@@ -2163,7 +2162,7 @@ public class output extends SelectorComposer<Window> {
 		concentrations.get("Fresh water lake").put("Reg", new HashMap<String, Double>() );
 		concentrations.get("Fresh water lake").put("Cont", new HashMap<String, Double>() );
 
-		concentrations.get("Fresh water lake").get("Reg").put("Fresh water lake", engine.getConcentration(1)*(input.getSubstancesData("Molweight")*1000.)
+		concentrations.get("Fresh water lake").get("Reg").put("Fresh water lake", engine.getConcentration(1)*(input.getSubstancesData("Molweight"))
 				);
 		concentrations.get("Fresh water lake").get("Reg").put("* DISSOLVED",
 				environment.getEnvProps("REGIONAL","FRwD.w0R")* concentrations.get("Fresh water lake").get("Reg").get("Fresh water lake")
@@ -2173,7 +2172,7 @@ public class output extends SelectorComposer<Window> {
 				);
 
 		concentrations.get("Fresh water lake").get("Cont").put("Fresh water lake",
-				engine.getConcentration(10)*(input.getSubstancesData("Molweight")*1000.)
+				engine.getConcentration(10)*(input.getSubstancesData("Molweight"))
 				);
 		concentrations.get("Fresh water lake").get("Cont").put("* DISSOLVED",
 				environment.getEnvProps("CONTINENTAL","FRw.w0C")* concentrations.get("Fresh water lake").get("Cont").get("Fresh water lake")
@@ -2187,7 +2186,7 @@ public class output extends SelectorComposer<Window> {
 		concentrations.get("Fresh water").put("Cont", new HashMap<String, Double>() );
 
 		concentrations.get("Fresh water").get("Reg").put("Fresh water",
-				engine.getConcentration(2)*(input.getSubstancesData("Molweight")*1000.)
+				engine.getConcentration(2)*(input.getSubstancesData("Molweight"))
 				);
 		concentrations.get("Fresh water").get("Reg").put("* DISSOLVED",
 				concentrations.get("Fresh water").get("Reg").get("Fresh water")*
@@ -2199,7 +2198,7 @@ public class output extends SelectorComposer<Window> {
 				);
 
 		concentrations.get("Fresh water").get("Cont").put("Fresh water",
-				engine.getConcentration(11)*(input.getSubstancesData("Molweight")*1000.)
+				engine.getConcentration(11)*input.getSubstancesData("Molweight") 
 				);
 		concentrations.get("Fresh water").get("Cont").put("* DISSOLVED",
 				concentrations.get("Fresh water").get("Cont").get("Fresh water")*
@@ -2263,7 +2262,7 @@ public class output extends SelectorComposer<Window> {
 		concentrations.get("Surface sea/ocean water").put("Trop", new HashMap<String, Double>() );
 
 		concentrations.get("Surface sea/ocean water").get("Reg").put("Surface sea/ocean water",
-				engine.getConcentration(3)*(input.getSubstancesData("Molweight")*1000.)
+				engine.getConcentration(3)*(input.getSubstancesData("Molweight"))
 				);
 		concentrations.get("Surface sea/ocean water").get("Reg").put("* DISSOLVED",
 				concentrations.get("Surface sea/ocean water").get("Reg").get("Surface sea/ocean water")*
@@ -2275,7 +2274,7 @@ public class output extends SelectorComposer<Window> {
 				);
 
 		concentrations.get("Surface sea/ocean water").get("Cont").put("Surface sea/ocean water",
-				engine.getConcentration(12)*(input.getSubstancesData("Molweight")*1000.)
+				engine.getConcentration(12)*(input.getSubstancesData("Molweight"))
 				);
 		concentrations.get("Surface sea/ocean water").get("Cont").put("* DISSOLVED",
 				concentrations.get("Surface sea/ocean water").get("Cont").get("Surface sea/ocean water")*
@@ -2536,14 +2535,13 @@ public class output extends SelectorComposer<Window> {
 				);
 
 		concentrations.get("Agricultural soil").get("Cont").put("Agricultural soil",
-				( engine.getConcentration(12)*(input.getSubstancesData("Molweight")*1000.)/
-						environment.getEnvProps("CONTINENTAL", "VOLUME.s2C") )/
+				( engine.getConcentration(16)*input.getSubstancesData("Molweight")*1000./
 				(environment.getEnvProps("CONTINENTAL", "FRACw.s2C")*1000 + 
 						( 1. - environment.getEnvProps("CONTINENTAL", "FRACa.s2C") - environment.getEnvProps("CONTINENTAL", "FRACw.s2C") )*
-						input.getLandscapeSettings("ALL-SCALE", "RHOsolid") )
+						input.getLandscapeSettings("ALL-SCALE", "RHOsolid") ) )
 				);
 		concentrations.get("Agricultural soil").get("Cont").put("* SOLID PHASE",
-				engine.getConcentration(12)*
+				engine.getConcentration(16)*environment.getEnvProps("CONTINENTAL", "FRs.s2C")*
 				(input.getSubstancesData("Molweight")*1000.)/
 				(environment.getEnvProps("CONTINENTAL", "FRACs.s2C")*input.getLandscapeSettings("ALL-SCALE", "RHOsolid"))
 				);
@@ -2578,14 +2576,13 @@ public class output extends SelectorComposer<Window> {
 
 		concentrations.get("Other soil").get("Cont").put("Other soil",
 				(  engine.getConcentration(17)*
-						(input.getSubstancesData("Molweight")*1000.)/
-						environment.getEnvProps("CONTINENTAL", "VOLUME.s3C") )/
+						(input.getSubstancesData("Molweight")*1000.) )/
 				(environment.getEnvProps("CONTINENTAL", "FRACw.s3C")*1000 + 
 						( 1. - environment.getEnvProps("CONTINENTAL", "FRACa.s3C") - environment.getEnvProps("CONTINENTAL", "FRACw.s3C") )*
 						input.getLandscapeSettings("ALL-SCALE", "RHOsolid") )
 				);
 		concentrations.get("Other soil").get("Cont").put("* SOLID PHASE",
-				engine.getConcentration(17)*
+				engine.getConcentration(17)*environment.getEnvProps("CONTINENTAL", "FRs.s3C")*
 				(input.getSubstancesData("Molweight")*1000.)/
 				(environment.getEnvProps("CONTINENTAL", "FRACs.s3C")*input.getLandscapeSettings("ALL-SCALE", "RHOsolid"))
 				);
