@@ -843,19 +843,19 @@ public class Engine {
 		this.emissions[6] = input.getEmissionRates("E.s1RS"); // this.input.getE_s1RD();
 		this.emissions[7] = input.getEmissionRates("E.s2RS"); // this.input.getE_s2RD();
 		this.emissions[8] = input.getEmissionRates("E.s3RS"); // this.input.getE_s3RD();
-		this.emissions[9] = input.getEmissionRates("E.aCS"); // this.input.getE_aCG();
+		this.emissions[9] = input.getEmissionRates("E.aCG"); // this.input.getE_aCG();
 		this.emissions[11] = input.getEmissionRates("E.w1CS"); // this.input.getE_w1CD();
 		this.emissions[12] = input.getEmissionRates("E.w2CS"); // this.input.getE_w2CD();
 		this.emissions[15] = input.getEmissionRates("E.s1CS"); // this.input.getE_s1CD();
 		this.emissions[16] = input.getEmissionRates("E.s2CS"); // this.input.getE_s2CD();
 		this.emissions[17] = input.getEmissionRates("E.s3CS"); // this.input.getE_s3CD();
-		this.emissions[18] = input.getEmissionRates("E.aMS"); // this.input.getE_aMG();
+		this.emissions[18] = input.getEmissionRates("E.aMG"); // this.input.getE_aMG();
 		this.emissions[19] = input.getEmissionRates("E.w2MS"); // this.input.getE_w2MD();
 		this.emissions[22] = input.getEmissionRates("E.sMS"); // this.input.getE_sMD();
-		this.emissions[23] = input.getEmissionRates("E.aAS"); // this.input.getE_aAG();
+		this.emissions[23] = input.getEmissionRates("E.aAG"); // this.input.getE_aAG();
 		this.emissions[24] = input.getEmissionRates("E.w2AS"); // this.input.getE_w2AD();
 		this.emissions[27] = input.getEmissionRates("E.sAS"); // this.input.getE_sAD();
-		this.emissions[28] = input.getEmissionRates("E.aTS"); // this.input.getE_aTG();
+		this.emissions[28] = input.getEmissionRates("E.aTG"); // this.input.getE_aTG();
 		this.emissions[29] = input.getEmissionRates("E.w2TS"); // this.input.getE_w2TD();
 		this.emissions[32] = input.getEmissionRates("E.sTS"); // this.input.getE_sTD();
 

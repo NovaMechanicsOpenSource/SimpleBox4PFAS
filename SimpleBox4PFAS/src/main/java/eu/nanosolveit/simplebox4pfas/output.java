@@ -4362,122 +4362,122 @@ public class output extends SelectorComposer<Window> {
 		emission.put("Regional Scale", new HashMap< String, Double >() );
 
 		emission.get("Regional Scale").put("air", 
-				input.getEmissionRates("E.aRS")*
+				input.getEmissionRates("E.aRG")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Regional Scale").put("fresh water lakes", 
-				input.getEmissionRates("E.w0RS")*
+				input.getEmissionRates("E.w0RD")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Regional Scale").put("fresh water", 
-				input.getEmissionRates("E.w1RS")*
+				input.getEmissionRates("E.w1RD")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Regional Scale").put("coastal sea water", 
-				input.getEmissionRates("E.w2RS")*
+				input.getEmissionRates("E.w2RD")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Regional Scale").put("natural soil", 
-				input.getEmissionRates("E.s1RS")*
+				input.getEmissionRates("E.s1RD")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Regional Scale").put("agricultural soil", 
-				input.getEmissionRates("E.s2RS")*
+				input.getEmissionRates("E.s2RD")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Regional Scale").put("other soil", 
-				input.getEmissionRates("E.s3RS")*
+				input.getEmissionRates("E.s3RD")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.put("Continental Scale", new HashMap< String, Double >() );
 
 		emission.get("Continental Scale").put("air", 
-				input.getEmissionRates("E.aCS")*
+				input.getEmissionRates("E.aCG")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Continental Scale").put("fresh water lakes", 
-				input.getEmissionRates("E.w0CS")*
+				input.getEmissionRates("E.w0CD")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Continental Scale").put("fresh water", 
-				input.getEmissionRates("E.w1CS")*
+				input.getEmissionRates("E.w1CD")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Continental Scale").put("coastal sea water", 
-				input.getEmissionRates("E.w2CS")*
+				input.getEmissionRates("E.w2CD")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Continental Scale").put("natural soil", 
-				input.getEmissionRates("E.s1CS")*
+				input.getEmissionRates("E.s1CD")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Continental Scale").put("agricultural soil", 
-				input.getEmissionRates("E.s2CS")*
+				input.getEmissionRates("E.s2CD")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Continental Scale").put("other soil", 
-				input.getEmissionRates("E.s3CS")*
+				input.getEmissionRates("E.s3CD")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.put("Global Scale - Moderate climate zone", new HashMap< String, Double >() );
 		emission.get("Global Scale - Moderate climate zone").put("air", 
-				input.getEmissionRates("E.aMS")*
+				input.getEmissionRates("E.aMG")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Global Scale - Moderate climate zone").put("upper ocean water", 
-				input.getEmissionRates("E.w2MS")*
+				input.getEmissionRates("E.w2MD")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Global Scale - Moderate climate zone").put("soil", 
-				input.getEmissionRates("E.sMS")*
+				input.getEmissionRates("E.sMD")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.put("Global Scale - Arctic climate zone", new HashMap< String, Double >() );
 		emission.get("Global Scale - Arctic climate zone").put("air", 
-				input.getEmissionRates("E.aAS")*
+				input.getEmissionRates("E.aAG")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Global Scale - Arctic climate zone").put("upper ocean water", 
-				input.getEmissionRates("E.w2AS")*
+				input.getEmissionRates("E.w2AD")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Global Scale - Arctic climate zone").put("soil", 
-				input.getEmissionRates("E.sAS")*
+				input.getEmissionRates("E.sAD")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.put("Global Scale - Tropical climate zone", new HashMap< String, Double >() );
 		emission.get("Global Scale - Tropical climate zone").put("air", 
-				input.getEmissionRates("E.aTS")*
+				input.getEmissionRates("E.aTG")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Global Scale - Tropical climate zone").put("upper ocean water", 
-				input.getEmissionRates("E.w2TS")*
+				input.getEmissionRates("E.w2TD")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Global Scale - Tropical climate zone").put("soil", 
-				input.getEmissionRates("E.sTS")*
+				input.getEmissionRates("E.sTD")*
 				input.getSubstancesData("Molweight")
 				);
 	}
@@ -4549,6 +4549,93 @@ public class output extends SelectorComposer<Window> {
 
 		NumberFormat formatter = new DecimalFormat("0.##E0", otherSymbols); 
 
+		/*		if ( resultsCombo.getSelectedItem().getValue().equals( regPart) ) {
+			disBuilder();
+
+			showImageRegional();
+			imgResA.setVisible(true);
+			imgResB.setVisible(false);			
+
+			concGrid.setVisible(true);
+			zonesGrid.setVisible(false);
+
+			concGridT.setVisible(false);
+			concGrid1.setVisible(false);
+			concGrid2.setVisible(false);
+			concGrid3.setVisible(false);
+
+			concLabT.setVisible(false);
+			concLab1.setVisible(false);
+			concLab2.setVisible(false);
+			concLab3.setVisible(false);
+			updateResTables();
+
+		}
+		else if ( resultsCombo.getSelectedItem().getValue().equals(contPart) ) {
+			disBuilder();			
+
+			showImageContinental();
+			imgResA.setVisible(true);
+			imgResB.setVisible(false);			
+
+			concGrid.setVisible(true);
+			zonesGrid.setVisible(false);
+
+			concGridT.setVisible(false);
+			concGrid1.setVisible(false);
+			concGrid2.setVisible(false);
+			concGrid3.setVisible(false);
+
+			concLabT.setVisible(false);
+			concLab1.setVisible(false);
+			concLab2.setVisible(false);
+			concLab3.setVisible(false);
+			updateResTables();
+		}
+		else if ( resultsCombo.getSelectedItem().getValue().equals(globPart) ) {
+			disBuilder();
+
+			showImageGlobal();
+			imgResA.setVisible(false);
+			imgResB.setVisible(true);
+
+			concGrid.setVisible(false);
+			zonesGrid.setVisible(true);
+
+			concGridT.setVisible(false);
+			concGrid1.setVisible(false);
+			concGrid2.setVisible(false);
+			concGrid3.setVisible(false);
+
+			concLabT.setVisible(false);
+			concLab1.setVisible(false);
+			concLab2.setVisible(false);
+			concLab3.setVisible(false);
+			updateResTables();
+		}		
+		else if ( resultsCombo.getSelectedItem().getValue().equals(contPart) ) {
+			disBuilder();
+
+			showImageContinental();
+			imgResA.setVisible(true);
+			imgResB.setVisible(false);			
+
+			concGrid.setVisible(true);
+			zonesGrid.setVisible(false);
+
+			concGridT.setVisible(false);
+			concGrid1.setVisible(false);
+			concGrid2.setVisible(false);
+			concGrid3.setVisible(false);
+
+			concLabT.setVisible(false);
+			concLab1.setVisible(false);
+			concLab2.setVisible(false);
+			concLab3.setVisible(false);
+			updateResTables();
+		}
+		else
+		 */
 		if ( resultsCombo.getSelectedItem().getValue().equals(regDis) ) {
 			disBuilder();
 
@@ -4612,6 +4699,26 @@ public class output extends SelectorComposer<Window> {
 			concLab3.setVisible(false);
 			updateResTables();
 		}
+		/*		else if ( resultsCombo.getSelectedItem().getValue().equals(nanoSpec) ) {
+			disBuilder();
+
+			imgResA.setVisible(false);
+			imgResB.setVisible(false);
+
+			concGrid.setVisible(false);
+			zonesGrid.setVisible(false);
+
+			concGridT.setVisible(true);
+			concGrid1.setVisible(true);
+			concGrid2.setVisible(true);
+			concGrid3.setVisible(true);
+
+			concLabT.setVisible(true);
+			concLab1.setVisible(true);
+			concLab2.setVisible(true);
+			concLab3.setVisible(true);
+			updateResTables();
+		}*/
 	}
 
 	void updateResTables()
@@ -5632,6 +5739,9 @@ public class output extends SelectorComposer<Window> {
 	public Map<String, Map<String, Double> > getEmission() { return emission; }
 
 	public Map<String, Double> getTotalD() { return totalD; }
+	public Map<String, Double> getTotalS() { return totalS; }
+	public Map<String, Double> getTotalA() { return totalA; }
+	public Map<String, Double> getTotalP() { return totalP; }
 }
 
 
