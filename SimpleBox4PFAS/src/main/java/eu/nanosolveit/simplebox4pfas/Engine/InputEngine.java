@@ -62,7 +62,7 @@ public class InputEngine {
 		else
 			substancesData.put("RadS", 10.*1e-9 );
 
-		if ( Double.valueOf( nanomaterial.get("Kow") ) > 0.0  )
+		if ( Double.valueOf( nanomaterial.get("Kaw") ) > 0.0  )
 			substancesData.put("Kaw", Double.valueOf( nanomaterial.get("Kaw") ) );
 		else
 			substancesData.put("Kaw", 1e-20 );
@@ -525,7 +525,7 @@ public class InputEngine {
 		substancesData.put("kdegD.soil", Double.valueOf( nanomaterial.get("kdegD.soil") ));
 
 		// ENVIROMENTAL PROPERTIES (ALL-SCALES)
-		envProperties.put( "RadNuc", 1.00E-08 );			
+		envProperties.put( "RadNuc", 1.00E-08 );
 		envProperties.put( "RhoNuc", 1300. );
 		envProperties.put( "RadAcc", 5.8E-08 );
 		envProperties.put( "RhoAcc",  landSettings.get("ALL-SCALE").get("RHOaers") );
@@ -541,17 +541,20 @@ public class InputEngine {
 		envProperties.put( "RadNC.s", 1.5e-7);
 		envProperties.put( "RhoNC.s", 2.0e+3);
 		envProperties.put( "RadFP.s", 1.28e-4);
-		envProperties.put( "RhoFP.s", 2.5e+3); 
+		envProperties.put( "RhoFP.s", 2.5e+3);
 
 		envProperties.put( "SingleVolNuc",  (4./3.)*Math.PI*Math.pow(envProperties.get("RadNuc"), 3) );		
 		envProperties.put( "SingleVolAcc",  (4./3.)*Math.PI*Math.pow(envProperties.get("RadAcc"), 3) );
 		envProperties.put( "SingleVolCP.a", (4./3.)*Math.PI*Math.pow(envProperties.get("RadCP.a"), 3) );
-		envProperties.put( "SingleVolNC.w", (4./3.)*Math.PI*Math.pow(envProperties.get("RadNC.w"), 3) ); 
+		envProperties.put( "SingleVolNC.w", (4./3.)*Math.PI*Math.pow(envProperties.get("RadNC.w"), 3) );
 
 		envProperties.put( "SetVelNC.w",  2.*(envProperties.get("RhoNC.w") - landSettings.get("ALL-SCALE").get("RHO.w") )*landSettings.get("ALL-SCALE").get("g")*
 				Math.pow(envProperties.get("RadNC.w"), 2)/(9.*landSettings.get("ALL-SCALE").get("DYNVISC.w") ) );
 
 		envProperties.put( "SingleVolSPM.w", (4./3.)*Math.PI*Math.pow(envProperties.get("RadSPM.w"), 3) );
+
+		envProperties.put( "SetVelSPM.w",  2.*(envProperties.get("RhoSPM.w") - landSettings.get("ALL-SCALE").get("RHO.w") )*landSettings.get("ALL-SCALE").get("g")*
+				Math.pow(envProperties.get("RadSPM.w"), 2)/(9.*landSettings.get("ALL-SCALE").get("DYNVISC.w") ) );
 
 		envProperties.put( "SetVelSPM.w",  2.*(envProperties.get("RhoSPM.w") - landSettings.get("ALL-SCALE").get("RHO.w") )*landSettings.get("ALL-SCALE").get("g")*
 				Math.pow(envProperties.get("RadSPM.w"), 2)/(9.*landSettings.get("ALL-SCALE").get("DYNVISC.w") ) );
@@ -565,6 +568,7 @@ public class InputEngine {
 
 		envProperties.put( "SetVelNC.s",  2.*(envProperties.get("RhoNC.s") - landSettings.get("ALL-SCALE").get("RHO.w") )*landSettings.get("ALL-SCALE").get("g")*
 				Math.pow(envProperties.get("RadNC.s"), 2)/(9.*landSettings.get("ALL-SCALE").get("DYNVISC.w") ) );
+
 
 		nanoProperties.put("SetVelS.w", 2.*( substancesData.get("RhoS") - landSettings.get("ALL-SCALE").get("RHO.w"))*landSettings.get("ALL-SCALE").get("g")*
 				Math.pow(substancesData.get("RadS"), 2)/(9.*landSettings.get("ALL-SCALE").get("DYNVISC.w") ) );
@@ -600,7 +604,6 @@ public class InputEngine {
 		nanoProperties.put("SetVelA.w", 2.*( nanoProperties.get("RhoA.w") - landSettings.get("ALL-SCALE").get("RHO.w"))*landSettings.get("ALL-SCALE").get("g")*
 				Math.pow( nanoProperties.get("RadA.w"), 2)/(9.*landSettings.get("ALL-SCALE").get("DYNVISC.w") ) );
 
-
 		double temp11 = substancesData.get("RhoS")*(4./3.)*Math.PI*Math.pow( substancesData.get("RadS"), 3);
 		double temp22 = envProperties.get("RhoSPM.w")*(4./3.)*Math.PI*Math.pow( envProperties.get("RadSPM.w"), 3);
 		double temp33 = (4./3.)*Math.PI*Math.pow( substancesData.get("RadS"), 3);
@@ -609,6 +612,7 @@ public class InputEngine {
 		nanoProperties.put("RadP.w", Math.pow( (Math.pow(envProperties.get("RadSPM.w"),3) + Math.pow(substancesData.get("RadS"),3) ), 1./3.) );
 		nanoProperties.put("SetVelP.w", 2.*( nanoProperties.get("RhoP.w") - landSettings.get("ALL-SCALE").get("RHO.w"))*landSettings.get("ALL-SCALE").get("g")*
 				Math.pow( nanoProperties.get("RadP.w"), 2)/(9.*landSettings.get("ALL-SCALE").get("DYNVISC.w") ) );
+
 
 		double temp111 = substancesData.get("RhoS")*(4./3.)*Math.PI*Math.pow( substancesData.get("RadS"), 3);
 		double temp222 = envProperties.get("RhoCP.a")*(4./3.)*Math.PI*Math.pow( envProperties.get("RadCP.a"), 3);
@@ -621,11 +625,8 @@ public class InputEngine {
 				*landSettings.get("ALL-SCALE").get("g")*nanoProperties.get("CunninghamP.a") /(18.*landSettings.get("ALL-SCALE").get("DYNVISC.a") ) );
 
 		emissionRates.put("E.aRG", 0.);
-
 		emissionRates.put("E.w0RD", 0.);
-
 		emissionRates.put("E.w1RD", 0.);
-
 		emissionRates.put("E.w2RD", 0.);
 		emissionRates.put("E.s1RD", 0.);
 		emissionRates.put("E.s2RD", 0.);
@@ -636,10 +637,8 @@ public class InputEngine {
 		emissionRates.put("E.w1CD", 0.);
 		emissionRates.put("E.w2CD", 0.);
 		emissionRates.put("E.s1CD", 0.);
-
 		emissionRates.put("E.s2CD", 0.);
 		emissionRates.put("E.s3CD", 0.);
-
 		emissionRates.put("E.aMG", 0.);
 		emissionRates.put("E.w2MD", 0.);
 		emissionRates.put("E.sMD", 0.);
@@ -649,7 +648,6 @@ public class InputEngine {
 		emissionRates.put("E.aAS", 0.);
 		emissionRates.put("E.w2AS", 0.);
 		emissionRates.put("E.sAS", 0.);
-
 		emissionRates.put("E.aTG", 0.);
 		emissionRates.put("E.w2TD", 0.);
 		emissionRates.put("E.sTD", 0.);
