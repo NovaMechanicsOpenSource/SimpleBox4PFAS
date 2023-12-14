@@ -24,7 +24,7 @@
 	</style>
 
 	<window id="mainWin"
-		apply="eu.nanosolveit.simplebox4pfas.SimpleBox4PFASModelController"
+		apply="eu.proplanet.simplebox4pfas.SimpleBox4PFASModelController"
 		border="normal" hflex="1">
 
 		<hbox id="titleSimple" align="center">
