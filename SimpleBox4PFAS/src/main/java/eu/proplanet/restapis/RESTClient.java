@@ -1,4 +1,4 @@
-package eu.nanosolveit.restapis;
+package eu.proplanet.restapis;
 
 import java.io.BufferedReader;
 import java.io.IOException;

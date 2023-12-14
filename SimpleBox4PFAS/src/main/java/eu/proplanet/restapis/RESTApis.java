@@ -1,4 +1,4 @@
-package eu.nanosolveit.restapis;
+package eu.proplanet.restapis;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -39,10 +39,10 @@ import org.zkoss.zul.Row;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import eu.nanosolveit.simplebox4pfas.SimpleBox4PFASApiInput;
-import eu.nanosolveit.simplebox4pfas.SimpleBox4PFASApiResponse;
-import eu.nanosolveit.simplebox4pfas.SimpleBox4PFASModel;
-import eu.nanosolveit.simplebox4pfas.output;
+import eu.proplanet.simplebox4pfas.SimpleBox4PFASApiInput;
+import eu.proplanet.simplebox4pfas.SimpleBox4PFASApiResponse;
+import eu.proplanet.simplebox4pfas.SimpleBox4PFASModel;
+import eu.proplanet.simplebox4pfas.output;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponses;

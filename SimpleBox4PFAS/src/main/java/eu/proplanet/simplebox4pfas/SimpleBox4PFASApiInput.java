@@ -1,4 +1,4 @@
-package eu.nanosolveit.simplebox4pfas;
+package eu.proplanet.simplebox4pfas;
 
 import java.util.HashMap;
 import java.util.Map;
