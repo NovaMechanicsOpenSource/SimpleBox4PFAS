@@ -53,7 +53,7 @@ import xyz.euclia.jaqpotj.models.Auth;
 import xyz.euclia.jaqpotj.models.Prediction;
 
 @Path("/")
-@Api(value = "NanoSolveIT REST APIs")
+@Api(value = "ProPlanet REST APIs")
 public class RESTApis{
 	/*
 	@POST
