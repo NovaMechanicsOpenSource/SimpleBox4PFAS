@@ -1,4 +1,4 @@
-package eu.nanosolveit.simplebox4pfas;
+package eu.proplanet.simplebox4pfas;
 
 import java.io.IOException;
 import java.util.HashMap;

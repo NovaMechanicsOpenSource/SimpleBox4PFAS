@@ -1,10 +1,10 @@
-package eu.nanosolveit.simplebox4pfas.Engine;
+package eu.proplanet.simplebox4pfas.Engine;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import eu.nanosolveit.simplebox4pfas.Scenario;
+import eu.proplanet.simplebox4pfas.Scenario;
 import lombok.Getter;
 import lombok.Setter;
 

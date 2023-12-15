@@ -1,4 +1,4 @@
-package eu.nanosolveit.simplebox4pfas;
+package eu.proplanet.simplebox4pfas;
 
 import org.zkoss.util.media.AMedia;
 import org.zkoss.zk.ui.select.SelectorComposer;
@@ -6,8 +6,8 @@ import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Iframe;
 import org.zkoss.zul.Window;
 
-import eu.nanosolveit.restapis.RESTApis;
-import eu.nanosolveit.restapis.RESTClient;
+import eu.proplanet.restapis.RESTApis;
+import eu.proplanet.restapis.RESTClient;
 
 
 /**

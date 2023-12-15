@@ -24,7 +24,7 @@
 	</style>
 
 	<window id="mainWin"
-		apply="eu.nanosolveit.simplebox4pfas.SimpleBox4PFASModelController"
+		apply="eu.proplanet.simplebox4pfas.SimpleBox4PFASModelController"
 		border="normal" hflex="1">
 
 		<hbox id="titleSimple" align="center">
@@ -34,7 +34,7 @@
 						<tr>
 							<td>
 								<img border="0"
-									src="../resources/SmallLogo.jpg" width="140" height="80" />
+									src="../resources/PROPLANET-FINAL-LOGO--2048x472.png" width="140" height="80" />
 							</td>
 							<td>
 								<h1 style="font-size:30px;">

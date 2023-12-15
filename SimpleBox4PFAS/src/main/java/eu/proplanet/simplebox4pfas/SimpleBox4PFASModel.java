@@ -1,4 +1,4 @@
-package eu.nanosolveit.simplebox4pfas;
+package eu.proplanet.simplebox4pfas;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,9 +13,9 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.zkoss.zk.ui.Sessions;
 
-import eu.nanosolveit.simplebox4pfas.Engine.Engine;
-import eu.nanosolveit.simplebox4pfas.Engine.InputEngine;
-import eu.nanosolveit.simplebox4pfas.Engine.RegionalEngine;
+import eu.proplanet.simplebox4pfas.Engine.Engine;
+import eu.proplanet.simplebox4pfas.Engine.InputEngine;
+import eu.proplanet.simplebox4pfas.Engine.RegionalEngine;
 
 public class SimpleBox4PFASModel {
 
