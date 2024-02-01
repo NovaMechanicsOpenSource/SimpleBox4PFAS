@@ -429,6 +429,40 @@ public class SimpleBox4PFASModelController extends SelectorComposer<Window>{
 		load.setVisible(false);
 	}
 
+	@Listen ("onChange=#molweight")
+	public void molweightChanged() {
+		
+		toAir.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("REGIONAL").get("E.aRS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
+		toLakeWater.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("REGIONAL").get("E.w0RS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
+		toFreshWater.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("REGIONAL").get("E.w1RS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
+		toSea.setValue( Double.valueOf( scenariosData.get( "default scenario").getSolidInfo("REGIONAL").get("E.w2RS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
+		toNatSoil.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("REGIONAL").get("E.s1RS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
+		toAgriSoil.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("REGIONAL").get("E.s2RS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
+		toOtherSoil.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("REGIONAL").get("E.s3RS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
+
+		toAirCont.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("CONTINENTAL").get("E.aCS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
+		toLakeWaterCont.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("CONTINENTAL").get("E.w0CS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
+		toFreshWaterCont.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("CONTINENTAL").get("E.w1CS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
+		toSeaCont.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("CONTINENTAL").get("E.w2CS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
+		toNatSoilCont.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("CONTINENTAL").get("E.s1CS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
+		toAgriSoilCont.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("CONTINENTAL").get("E.s2CS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
+		toOtherSoilCont.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("CONTINENTAL").get("E.s3CS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
+
+		toAirArc.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("ARCTIC").get("E.aAS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
+		toWaterArc.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("ARCTIC").get("E.w2AS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
+		toSoilArc.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("ARCTIC").get("E.sAS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
+
+		toAirTrop.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("TROPICAL").get("E.aTS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
+		toWaterTrop.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("TROPICAL").get("E.w2TS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
+		toSoilTrop.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("TROPICAL").get("E.sTS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
+
+		toAirMod.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("MODERATE").get("E.aMS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
+		toWaterMod.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("MODERATE").get("E.w2MS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
+		toSoilMod.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("MODERATE").get("E.sMS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );		
+	}
+	
+	
+	
 	@Listen("onChange=#nanomaterials,#scenarios")
 	public void nanoSceneChanged() {
 
