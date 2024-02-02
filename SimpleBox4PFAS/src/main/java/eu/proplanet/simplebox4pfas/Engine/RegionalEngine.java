@@ -2550,7 +2550,7 @@ public class RegionalEngine {
 		environment.get("CONTINENTAL").put("PRODsusp.w2C", environment.get("CONTINENTAL").get("SYSTEMAREA.C")
 				* environment.get("CONTINENTAL").get("AREAFRAC.w2C") * 5. / (1000. * 3600. * 24. * 365.));
 
-		environment.get("CONTINENTAL").put("NETsedrate.w2C", 0.0000000000274);
+		environment.get("CONTINENTAL").put("NETsedrate.w2C", 0.0);
 		environment.get("CONTINENTAL").put("NETsedrate.w1C", 8.62268518546068E-11);
 		environment.get("CONTINENTAL").put("NETsedrate.w0C", 8.62268518546068E-11);
 
