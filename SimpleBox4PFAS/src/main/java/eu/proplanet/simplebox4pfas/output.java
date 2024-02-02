@@ -4359,9 +4359,11 @@ public class output extends SelectorComposer<Window> {
 		emission.put("Regional Scale", new HashMap< String, Double >() );
 
 		emission.get("Regional Scale").put("air", 
-				input.getEmissionRates("E.aRG")*
+				input.getEmissionRates("E.aRS")*
 				input.getSubstancesData("Molweight")
 				);
+		
+		System.out.print( input.getSubstancesData("Molweight") );
 
 		emission.get("Regional Scale").put("fresh water lakes", 
 				input.getEmissionRates("E.w0RD")*
@@ -4369,34 +4371,34 @@ public class output extends SelectorComposer<Window> {
 				);
 
 		emission.get("Regional Scale").put("fresh water", 
-				input.getEmissionRates("E.w1RD")*
+				input.getEmissionRates("E.w1RS")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Regional Scale").put("coastal sea water", 
-				input.getEmissionRates("E.w2RD")*
+				input.getEmissionRates("E.w2RS")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Regional Scale").put("natural soil", 
-				input.getEmissionRates("E.s1RD")*
+				input.getEmissionRates("E.s1RS")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Regional Scale").put("agricultural soil", 
-				input.getEmissionRates("E.s2RD")*
+				input.getEmissionRates("E.s2RS")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Regional Scale").put("other soil", 
-				input.getEmissionRates("E.s3RD")*
+				input.getEmissionRates("E.s3RS")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.put("Continental Scale", new HashMap< String, Double >() );
 
 		emission.get("Continental Scale").put("air", 
-				input.getEmissionRates("E.aCG")*
+				input.getEmissionRates("E.aCS")*
 				input.getSubstancesData("Molweight")
 				);
 
@@ -4406,70 +4408,70 @@ public class output extends SelectorComposer<Window> {
 				);
 
 		emission.get("Continental Scale").put("fresh water", 
-				input.getEmissionRates("E.w1CD")*
+				input.getEmissionRates("E.w1CS")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Continental Scale").put("coastal sea water", 
-				input.getEmissionRates("E.w2CD")*
+				input.getEmissionRates("E.w2CS")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Continental Scale").put("natural soil", 
-				input.getEmissionRates("E.s1CD")*
+				input.getEmissionRates("E.s1CS")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Continental Scale").put("agricultural soil", 
-				input.getEmissionRates("E.s2CD")*
+				input.getEmissionRates("E.s2CS")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Continental Scale").put("other soil", 
-				input.getEmissionRates("E.s3CD")*
+				input.getEmissionRates("E.s3CS")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.put("Global Scale - Moderate climate zone", new HashMap< String, Double >() );
 		emission.get("Global Scale - Moderate climate zone").put("air", 
-				input.getEmissionRates("E.aMG")*
+				input.getEmissionRates("E.aMS")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Global Scale - Moderate climate zone").put("upper ocean water", 
-				input.getEmissionRates("E.w2MD")*
+				input.getEmissionRates("E.w2MS")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Global Scale - Moderate climate zone").put("soil", 
-				input.getEmissionRates("E.sMD")*
+				input.getEmissionRates("E.sMS")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.put("Global Scale - Arctic climate zone", new HashMap< String, Double >() );
 		emission.get("Global Scale - Arctic climate zone").put("air", 
-				input.getEmissionRates("E.aAG")*
+				input.getEmissionRates("E.aAS")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Global Scale - Arctic climate zone").put("upper ocean water", 
-				input.getEmissionRates("E.w2AD")*
+				input.getEmissionRates("E.w2AS")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Global Scale - Arctic climate zone").put("soil", 
-				input.getEmissionRates("E.sAD")*
+				input.getEmissionRates("E.sAS")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.put("Global Scale - Tropical climate zone", new HashMap< String, Double >() );
 		emission.get("Global Scale - Tropical climate zone").put("air", 
-				input.getEmissionRates("E.aTG")*
+				input.getEmissionRates("E.aTS")*
 				input.getSubstancesData("Molweight")
 				);
 
 		emission.get("Global Scale - Tropical climate zone").put("upper ocean water", 
-				input.getEmissionRates("E.w2TD")*
+				input.getEmissionRates("E.w2TS")*
 				input.getSubstancesData("Molweight")
 				);
 

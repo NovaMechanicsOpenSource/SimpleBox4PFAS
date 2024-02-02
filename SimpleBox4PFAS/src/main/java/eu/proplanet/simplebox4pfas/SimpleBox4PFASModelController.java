@@ -429,7 +429,7 @@ public class SimpleBox4PFASModelController extends SelectorComposer<Window>{
 		load.setVisible(false);
 	}
 
-	@Listen ("onChange=#molweight")
+/*	@Listen ("onChange=#molweight")
 	public void molweightChanged() {
 		
 		toAir.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("REGIONAL").get("E.aRS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
@@ -459,8 +459,7 @@ public class SimpleBox4PFASModelController extends SelectorComposer<Window>{
 		toAirMod.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("MODERATE").get("E.aMS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
 		toWaterMod.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("MODERATE").get("E.w2MS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );
 		toSoilMod.setValue( Double.valueOf( scenariosData.get( "default scenario" ).getSolidInfo("MODERATE").get("E.sMS") )*1000./( (molweight.getValue()/1000.)*3600.*24.*365.) );		
-	}
-	
+	}*/
 	
 	
 	@Listen("onChange=#nanomaterials,#scenarios")
